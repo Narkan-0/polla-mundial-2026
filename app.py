@@ -4,7 +4,7 @@ import json
 import os
 
 # CONFIGURACIÓN DE LA PÁGINA (Diseño Ultra Moderno)
-st.set_page_config(page_title="Polla Mundial 2026 - Qatar & North America Style", page_icon="⚽", layout="wide")
+st.set_page_config(page_title="Polla Mundial 2026", page_icon="⚽", layout="wide")
 
 # ESTILOS CSS AVANZADOS PARA DISEÑO VISTOSO
 st.markdown("""
@@ -17,8 +17,7 @@ st.markdown("""
     
     /* Encabezado Épico con imagen de fondo */
     .hero-banner {
-        background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(15,23,42,0.4)), 
-                    url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80');
+        background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(15,23,42,0.4)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80');
         background-size: cover;
         background-position: center;
         padding: 40px;
@@ -45,11 +44,6 @@ st.markdown("""
         border: 1px solid #334155;
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        transition: transform 0.2s;
-    }
-    .card-partido:hover {
-        transform: translateY(-2px);
-        border-color: #3b82f6;
     }
     
     /* Estilo del Podio de Ganadores */
@@ -114,12 +108,11 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# SECCIÓN DE IMÁGENES DE LAS ESTRELLAS (Decoración de portada)
+# SECCIÓN DE IMÁGENES DE LAS ESTRELLAS
 col_cr7, col_logo, col_messi = st.columns([2, 2, 2])
 with col_cr7:
     st.image("https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=300&q=80", caption="¡Apunta a la gloria!")
 with col_logo:
-    # Simulación de un logo mundialista estético mediante balones abstractos de alta calidad
     st.image("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=300&q=80", caption="FIFA World Cup 2026")
 with col_messi:
     st.image("https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&w=300&q=80", caption="¡El arte de predecir!")
@@ -161,7 +154,6 @@ with tab1:
         premios = [fondo_total * 0.70, fondo_total * 0.30, 0]
         tags = ["🥇 1er Lugar (70%)", "🥈 2do Lugar (30%)", "🥉 Sin premio"]
 
-    # Mostrar Podio Dinámico Estilizado
     c_p1, c_p2, c_p3 = st.columns(3)
     with c_p1:
         if len(df_tabla) >= 1:
@@ -208,7 +200,6 @@ with tab2:
             pred_actual["l"], pred_actual["v"]
         )
         
-        # Tarjeta visual con balón de fútbol decorativo
         st.markdown(f"""
         <div class="card-partido" style="border-left: 6px solid {color_hex};">
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -222,6 +213,23 @@ with tab2:
         """, unsafe_allow_html=True)
         
         c1, c2, c3, c4 = st.columns([3, 1, 1, 3])
-        with c1: st.markdown(f"<h3 style='text-align: right;'>{part['local']} {part['flag_l']}</h3>", unsafe_allow_html=True)
-        with c2: g_l = st.number_input("Goles", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"p_l_{usuario}_{pid}", label_visibility="collapsed")
-        with c3: g_v = st.number_input("Goles", min_value=0, max_value=15, value=int
+        with c1: 
+            st.markdown(f"<h3 style='text-align: right;'>{part['local']} {part['flag_l']}</h3>", unsafe_allow_html=True)
+        with c2: 
+            g_l = st.number_input("Goles", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"p_l_{usuario}_{pid}", label_visibility="collapsed")
+        with c3: 
+            g_v = st.number_input("Goles", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"p_v_{usuario}_{pid}", label_visibility="collapsed")
+        with c4: 
+            st.markdown(f"<h3>{part['flag_v']} {part['visita']}</h3>", unsafe_allow_html=True)
+        
+        datos["pronosticos"][usuario][pid] = {"l": g_l, "v": g_v}
+        st.write("")
+        
+    if st.button("💾 GUARDAR MIS PRONÓSTICOS", key="btn_guardar_user"):
+        guardar_datos(datos)
+        st.balloons()
+        st.success(f"¡Excelente {usuario}, tus predicciones fueron resguardadas de manera segura!")
+
+# --- PANEL ADMINISTRADOR ---
+with tab3:
+    st.markdown("## ⚙️ ADMINISTRACIÓN (RESTRINGIDO)")
