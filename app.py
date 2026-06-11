@@ -9,13 +9,10 @@ st.set_page_config(page_title="Polla Mundial 2026", page_icon="⚽", layout="wid
 # ESTILOS CSS AVANZADOS PARA DISEÑO VISTOSO
 st.markdown("""
     <style>
-    /* Fondo principal con degradado futbolero */
     .main { 
         background: linear-gradient(135px, #0f172a 0%, #1e1b4b 100%);
         color: #ffffff; 
     }
-    
-    /* Encabezado Épico con imagen de fondo */
     .hero-banner {
         background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(15,23,42,0.4)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80');
         background-size: cover;
@@ -27,26 +24,18 @@ st.markdown("""
         border: 2px solid #be123c;
         box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
-    
-    /* Títulos con tipografía moderna */
     h1, h2, h3 {
         font-family: 'Arial Black', Gadget, sans-serif;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-    
-    /* Tarjetas de partidos mejoradas con balones y banderas */
-    .card-partido { 
+    .card-partino { 
         background: rgba(30, 41, 59, 0.7);
-        padding: 20px; 
-        border-radius: 16px; 
-        margin-bottom: 20px; 
+        padding: 15px; 
+        border-radius: 12px; 
+        margin-bottom: 15px; 
         border: 1px solid #334155;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    
-    /* Estilo del Podio de Ganadores */
     .podio-box {
         background: linear-gradient(185px, #1e293b 0%, #0f172a 100%);
         border-radius: 15px;
@@ -108,14 +97,10 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# SECCIÓN DE IMÁGENES DE LAS ESTRELLAS
 col_cr7, col_logo, col_messi = st.columns([2, 2, 2])
-with col_cr7:
-    st.image("https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=300&q=80", caption="¡Apunta a la gloria!")
-with col_logo:
-    st.image("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=300&q=80", caption="FIFA World Cup 2026")
-with col_messi:
-    st.image("https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&w=300&q=80", caption="¡El arte de predecir!")
+with col_cr7: st.image("https://images.unsplash.com/photo-1518063319789-7217e6706b04?auto=format&fit=crop&w=300&q=80", caption="¡Apunta a la gloria!")
+with col_logo: st.image("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=300&q=80", caption="FIFA World Cup 2026")
+with col_messi: st.image("https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&w=300&q=80", caption="¡El arte de predecir!")
 
 st.write("---")
 
@@ -124,7 +109,6 @@ tab1, tab2, tab3 = st.tabs(["📊 CLASIFICACIÓN EN VIVO", "✍️ REGISTRAR PRO
 # --- TABLA DE POSICIONES ---
 with tab1:
     st.markdown("## 🏆 ESTADO DEL POZO Y POSICIONES")
-    
     tabla_posiciones = []
     num_jugadores = len(PARTICIPANTES)
     fondo_total = num_jugadores * CUOTA_INSCRIPCION
@@ -157,28 +141,13 @@ with tab1:
     c_p1, c_p2, c_p3 = st.columns(3)
     with c_p1:
         if len(df_tabla) >= 1:
-            st.markdown(f"""<div class='podio-box' style='border-top-color: #eab308;'>
-                <h3>{tags[0]}</h3>
-                <h2 style='color: #eab308;'>{df_tabla.iloc[0]['Participante']}</h2>
-                <p style='font-size: 1.5rem; font-weight: bold;'>${premios[0]:,.0f}</p>
-                <small>{df_tabla.iloc[0]['Puntos Totales 🌟']} Puntos</small>
-            </div>""", unsafe_allow_html=True)
+            st.markdown(f"<div class='podio-box'><h3>{tags[0]}</h3><h2 style='color: #eab308;'>{df_tabla.iloc[0]['Participante']}</h2><p style='font-size: 1.5rem;'>${premios[0]:,.0f}</p></div>", unsafe_allow_html=True)
     with c_p2:
         if len(df_tabla) >= 2:
-            st.markdown(f"""<div class='podio-box' style='border-top-color: #cbd5e1;'>
-                <h3>{tags[1]}</h3>
-                <h2 style='color: #cbd5e1;'>{df_tabla.iloc[1]['Participante']}</h2>
-                <p style='font-size: 1.5rem; font-weight: bold;'>${premios[1]:,.0f}</p>
-                <small>{df_tabla.iloc[1]['Puntos Totales 🌟']} Puntos</small>
-            </div>""", unsafe_allow_html=True)
+            st.markdown(f"<div class='podio-box'><h3>{tags[1]}</h3><h2 style='color: #cbd5e1;'>{df_tabla.iloc[1]['Participante']}</h2><p style='font-size: 1.5rem;'>${premios[1]:,.0f}</p></div>", unsafe_allow_html=True)
     with c_p3:
         if len(df_tabla) >= 3 and premios[2] > 0:
-            st.markdown(f"""<div class='podio-box' style='border-top-color: #b45309;'>
-                <h3>{tags[2]}</h3>
-                <h2 style='color: #b45309;'>{df_tabla.iloc[2]['Participante']}</h2>
-                <p style='font-size: 1.5rem; font-weight: bold;'>${premios[2]:,.0f}</p>
-                <small>{df_tabla.iloc[2]['Puntos Totales 🌟']} Puntos</small>
-            </div>""", unsafe_allow_html=True)
+            st.markdown(f"<div class='podio-box'><h3>{tags[2]}</h3><h2 style='color: #b45309;'>{df_tabla.iloc[2]['Participante']}</h2><p style='font-size: 1.5rem;'>${premios[2]:,.0f}</p></div>", unsafe_allow_html=True)
 
     st.write("### 📈 CLASIFICACIÓN GENERAL COMPLETA")
     st.dataframe(df_tabla, use_container_width=True)
@@ -188,7 +157,6 @@ with tab2:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu perfil de jugador:", PARTICIPANTES)
     
-    st.markdown("### 🏟️ PARTIDOS DISPONIBLES")
     for part in FIXTURE:
         pid = str(part["id"])
         pred_actual = datos["pronosticos"].get(usuario, {}).get(pid, {"l": 0, "v": 0})
@@ -201,35 +169,51 @@ with tab2:
         )
         
         st.markdown(f"""
-        <div class="card-partido" style="border-left: 6px solid {color_hex};">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-weight: bold; color: #94a3b8;">⚽ PARTIDO #{pid} - GRUPO {part['grupo']}</span>
-                <span style="background-color: #0f172a; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; color: {color_hex}; font-weight: bold;">
-                    {texto_status}
-                </span>
-            </div>
-            <div style="margin-top: 5px; font-size: 0.9rem; color: #64748b;">📅 Fecha: {part['fecha']}</div>
+        <div style="background: rgba(30,41,59,0.5); padding: 10px; border-radius: 8px; border-left: 5px solid {color_hex}; margin-top: 10px;">
+            <b>Partido #{pid} - Grupo {part['grupo']} ({part['fecha']})</b> | <span style="color: {color_hex};">{texto_status}</span>
         </div>
         """, unsafe_allow_html=True)
         
-        c1, c2, c3, c4 = st.columns([3, 1, 1, 3])
-        with c1: 
-            st.markdown(f"<h3 style='text-align: right;'>{part['local']} {part['flag_l']}</h3>", unsafe_allow_html=True)
-        with c2: 
-            g_l = st.number_input("Goles", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"p_l_{usuario}_{pid}", label_visibility="collapsed")
-        with c3: 
-            g_v = st.number_input("Goles", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"p_v_{usuario}_{pid}", label_visibility="collapsed")
-        with c4: 
-            st.markdown(f"<h3>{part['flag_v']} {part['visita']}</h3>", unsafe_allow_html=True)
-        
+        col_inputs = st.columns([3, 2, 2, 3])
+        with col_inputs[0]: 
+            st.write(f"{part['local']} {part['flag_l']}")
+        with col_inputs[1]: 
+            g_l = st.number_input(f"Goles {part['local']}", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"l_{usuario}_{pid}")
+        with col_inputs[2]: 
+            g_v = st.number_input(f"Goles {part['visita']}", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"v_{usuario}_{pid}")
+        with col_inputs[3]: 
+            st.write(f"{part['flag_v']} {part['visita']}")
+            
         datos["pronosticos"][usuario][pid] = {"l": g_l, "v": g_v}
-        st.write("")
         
-    if st.button("💾 GUARDAR MIS PRONÓSTICOS", key="btn_guardar_user"):
+    if st.button("💾 GUARDAR MIS PRONÓSTICOS"):
         guardar_datos(datos)
         st.balloons()
-        st.success(f"¡Excelente {usuario}, tus predicciones fueron resguardadas de manera segura!")
+        st.success("¡Tus predicciones fueron guardadas de manera segura!")
 
 # --- PANEL ADMINISTRADOR ---
 with tab3:
     st.markdown("## ⚙️ ADMINISTRACIÓN (RESTRINGIDO)")
+    password = st.text_input("Ingresa token de seguridad:", type="password")
+    
+    if password == PASSWORD_ADMIN:
+        st.success("Acceso Concedido")
+        for part in FIXTURE:
+            pid = str(part["id"])
+            real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
+            
+            st.write(f"**Partido #{pid}: {part['local']} vs {part['visita']}**")
+            col_admin = st.columns(2)
+            with col_admin[0]: g_r_l = st.number_input(f"Oficial {part['local']}", min_value=0, value=int(real_actual["l"]), key=f"rl_{pid}")
+            with col_admin[1]: g_r_v = st.number_input(f"Oficial {part['visita']}", min_value=0, value=int(real_actual["v"]), key=f"rv_{pid}")
+            
+            partido_jugado = st.checkbox("¿Finalizado?", key=f"play_{pid}", value=(pid in datos["resultados_reales"]))
+            if partido_jugado:
+                datos["resultados_reales"][pid] = {"l": g_r_l, "v": g_r_v}
+            else:
+                datos["resultados_reales"].pop(pid, None)
+                
+        if st.button("🔄 SUBIR MARCADORES Y RECALCULAR TODO"):
+            guardar_datos(datos)
+            st.snow()
+            st.success("¡Puntajes actualizados!")
