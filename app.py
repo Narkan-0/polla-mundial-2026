@@ -48,7 +48,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 1. CONFIGURACIÓN GENERAL
-PARTICIPANTES = ["Néstor", "Carlos", "Alejandro", "Sofía", "Juan", "Diego"]
+PARTICIPANTES = ["Néstor", "Constanza", "Leonardo", "Renato", "Perico", "Pancracio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
 
