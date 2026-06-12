@@ -146,28 +146,51 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# LÓGICA DE PERSISTENCIA DE DATOS (MECANISMO ANTICORRUPCIÓN DE CACHÉ)
-def cargar_datos():
+# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO (CORREGIDA) ---
+def inicializar_base_de_datos():
+    # Estructura limpia inicial
+    base_inicial = {
+        "resultados_reales": {
+            "2": { "l": 1, "v": 1 }  # Dejamos grabado el de Corea que ya pasó
+        },
+        "pronosticos": {
+            "Constanza": {"2": {"l": 1, "v": 0}, "3": {"l": 1, "v": 1}},
+            "José Alonso": {"2": {"l": 1, "v": 2}, "3": {"l": 1, "v": 0}},
+            "José Mario": {"2": {"l": 0, "v": 3}, "3": {"l": 0, "v": 2}},
+            "Leonardo": {"2": {"l": 0, "v": 1}, "3": {"l": 0, "v": 1}},
+            "Mario": {"2": {"l": 1, "v": 2}, "3": {"l": 2, "v": 0}},
+            "Néstor": {"2": {"l": 1, "v": 1}, "3": {"l": 0, "v": 1}},
+            "Renato": {"2": {"l": 1, "v": 1}, "3": {"l": 2, "v": 1}}, # Agregado Renato
+            "Sergio": {"3": {"l": 1, "v": 2}}
+        }
+    }
+    
+    # Intentar cargar desde el archivo local si existe en el servidor
     if os.path.exists("datos_polla.json"):
-        with open("datos_polla.json", "r") as f: 
+        with open("datos_polla.json", "r") as f:
             try:
                 content = json.load(f)
-                if isinstance(content, dict) and "resultados_reales" in content and "pronosticos" in content:
+                if isinstance(content, dict) and "resultados_reales" in content:
                     return content
             except:
                 pass
-    return {"resultados_reales": {}, "pronosticos": {p: {} for p in PARTICIPANTES}}
+                
+    return base_inicial
+
+# Guardar los datos de forma persistente en la memoria de la sesión activa
+if "datos_globales" not in st.session_state:
+    st.session_state["datos_globales"] = inicializar_base_de_datos()
+
+datos = st.session_state["datos_globales"]
 
 def guardar_datos(datos_completos):
-    with open("datos_polla.json", "w") as f: json.dump(datos_completos, f, indent=4)
+    st.session_state["datos_globales"] = datos_completos
+    try:
+        with open("datos_polla.json", "w") as f:
+            json.dump(datos_completos, f, indent=4)
+    except:
+        pass
 
-datos = cargar_datos()
-
-# Asegurar que todas las llaves existan de manera limpia en memoria
-if "resultados_reales" not in datos: datos["resultados_reales"] = {}
-if "pronosticos" not in datos: datos["pronosticos"] = {}
-for p in PARTICIPANTES:
-    if p not in datos["pronosticos"]: datos["pronosticos"][p] = {}
 
 def resolver_fixture_dinamico(fixture_base, resultados_reales):
     fixture_copia = [dict(m) for m in fixture_base]
