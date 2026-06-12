@@ -80,7 +80,7 @@ def obtener_fixture_completo():
         {"id": 59, "fase_bloque": "Fecha 3", "grupo": "Grupo D", "fecha_ref": "2026-06-25 22:00", "fecha": "25 de Junio", "hora": "22:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "ESTADOS UNIDOS", "flag_v": "🇺🇸", "estadio": "Los Angeles"},
         {"id": 60, "fase_bloque": "Fecha 3", "grupo": "Grupo D", "fecha_ref": "2026-06-25 22:00", "fecha": "25 de Junio", "hora": "22:00", "local": "PARAGUAY", "flag_l": "🇵🇾", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "San Francisco"},
         {"id": 61, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha_ref": "2026-06-26 15:00", "fecha": "26 de Junio", "hora": "15:00", "local": "NORUEGA", "flag_l": "🇳🇴", "visita": "FRANCIA", "flag_v": "🇫🇷", "estadio": "Boston"},
-        {"id": 62, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha": "2026-06-26 15:00", "fecha": "26 de Junio", "hora": "15:00", "local": "SENEGAL", "flag_l": "🇸🇳", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Toronto"},
+        {"id": 62, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha_ref": "2026-06-26 15:00", "fecha": "26 de Junio", "hora": "15:00", "local": "SENEGAL", "flag_l": "🇸🇳", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Toronto"},
         {"id": 63, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha_ref": "2026-06-26 23:00", "fecha": "26 de Junio", "hora": "23:00", "local": "EGIPTO", "flag_l": "🇪🇬", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Seattle"},
         {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha_ref": "2026-06-26 23:00", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
         {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha_ref": "2026-06-26 20:00", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
@@ -146,12 +146,14 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# LÓGICA DE PERSISTENCIA DE DATOS (REPARADA)
+# LÓGICA DE PERSISTENCIA DE DATOS (MECANISMO ANTICORRUPCIÓN DE CACHÉ)
 def cargar_datos():
     if os.path.exists("datos_polla.json"):
         with open("datos_polla.json", "r") as f: 
             try:
-                return json.load(f)
+                content = json.load(f)
+                if isinstance(content, dict) and "resultados_reales" in content and "pronosticos" in content:
+                    return content
             except:
                 pass
     return {"resultados_reales": {}, "pronosticos": {p: {} for p in PARTICIPANTES}}
@@ -161,12 +163,9 @@ def guardar_datos(datos_completos):
 
 datos = cargar_datos()
 
-# Asegurar que la estructura no tenga datos corruptos o vacíos
-if "resultados_reales" not in datos:
-    datos["resultados_reales"] = {}
-if "pronosticos" not in datos:
-    datos["pronosticos"] = {p: {} for p in PARTICIPANTES}
-
+# Asegurar que todas las llaves existan de manera limpia en memoria
+if "resultados_reales" not in datos: datos["resultados_reales"] = {}
+if "pronosticos" not in datos: datos["pronosticos"] = {}
 for p in PARTICIPANTES:
     if p not in datos["pronosticos"]: datos["pronosticos"][p] = {}
 
@@ -190,10 +189,16 @@ FIXTURE_DINAMICO = resolver_fixture_dinamico(FIXTURE, datos["resultados_reales"]
 def calcular_puntos(real_l, real_v, pred_l, pred_v):
     if real_l is None or real_v is None or pred_l is None or pred_v is None:
         return 0, "#64748b", "⚪ Sin Jugar"
-    if real_l == pred_l and real_v == pred_v:
+    try:
+        rl, rv = int(real_l), int(real_v)
+        pl, pv = int(pred_l), int(pred_v)
+    except (ValueError, TypeError):
+        return 0, "#64748b", "⚪ Sin Jugar"
+        
+    if rl == pl and rv == pv:
         return 3, "#22c55e", "🟢 Marcador Exacto (+3 Pts)"
-    signo_real = (real_l > real_v) - (real_l < real_v)
-    signo_pred = (pred_l > pred_v) - (pred_l < pred_v)
+    signo_real = (rl > rv) - (rl < rv)
+    signo_pred = (pl > pv) - (pl < pv)
     if signo_real == signo_pred:
         return 1, "#eab308", "🟡 Tendencia Acertada (+1 Pt)"
     return 0, "#ef4444", "🔴 Fallado (0 Pts)"
@@ -202,12 +207,12 @@ def calcular_puntos(real_l, real_v, pred_l, pred_v):
 def verificar_partido_empezado(fecha_ref_str):
     tz_chile = pytz.timezone('America/Santiago')
     ahora_chile = datetime.now(tz_chile)
-    
-    # Formato de la fecha de referencia del Excel
-    hora_partido = datetime.strptime(fecha_ref_str, "%Y-%m-%d %H:%M")
-    hora_partido_tz = tz_chile.localize(hora_partido)
-    
-    return ahora_chile >= hora_partido_tz
+    try:
+        hora_partido = datetime.strptime(fecha_ref_str, "%Y-%m-%d %H:%M")
+        hora_partido_tz = tz_chile.localize(hora_partido)
+        return ahora_chile >= hora_partido_tz
+    except:
+        return False
 
 # ANIMACIÓN DEL BALÓN REAL (balon.png)
 def animar_balon_oficial():
@@ -271,7 +276,7 @@ with tabs[0]:
     * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
-# --- TAB 2: CLASIFICACIÓN CON PODIO ---
+# --- TAB 2: CLASIFICACIÓN EN VIVO (MECANISMO DE CONTROL CONTRA VALORES BLANCOS) ---
 with tabs[1]:
     st.markdown("## 📊 RENDIMIENTO DE LA FAMILIA")
     tabla_posiciones = []
@@ -284,9 +289,9 @@ with tabs[1]:
         for part in FIXTURE_DINAMICO:
             pid = str(part["id"])
             real = datos["resultados_reales"].get(pid)
-            pred = datos["pronosticos"].get(p, {}).get(pid)
-            if real and pred:
-                pts, _, _ = calcular_puntos(real["l"], real["v"], pred["l"], pred["v"])
+            pred = datos["pronosticos"].get(p, {}).get(pid, {"l": 0, "v": 0})
+            if real and pred and "l" in real and "v" in real:
+                pts, _, _ = calcular_puntos(real["l"], real["v"], pred.get("l", 0), pred.get("v", 0))
                 pts_totales += pts
                 if pts == 3: exactos += 1
                 elif pts == 1: tendencias += 1
@@ -330,7 +335,7 @@ with tabs[1]:
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS (BLOQUEO AUTOMÁTICO POR FECHA Y HORA) ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS ---
 with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -356,22 +361,20 @@ with tabs[2]:
         pred_actual = datos["pronosticos"].get(usuario, {}).get(pid, {"l": 0, "v": 0})
         real_actual = datos["resultados_reales"].get(pid)
         
-        # EL CANDADO AUTOMÁTICO: Revisa si el reloj ya pasó la hora del partido
-        ya_empezo = verificar_partido_empezado(part["fecha_ref"])
+        ya_empezo = verificar_partido_empezado(part.get("fecha_ref", "2026-06-11 00:00"))
         congelado_por_admin = pid in datos["resultados_reales"]
         bloquear_casilla = ya_empezo or congelado_por_admin
         
-        _, color_hex, texto_status = calcular_puntos(
-            real_actual["l"] if real_actual else None,
-            real_actual["v"] if real_actual else None,
-            pred_actual["l"], pred_actual["v"]
-        )
+        real_l = real_actual.get("l") if real_actual else None
+        real_v = real_actual.get("v") if real_actual else None
+        
+        _, color_hex, texto_status = calcular_puntos(real_l, real_v, pred_actual.get("l", 0), pred_actual.get("v", 0))
         
         if congelado_por_admin:
             texto_status += " | 🔒 APUESTA CERRADA"
         elif ya_empezo:
             texto_status += " | 🔒 CANDADO: PARTIDO EN CURSO"
-            color_hex = "#be123c"  # Cambia a rojo advertencia
+            color_hex = "#be123c"
         
         st.markdown(f"""
         <div style="background: rgba(30,41,59,0.7); padding: 6px 12px; border-radius: 8px 8px 0 0; border-left: 5px solid {color_hex}; font-size: 0.85rem; margin-top:12px; color:#cbd5e1;">
@@ -385,9 +388,9 @@ with tabs[2]:
         with col_inputs:
             c_in1, c_in2 = st.columns(2)
             with c_in1:
-                g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"l_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
+                g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual.get("l", 0)), key=f"l_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
             with c_in2:
-                g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"v_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
+                g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual.get("v", 0)), key=f"v_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
         with col_v:
             st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
         
@@ -407,9 +410,9 @@ with tabs[3]:
     for part in FIXTURE_DINAMICO:
         pid = str(part["id"])
         real = datos["resultados_reales"].get(pid)
-        ya_empezo = verificar_partido_empezado(part["fecha_ref"])
+        ya_empezo = verificar_partido_empezado(part.get("fecha_ref", "2026-06-11 00:00"))
         
-        if real:
+        if real and "l" in real and "v" in real:
             estado = "🔒 FINALIZADO"
             marcador_l = str(real["l"])
             marcador_v = str(real["v"])
