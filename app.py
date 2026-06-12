@@ -83,7 +83,7 @@ def obtener_fixture_completo():
         {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
         {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
         {"id": 66, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "Guadalajara"},
-        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200djs\u200dc\u200dt\u200d󠁿", "estadio": "N. York/N. Jersey"},
+        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "estadio": "N. York/N. Jersey"},
         {"id": 68, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
