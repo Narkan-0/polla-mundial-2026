@@ -146,16 +146,26 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# LÓGICA DE PERSISTENCIA DE DATOS
+# LÓGICA DE PERSISTENCIA DE DATOS (REPARADA)
 def cargar_datos():
     if os.path.exists("datos_polla.json"):
-        with open("datos_polla.json", "r") as f: return json.load(f)
+        with open("datos_polla.json", "r") as f: 
+            try:
+                return json.load(f)
+            except:
+                pass
     return {"resultados_reales": {}, "pronosticos": {p: {} for p in PARTICIPANTES}}
 
 def guardar_datos(datos_completos):
     with open("datos_polla.json", "w") as f: json.dump(datos_completos, f, indent=4)
 
 datos = cargar_datos()
+
+# Asegurar que la estructura no tenga datos corruptos o vacíos
+if "resultados_reales" not in datos:
+    datos["resultados_reales"] = {}
+if "pronosticos" not in datos:
+    datos["pronosticos"] = {p: {} for p in PARTICIPANTES}
 
 for p in PARTICIPANTES:
     if p not in datos["pronosticos"]: datos["pronosticos"][p] = {}
