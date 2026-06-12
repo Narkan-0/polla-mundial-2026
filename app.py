@@ -33,8 +33,8 @@ def obtener_fixture_completo():
         {"id": 18, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha": "16 de Junio", "hora": "18:00", "local": "IRAK", "flag_l": "🇮🇶", "visita": "NORUEGA", "flag_v": "🇳🇴", "estadio": "Boston"},
         {"id": 19, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "16 de Junio", "hora": "21:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "Kansas City"},
         {"id": 20, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "17 de Junio", "hora": "00:00", "local": "AUSTRIA", "flag_l": "🇦🇹", "visita": "JORDANIA", "flag_v": "🇯🇴", "estadio": "San Francisco"},
-        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
-        {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
+        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMá", "flag_v": "🇵🇦", "estadio": "Toronto"},
+        {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
         {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Houston"},
         {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
 
@@ -44,7 +44,7 @@ def obtener_fixture_completo():
         {"id": 27, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha": "18 de Junio", "hora": "18:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Vancouver"},
         {"id": 28, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha": "18 de Junio", "hora": "21:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Guadalajara"},
         {"id": 29, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "20:30", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Filadelfia"},
-        {"id": 30, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "Boston"},
+        {"id": 30, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁢󠁳󠁣󠁴󠁿", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "Boston"},
         {"id": 31, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha": "19 de Junio", "hora": "23:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "San Francisco"},
         {"id": 32, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha": "19 de Junio", "hora": "15:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "Seattle"},
         {"id": 33, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha": "20 de Junio", "hora": "16:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "COSTA DE MARFIL", "flag_v": "🇨🇮", "estadio": "Toronto"},
@@ -59,13 +59,13 @@ def obtener_fixture_completo():
         {"id": 42, "fase_bloque": "Fecha 2", "grupo": "Grupo I", "fecha": "22 de Junio", "hora": "17:00", "local": "FRANCIA", "flag_l": "🇫🇷", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Filadelfia"},
         {"id": 43, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha": "22 de Junio", "hora": "13:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Dallas"},
         {"id": 44, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha": "22 de Junio", "hora": "23:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "San Francisco"},
-        {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
+        {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
         {"id": 46, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "19:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Toronto"},
         {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha": "23 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Houston"},
         {"id": 48, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Guadalajara"},
 
         # --- FECHA 3 (Partidos 49 al 72) ---
-        {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
+        {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁢󠁳󠁣󠁴󠁿", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
         {"id": 50, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "MARRUECOS", "flag_l": "🇲🇦", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Atlanta"},
         {"id": 51, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha": "24 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Vancouver"},
         {"id": 52, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha": "24 de Junio", "hora": "15:00", "local": "BOSNIA Y HERZEG.", "flag_l": "🇧🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Seattle"},
@@ -83,7 +83,7 @@ def obtener_fixture_completo():
         {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
         {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
         {"id": 66, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "Guadalajara"},
-        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "estadio": "N. York/N. Jersey"},
+        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "estadio": "N. York/N. Jersey"},
         {"id": 68, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
@@ -107,14 +107,14 @@ FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['id'])
 @st.cache_data(ttl=10)
 def obtener_frase_futbolera():
     frases = [
-        "«Todo lo que sé con mayor certeza sobre la moral y las obligations de los hombres, se lo debo al fútbol.» — Albert Camus",
+        "«Todo lo que sé con mayor certeza sobre la moral y las obligaciones de los hombres, se lo debo al fútbol.» — Albert Camus",
         "«El fútbol es el juego más lindo y más sano del mundo. Yo me equivoqué y pagué, pero la pelota no se mancha.» — Diego Maradona",
         "«El fútbol es música, danza y armonía. Y no hay nada más hermoso que la alegría que le da a la gente.» — Pelé",
         "«Por más que los poderosos lo manipulen, el fútbol sigue queriendo ser el arte de lo imprevisto.» — Eduardo Galeano"
     ]
     return random.choice(frases)
 
-# CONFIGURACIÓN GENERAL DE USUARIOS (Mantenida tal como la editaste a mano)
+# CONFIGURACIÓN GENERAL DE USUARIOS
 PARTICIPANTES = ["Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
@@ -222,14 +222,16 @@ st.write("---")
 
 tabs = st.tabs(["📜 BASES DEL JUEGO", "📊 CLASIFICACIÓN EN VIVO", "✍️ REGISTRAR PRONÓSTICOS", "📅 CRONOGRAMA", "⚙️ PANEL CONTROL"])
 
-# --- TAB 1: BASES OFICIALES ---
+# --- TAB 1: BASES OFICIALES (Actualizado con tus reglas exactas) ---
 with tabs[0]:
     st.markdown("""
     ## 🏆 BASES POLLA MUNDIALERA 🏆
     
-    ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo.
+    ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo familiar.
     
-    📅 **Plazo de envío:** Hasta el pitazo inicial del partido.
+    📅 **Plazo de envío:** Se puede apostar o modificar el pronóstico **hasta el pitazo inicial** de cada partido. Una vez que empieza el juego, la apuesta se congela.
+    
+    ⏱️ **Tiempo Reglamentario:** Todos los pronósticos son válidos **exclusivamente para los 90 minutos reglamentarios** (incluyendo el tiempo añadido por el árbitro). Si hay empate al 90', el partido se cuenta como EMPATE para la polla. Goles en prórrogas o tandas de penales **NO cuentan** para el marcador de la apuesta.
     
     💰 **Premios (Al final del Mundial):**
     * 🥇 **1er Lugar:** 50% del pozo acumulado.
@@ -237,7 +239,6 @@ with tabs[0]:
     * 🥉 **3er Lugar:** 16,6% del pozo acumulado.
     
     📊 **Puntuación:**
-    * Válido solo para los 90' reglamentarios. Los goles de prórroga o de tanda de penales no cuentan para el resultado.
     * **3 puntos:** Resultado exacto.
     * **1 punto:** Acierto a Ganador o Empate (pero no al marcador exacto).
     * **0 puntos:** No acierta nada.
@@ -247,7 +248,7 @@ with tabs[0]:
     * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
-# --- TAB 2: CLASIFICACIÓN CON PODIO DE JUGADORES REALES ---
+# --- TAB 2: CLASIFICACIÓN CON PODIO DE JUGADORES VISUALMENTE MEJORADO ---
 with tabs[1]:
     st.markdown("## 📊 RENDIMIENTO DE LA FAMILIA")
     
@@ -269,25 +270,42 @@ with tabs[1]:
                 elif pts == 1: tendencias += 1
         tabla_posiciones.append({"Participante": p, "Puntos Totales 🌟": pts_totales, "Marcadores Exactos (3pts) 🎯": exactos, "Aciertos Simples (1pt) 🏟️": tendencias})
     
-    # Ordenar estrictamente según el reglamento del juego para saber las posiciones reales
     df_tabla = pd.DataFrame(tabla_posiciones).sort_values(by=["Puntos Totales 🌟", "Marcadores Exactos (3pts) 🎯"], ascending=False).reset_index(drop=True)
     df_tabla.index += 1
     
-    # Extraer de forma dinámica los nombres de los punteros
-    puntero_1 = df_tabla.iloc[0]["Participante"] if len(df_tabla) > 0 else "Por definir"
-    puntero_2 = df_tabla.iloc[1]["Participante"] if len(df_tabla) > 1 else "Por definir"
-    puntero_3 = df_tabla.iloc[2]["Participante"] if len(df_tabla) > 2 else "Por definir"
+    # Extraer punteros reales
+    puntero_1 = df_tabla.iloc[0]["Participante"].upper() if len(df_tabla) > 0 else "POR DEFINIR"
+    puntero_2 = df_tabla.iloc[1]["Participante"].upper() if len(df_tabla) > 1 else "POR DEFINIR"
+    puntero_3 = df_tabla.iloc[2]["Participante"].upper() if len(df_tabla) > 2 else "POR DEFINIR"
     
     st.markdown(f"### 💰 Pozo Acumulado del Grupo: **${fondo_total:,.0f} CLP**")
     
-    # Despliegue del podio con nombre del jugador + monto tentativo correspondientes
+    # Podio con nombres más grandes, en negrita y llamativos (HTML inyectado limpio)
     c_p1, c_p2, c_p3 = st.columns(3)
     with c_p1:
-        st.metric(label=f"🥇 1er Puesto: {puntero_1} (50%)", value=f"${fondo_total * 0.50:,.0f}")
+        st.markdown(f"""
+        <div style="background: rgba(34, 197, 94, 0.15); padding: 15px; border-radius: 10px; border: 1px solid #22c55e; text-align: center;">
+            <span style="font-size: 0.95rem; color: #cbd5e1; display: block;">🥇 1er Lugar Tentativo (50%)</span>
+            <span style="font-size: 1.6rem; font-weight: 900; color: #fbbf24; display: block; margin: 5px 0;">{puntero_1}</span>
+            <span style="font-size: 1.3rem; font-weight: bold; color: #ffffff;">${fondo_total * 0.50:,.0f}</span>
+        </div>
+        """, unsafe_allow_html=True)
     with c_p2:
-        st.metric(label=f"🥈 2do Puesto: {puntero_2} (33.3%)", value=f"${fondo_total * 0.333:,.0f}")
+        st.markdown(f"""
+        <div style="background: rgba(234, 179, 8, 0.1); padding: 15px; border-radius: 10px; border: 1px solid #eab308; text-align: center;">
+            <span style="font-size: 0.95rem; color: #cbd5e1; display: block;">🥈 2do Lugar Tentativo (33.3%)</span>
+            <span style="font-size: 1.4rem; font-weight: bold; color: #e2e8f0; display: block; margin: 5px 0;">{puntero_2}</span>
+            <span style="font-size: 1.2rem; font-weight: bold; color: #ffffff;">${fondo_total * 0.333:,.0f}</span>
+        </div>
+        """, unsafe_allow_html=True)
     with c_p3:
-        st.metric(label=f"🥉 3er Puesto: {puntero_3} (16.6%)", value=f"${fondo_total * 0.166:,.0f}")
+        st.markdown(f"""
+        <div style="background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 10px; border: 1px solid #ef4444; text-align: center;">
+            <span style="font-size: 0.95rem; color: #cbd5e1; display: block;">🥉 3er Lugar Tentativo (16.6%)</span>
+            <span style="font-size: 1.4rem; font-weight: bold; color: #e2e8f0; display: block; margin: 5px 0;">{puntero_3}</span>
+            <span style="font-size: 1.2rem; font-weight: bold; color: #ffffff;">${fondo_total * 0.166:,.0f}</span>
+        </div>
+        """, unsafe_allow_html=True)
         
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
@@ -303,12 +321,12 @@ with tabs[2]:
         horizontal=True
     )
     
-    if "Fecha 1" in bloque_seleccionado: filtro_fase = "Fecha 1"
-    elif "Fecha 2" in bloque_seleccionado: filtro_fase = "Fecha 2"
-    elif "Fecha 3" in bloque_seleccionado: filtro_fase = "Fecha 3"
-    else: filtro_fase = "Fases Finales"
+    if "Fecha 1" in bloque_seleccionado: filtro_fia = "Fecha 1"
+    elif "Fecha 2" in bloque_seleccionado: filtro_fia = "Fecha 2"
+    elif "Fecha 3" in bloque_seleccionado: filtro_fia = "Fecha 3"
+    else: filtro_fia = "Fases Finales"
     
-    partidos_visibles = [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == filtro_fase]
+    partidos_visibles = [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == filtro_fia]
     
     st.write(f"### 🏟️ Mostrando {len(partidos_visibles)} partidos de: **{bloque_seleccionado}**")
     st.write("---")
@@ -351,13 +369,50 @@ with tabs[2]:
     if st.button("💾 GUARDAR APUESTAS DE ESTA FECHA", use_container_width=True):
         guardar_datos(datos)
         animar_balon_oficial()
-        st.success(f"¡Excelente {usuario}, tus pronósticos de la {filtro_fase} fueron guardados correctamente!")
+        st.success(f"¡Excelente {usuario}, tus pronósticos de la {filtro_fia} fueron guardados correctamente!")
 
-# --- TAB 4: CRONOGRAMA ---
+# --- TAB 4: CRONOGRAMA INTELIGENTE CON COLOR Y CONGELADOS ---
 with tabs[3]:
-    st.markdown("## 📅 CRONOGRAMA OFICIAL")
-    df_cronograma = pd.DataFrame(FIXTURE_DINAMICO)[["id", "grupo", "fecha", "hora", "local", "visita", "estadio"]]
-    st.dataframe(df_cronograma, use_container_width=True, hide_index=True)
+    st.markdown("## 📅 CRONOGRAMA OFICIAL Y MARCADORES EN VIVO")
+    
+    lista_cronograma = []
+    for part in FIXTURE_DINAMICO:
+        pid = str(part["id"])
+        real = datos["resultados_reales"].get(pid)
+        
+        if real:
+            estado = "🔒 FINALIZADO"
+            marcador_l = str(real["l"])
+            marcador_v = str(real["v"])
+        else:
+            estado = "🟢 ABIERTO / JUGANDO"
+            marcador_l = "-"
+            marcador_v = "-"
+            
+        lista_cronograma.append({
+            "Partido #": part["id"],
+            "Bloque/Fecha": part["fase_bloque"],
+            "Grupo/Fase": part["grupo"],
+            "Fecha/Hora": f"{part['fecha']} ({part['hora']} hrs)",
+            "Local": f"{part['flag_l']} {part['local']}",
+            "Goles L": marcador_l,
+            "Goles V": marcador_v,
+            "Visitante": f"{part['flag_v']} {part['visita']}",
+            "Estadio": part["estadio"],
+            "Estado": estado
+        })
+        
+    df_crono = pd.DataFrame(lista_cronograma)
+    
+    # Aplicar formato de estilo visual: oscurece y opaca las filas de partidos que ya finalizaron
+    def estilo_filas_finalizadas(row):
+        if row["Estado"] == "🔒 FINALIZADO":
+            return ['background-color: rgba(71, 85, 105, 0.25); color: #94a3b8; font-style: italic;'] * len(row)
+        return [''] * len(row)
+        
+    df_estilizado = df_crono.style.apply(estilo_filas_finalizadas, axis=1)
+    
+    st.dataframe(df_estilizado, use_container_width=True, hide_index=True)
 
 # --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
 with tabs[4]:
@@ -388,13 +443,13 @@ with tabs[4]:
             with c_av: 
                 g_r_v = st.number_input(f"Goles {part['visita']}", min_value=0, max_value=15, value=int(real_actual.get("v", 0)), key=f"rv_{pid}", label_visibility="collapsed")
             with c_check:
-                finalizado = st.checkbox("¿Cerrar y bloquear apuestas?", key=f"play_{pid}", value=esta_cerrado)
+                finalizado = st.checkbox("¿Cerrar y bloquear apuestas? (Resultado al término de los 90')", key=f"play_{pid}", value=esta_cerrado)
             
             if finalizado:
                 nuevos_cierres[pid] = {"l": g_r_l, "v": g_r_v}
                 if "Fases Finales" in part["fase_bloque"]:
                     if g_r_l == g_r_v:
-                        avanza_eq = st.selectbox(f"🏆 ¿Quién clasifica por penales?", [part['local'], part['visita']], key=f"avanza_{pid}")
+                        avanza_eq = st.selectbox(f"🏆 ¿Quién clasifica por penales/prórroga?", [part['local'], part['visita']], key=f"avanza_{pid}")
                         nuevos_cierres[pid]["avanza"] = avanza_eq
                     else:
                         nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
