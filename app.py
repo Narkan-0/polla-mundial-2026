@@ -449,7 +449,7 @@ with tabs[3]:
     df_estilizado = df_crono.style.apply(estilo_filas_finalizadas, axis=1)
     st.dataframe(df_estilizado, use_container_width=True, hide_index=True)
 
-# --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
+# # --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
 with tabs[4]:
     st.markdown("## ⚙️ PANEL DE CONTROL DE ADMINISTRADOR")
     pass_input = st.text_input("Token de Seguridad Mandamás:", type="password")
@@ -472,6 +472,7 @@ with tabs[4]:
             c_al, c_av, c_check = st.columns([2, 2, 3])
             
             with c_al: 
+                # Se eliminó la restricción para que tú siempre puedas ingresar los goles reales
                 g_r_l = st.number_input(f"Goles {part['local']}", min_value=0, max_value=15, value=int(real_actual.get("l", 0)), key=f"rl_{pid}", label_visibility="collapsed")
             with c_av: 
                 g_r_v = st.number_input(f"Goles {part['visita']}", min_value=0, max_value=15, value=int(real_actual.get("v", 0)), key=f"rv_{pid}", label_visibility="collapsed")
