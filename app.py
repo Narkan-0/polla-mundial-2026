@@ -106,23 +106,25 @@ PARTICIPANTES = ["Néstor", "Carlos", "Alejandro", "Sofía", "Juan", "Diego", "H
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
 
-# ESTILOS ADAPTADOS AL ÁLBUM PANINI OFICIAL 2026 (Glassmorphism sobrio)
+# ESTILOS ADAPTADOS AL ÁLBUM PANINI OFICIAL 2026 (Enlaces reales inyectados)
 st.markdown("""
     <style>
     .main { 
-        background: linear-gradient(135px, #0f172a 0%, #1e1b4b 100%);
+        background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)), url('https://pub-c944f24df4fe4b49a56616a256e2eb42.r2.dev/panini_bg_blur.png');
+        background-size: cover;
+        background-attachment: fixed;
         color: #ffffff; 
     }
     .hero-banner {
-        background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85)), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80');
+        background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(30, 41, 59, 0.4)), url('https://pub-c944f24df4fe4b49a56616a256e2eb42.r2.dev/stars_header_clean.png');
         background-size: cover;
         background-position: center;
-        padding: 35px;
+        padding: 55px 35px;
         border-radius: 15px;
         text-align: center;
         margin-bottom: 25px;
         border: 2px solid #be123c;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -186,16 +188,16 @@ def calcular_puntos(real_l, real_v, pred_l, pred_v):
         return 1, "#eab308", "🟡 Tendencia Acertada (+1 Pt)"
     return 0, "#ef4444", "🔴 Fallado (0 Pts)"
 
-# ANIMACIÓN PREMIUM DEL BALÓN OFICIAL AL GUARDAR APUESTAS
+# ANIMACIÓN PREMIUM DEL BALÓN OFICIAL AL GUARDAR APUESTAS (image_3.png vinculada)
 def animar_balon_oficial():
     balon_html = """
     <div id="ball-box" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;display:flex;justify-content:center;align-items:center;">
-        <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/4bfbfd18447d4838b975871fbd4fba37_9366/Balon_Al_Rihla_League_Blanco_H57791_01_standard.jpg" id="spinning-ball" style="width:150px;height:150px;animation: spin 1.5s ease-out forwards;">
+        <img src="https://pub-c944f24df4fe4b49a56616a256e2eb42.r2.dev/official_match_ball2026.png" id="spinning-ball" style="width:160px;height:160px;animation: spin 1.6s ease-out forwards;">
     </div>
     <style>
     @keyframes spin {
         0% { transform: scale(0) rotate(0deg); opacity: 0; }
-        50% { transform: scale(1.4) rotate(360deg); opacity: 1; }
+        40% { transform: scale(1.3) rotate(360deg); opacity: 1; }
         100% { transform: scale(0) rotate(720deg); opacity: 0; }
     }
     </style>
@@ -206,19 +208,19 @@ def animar_balon_oficial():
 # --- PORTADA DE LAS ESTRELLAS DEL MUNDIAL SIN PUBLICIDAD ---
 st.markdown("""
     <div class="hero-banner">
-        <h1 style="color: #ffffff; font-size: 2.3rem; margin-bottom: 5px; text-shadow: 2px 2px 4px #000;">🏆 POLLA MUNDIALISTA 2026 ⚽</h1>
-        <p style="color: #e2e8f0; font-size: 1.1rem; letter-spacing: 2px;">PANEL OFICIAL DE LA FAMILIA</p>
+        <h1 style="color: #ffffff; font-size: 2.3rem; margin-bottom: 5px; text-shadow: 2px 2px 5px #000; font-family: 'Arial Black', sans-serif;">🏆 POLLA MUNDIALISTA 2026 ⚽</h1>
+        <p style="color: #e2e8f0; font-size: 1.1rem; letter-spacing: 3px; font-weight: bold; text-shadow: 1px 1px 2px #000;">PANEL OFICIAL DE LA FAMILIA</p>
     </div>
 """, unsafe_allow_html=True)
 
 # Rotador de Citas Célebres Verificadas
-st.markdown(f"<p style='text-align:center; font-style:italic; color:#94a3b8; font-size:1.05rem; padding:0 20px;'>{obtener_frase_futbolera()}</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align:center; font-style:italic; color:#cbd5e1; font-size:1.05rem; padding:0 20px; text-shadow: 1px 1px 2px #000;'>{obtener_frase_futbolera()}</p>", unsafe_allow_html=True)
 st.write("---")
 
 # DECLARACIÓN DE LAS PESTAÑAS PRINCIPALES
 tabs = st.tabs(["📜 BASES DEL JUEGO", "📊 CLASIFICACIÓN EN VIVO", "✍️ REGISTRAR PRONÓSTICOS", "📅 CRONOGRAMA", "⚙️ PANEL CONTROL"])
 
-# --- TAB 1: BASES OFICIALES (TEXTO COMPLETO Y TOTALMENTE LIMPIO) ---
+# --- TAB 1: BASES OFICIALES ---
 with tabs[0]:
     st.markdown("""
     ## 🏆 BASES POLLA MUNDIALERA 🏆
@@ -310,8 +312,8 @@ with tabs[2]:
             texto_status += " | 🔒 APUESTA CONGELADA"
             
         st.markdown(f"""
-        <div style="background: rgba(30,41,59,0.4); padding: 8px 12px; border-radius: 8px; border-left: 5px solid {color_hex}; margin-top: 15px;">
-            <small style="color:#94a3b8;">{part['grupo'].upper()} — PARTIDO #{pid} ({part['fecha']} - {part['hora']} hrs)</small><br>
+        <div style="background: rgba(15, 23, 42, 0.75); padding: 10px 15px; border-radius: 8px; border-left: 5px solid {color_hex}; margin-top: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <small style="color:#cbd5e1;">{part['grupo'].upper()} — PARTIDO #{pid} ({part['fecha']} - {part['hora']} hrs)</small><br>
             <b>🏟️ Sede:</b> {part['estadio']} | <span style="color:{color_hex}; font-weight:bold;">{texto_status}</span>
         </div>
         """, unsafe_allow_html=True)
