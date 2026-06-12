@@ -25,7 +25,7 @@ def obtener_fixture_completo():
         {"id": 12, "grupo": "Grupo F", "fecha": "15 de Junio", "hora": "20:00", "local": "HOLANDA", "flag_l": "🇳🇱", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "San Francisco"},
         {"id": 13, "grupo": "Grupo G", "fecha": "16 de Junio", "hora": "14:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Kansas City"},
         {"id": 14, "grupo": "Grupo G", "fecha": "16 de Junio", "hora": "18:00", "local": "MARRUECOS", "flag_l": "🇲🇦", "visita": "SENEGAL", "flag_v": "🇸🇳", "estadio": "Philadelphia"},
-        {"id": 15, "grupo": "Grupo H", "fecha": "17 de Junio", "hora": "13:00", "local": "AUSTRALIA", "flag_l": "🇦🇺", "visita": "MÉXICO", "flag_v": "🇲🇽", "estadio": "Houston"},
+        {"id": 15, "grupo": "Grupo H", "fecha": "17 de Junio", "hora": "13:00", "local": "AUSTRALIA", "flag_l": "🇺🇺", "visita": "MÉXICO", "flag_v": "🇲🇽", "estadio": "Houston"},
         {"id": 16, "grupo": "Grupo H", "fecha": "17 de Junio", "hora": "17:00", "local": "SUDÁFRICA", "flag_l": "🇿🇦", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Monterrey"},
         {"id": 17, "grupo": "Grupo I", "fecha": "18 de Junio", "hora": "15:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Toronto"},
         {"id": 18, "grupo": "Grupo I", "fecha": "18 de Junio", "hora": "21:00", "local": "BOSNIA Y HERZEG.", "flag_l": "🇧🇦", "visita": "ESTADOS UNIDOS", "flag_v": "🇺🇸", "estadio": "Los Angeles"},
@@ -33,7 +33,7 @@ def obtener_fixture_completo():
         {"id": 20, "grupo": "Grupo J", "fecha": "19 de Junio", "hora": "19:00", "local": "ESCOCIA", "flag_l": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Boston"},
         {"id": 21, "grupo": "Grupo K", "fecha": "20 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
         {"id": 22, "grupo": "Grupo K", "fecha": "20 de Junio", "hora": "17:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "New York"},
-        {"id": 23, "grupo": "Grupo L", "fecha": "21 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "visita": "ITALIA", "flag_v": "🇮🇹", "estadio": "Seattle"},
+        {"id": 23, "grupo": "Grupo L", "fecha": "21 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴 \u200d 🏴󠁧󠁢󠁥󠁮󠁧󠁿", "visita": "ITALIA", "flag_v": "🇮🇹", "estadio": "Seattle"},
         {"id": 24, "grupo": "Grupo L", "fecha": "21 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "San Francisco"},
         {"id": 25, "grupo": "Grupo A", "fecha": "22 de Junio", "hora": "15:00", "local": "CHILE", "flag_l": "🇨🇱", "visita": "ECUADOR", "flag_v": "🇪🇨", "estadio": "Atlanta"},
         {"id": 26, "grupo": "Grupo A", "fecha": "22 de Junio", "hora": "19:00", "local": "PERÚ", "flag_l": "🇵🇪", "visita": "HOLANDA", "flag_v": "🇳🇱", "estadio": "Kansas City"},
@@ -43,11 +43,10 @@ def obtener_fixture_completo():
         {"id": 30, "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "21:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Ciudad de México"},
         {"id": 31, "grupo": "Grupo D", "fecha": "25 de Junio", "hora": "13:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Monterrey"},
         {"id": 32, "grupo": "Grupo D", "fecha": "25 de Junio", "hora": "17:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Los Angeles"},
-        {"id": 33, "grupo": "Grupo E", "fecha": "26 de Junio", "hora": "14:00", "local": "ESCOCIA", "flag_l": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "PORTUGAL", "flag_v": "🇵🇹", "estadio": "Guadalajara"},
+        {"id": 33, "grupo": "Grupo E", "fecha": "26 de Junio", "hora": "14:00", "local": "ESCOCIA", "flag_l": "🏴 \u200d 🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "PORTUGAL", "flag_v": "🇵🇹", "estadio": "Guadalajara"},
         {"id": 34, "grupo": "Grupo E", "fecha": "26 de Junio", "hora": "18:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ALEMANIA", "flag_v": "🇩🇪", "estadio": "Dallas"},
         {"id": 35, "grupo": "Grupo F", "fecha": "27 de Junio", "hora": "15:00", "local": "ESPAÑA", "flag_l": "🇪🇸", "visita": "URUGUAY", "flag_v": "🇺🇾", "estadio": "New York"},
         {"id": 36, "grupo": "Grupo F", "fecha": "27 de Junio", "hora": "20:00", "local": "ITALIA", "flag_l": "🇮🇹", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Miami"},
-        # [Ajustado sistemáticamente para cubrir los 72 partidos del fixture completo por grupos...]
     ] + [
         {"id": i, "grupo": "Grupo " + chr(65 + (i-37)//3), "fecha": "24 de Junio", "hora": "18:00", "local": "EQUIPO L", "flag_l": "🏳️", "visita": "EQUIPO V", "flag_v": "🏳️", "estadio": "Sede FIFA"} for i in range(37, 73)
     ] + [
@@ -124,6 +123,7 @@ st.markdown("""
         margin-bottom: 25px;
         border: 2px solid #be123c;
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -150,7 +150,6 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
     fixture_copia = [dict(m) for m in fixture_base]
     for m in fixture_copia:
         pid_str = str(m["id"])
-        # Reemplazo de ganadores previos en cascada
         if "GANADOR P" in m["local"]:
             prev_id = m["local"].replace("GANADOR P", "")
             if prev_id in resultados_reales and "avanza" in resultados_reales[prev_id]:
@@ -219,7 +218,7 @@ st.write("---")
 # DECLARACIÓN DE LAS PESTAÑAS PRINCIPALES
 tabs = st.tabs(["📜 BASES DEL JUEGO", "📊 CLASIFICACIÓN EN VIVO", "✍️ REGISTRAR PRONÓSTICOS", "📅 CRONOGRAMA", "⚙️ PANEL CONTROL"])
 
-# --- TAB 1: BASES OFICIALES ---
+# --- TAB 1: BASES OFICIALES (TEXTO COMPLETO Y TOTALMENTE LIMPIO) ---
 with tabs[0]:
     st.markdown("""
     ## 🏆 BASES POLLA MUNDIALERA 🏆
@@ -289,7 +288,6 @@ with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
     
-    # Selector de Fase para no colapsar la pantalla del celular
     fase_filtro = st.radio("Fase a pronosticar:", ["Fase de Grupos", "Fases Finales Eliminatorias"], horizontal=True)
     
     partidos_visibles = [
@@ -371,7 +369,6 @@ with tabs[4]:
             
             if finalizado:
                 datos["resultados_reales"][pid] = {"l": g_r_l, "v": g_r_v}
-                # Habilitar campo de avance en fases finales en caso de empate
                 if "Grupo" not in part["grupo"] and g_r_l == g_r_v:
                     avanza_equipo = st.selectbox(f"¿Quién avanza de ronda (Penales)?", [part['local'], part['visita']], key=f"avanza_{pid}")
                     datos["resultados_reales"][pid]["avanza"] = avanza_equipo
