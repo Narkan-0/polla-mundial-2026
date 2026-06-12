@@ -8,7 +8,7 @@ import base64
 # CONFIGURACIÓN DE LA PÁGINA (Diseño Responsive)
 st.set_page_config(page_title="Polla Mundial 2026", page_icon="⚽", layout="wide")
 
-# CONSOLIDADO OFICIAL DE LOS 72 PARTIDOS DE GRUPOS EXTRAÍDOS DE TU EXCEL
+# CONSOLIDADO OFICIAL DE LOS 104 PARTIDOS CON LLAVES ELIMINATORIAS SEGÚN FORMATO FIFA
 @st.cache_data
 def obtener_fixture_completo():
     return [
@@ -33,7 +33,7 @@ def obtener_fixture_completo():
         {"id": 18, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha": "16 de Junio", "hora": "18:00", "local": "IRAK", "flag_l": "🇮🇶", "visita": "NORUEGA", "flag_v": "🇳🇴", "estadio": "Boston"},
         {"id": 19, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "16 de Junio", "hora": "21:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "Kansas City"},
         {"id": 20, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "17 de Junio", "hora": "00:00", "local": "AUSTRIA", "flag_l": "🇦🇹", "visita": "JORDANIA", "flag_v": "🇯🇴", "estadio": "San Francisco"},
-        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMá", "flag_v": "🇵🇦", "estadio": "Toronto"},
+        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
         {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
         {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Houston"},
         {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
@@ -90,14 +90,45 @@ def obtener_fixture_completo():
         {"id": 71, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha": "27 de Junio", "hora": "19:30", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "PORTUGAL", "flag_v": "🇵🇹", "estadio": "Miami"},
         {"id": 72, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha": "27 de Junio", "hora": "19:30", "local": "REP. DEL CONGO", "flag_l": "🇨🇬", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Atlanta"},
 
-        # --- ELIMINACIÓN DIRECTA ---
-        {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "28 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3C/D/F", "flag_v": "⚽", "estadio": "Los Angeles"},
-        {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "13:00", "local": "1B", "flag_l": "⚽", "visita": "3A/C/F", "flag_v": "⚽", "estadio": "Houston"},
-        {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "16:30", "local": "1C", "flag_l": "⚽", "visita": "2F", "flag_v": "⚽", "estadio": "Boston"},
-        {"id": 76, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "21:00", "local": "2A", "flag_l": "⚽", "visita": "2B", "flag_v": "⚽", "estadio": "Monterrey"},
-        {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "04 de Julio", "hora": "13:00", "local": "GANADOR P73", "flag_l": "🥇", "visita": "GANADOR P74", "flag_v": "🥇", "estadio": "Houston"},
+        # --- FASES FINALES (Sincronizado fielmente con el Calendario Oficial FIFA 2026) ---
+        # Dieciseisavos de Final (Ronda de 32)
+        {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "28 de Junio", "hora": "16:00", "local": "2A", "flag_l": "⚽", "visita": "2B", "flag_v": "⚽", "estadio": "Los Angeles"},
+        {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3C/E/F/I", "flag_v": "⚽", "estadio": "Boston"},
+        {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "18:00", "local": "1B", "flag_l": "⚽", "visita": "3A/C/F/H", "flag_v": "⚽", "estadio": "Atlanta"},
+        {"id": 76, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "21:00", "local": "2C", "flag_l": "⚽", "visita": "2D", "flag_v": "⚽", "estadio": "Houston"},
+        {"id": 77, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "30 de Junio", "hora": "14:00", "local": "1I", "flag_l": "⚽", "visita": "3C/D/E/G", "flag_v": "⚽", "estadio": "N. York/N. Jersey"},
+        {"id": 78, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "30 de Junio", "hora": "17:00", "local": "2E", "flag_l": "⚽", "visita": "2F", "flag_v": "⚽", "estadio": "Dallas"},
+        {"id": 79, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "30 de Junio", "hora": "21:00", "local": "1C", "flag_l": "⚽", "visita": "3F/G/H/I", "flag_v": "⚽", "estadio": "Ciudad de México"},
+        {"id": 80, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "01 de Julio", "hora": "13:00", "local": "1D", "flag_l": "⚽", "visita": "3A/B/E/F", "flag_v": "⚽", "estadio": "San Francisco"},
+        {"id": 81, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "01 de Julio", "hora": "16:00", "local": "1G", "flag_l": "⚽", "visita": "3A/B/C/L", "flag_v": "⚽", "estadio": "Seattle"},
+        {"id": 82, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "01 de Julio", "hora": "20:00", "local": "1E", "flag_l": "⚽", "visita": "3A/B/C/D", "flag_v": "⚽", "estadio": "Kansas City"},
+        {"id": 83, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "02 de Julio", "hora": "13:00", "local": "1H", "flag_l": "⚽", "visita": "2J", "flag_v": "⚽", "estadio": "Toronto"},
+        {"id": 84, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "02 de Julio", "hora": "17:00", "local": "1F", "flag_l": "⚽", "visita": "2G", "flag_v": "⚽", "estadio": "Los Angeles"},
+        {"id": 85, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "02 de Julio", "hora": "21:00", "local": "2H", "flag_l": "⚽", "visita": "2I", "flag_v": "⚽", "estadio": "Vancouver"},
+        {"id": 86, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "03 de Julio", "hora": "14:00", "local": "1J", "flag_l": "⚽", "visita": "3H/I/K/L", "flag_v": "⚽", "estadio": "Miami"},
+        {"id": 87, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "03 de Julio", "hora": "18:00", "local": "1K", "flag_l": "⚽", "visita": "3D/E/I/J", "flag_v": "⚽", "estadio": "Dallas"},
+        {"id": 88, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "03 de Julio", "hora": "21:00", "local": "1L", "flag_l": "⚽", "visita": "2K", "flag_v": "⚽", "estadio": "Kansas City"},
+        
+        # Octavos de Final (Ronda de 16)
+        {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "04 de Julio", "hora": "15:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P73", "flag_v": "🥇", "estadio": "Philadelphia"},
+        {"id": 90, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "04 de Julio", "hora": "19:00", "local": "GANADOR P75", "flag_l": "🥇", "visita": "GANADOR P76", "flag_v": "🥇", "estadio": "Houston"},
+        {"id": 91, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "05 de Julio", "hora": "14:00", "local": "GANADOR P77", "flag_l": "🥇", "visita": "GANADOR P78", "flag_v": "🥇", "estadio": "N. York/N. Jersey"},
+        {"id": 92, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "05 de Julio", "hora": "18:00", "local": "GANADOR P79", "flag_l": "🥇", "visita": "GANADOR P80", "flag_v": "🥇", "estadio": "Ciudad de México"},
+        {"id": 93, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "06 de Julio", "hora": "15:00", "local": "GANADOR P82", "flag_l": "🥇", "visita": "GANADOR P81", "flag_v": "🥇", "estadio": "Dallas"},
+        {"id": 94, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "06 de Julio", "hora": "19:00", "local": "GANADOR P83", "flag_l": "🥇", "visita": "GANADOR P84", "flag_v": "🥇", "estadio": "Seattle"},
+        {"id": 95, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "07 de Julio", "hora": "15:00", "local": "GANADOR P86", "flag_l": "🥇", "visita": "GANADOR P85", "flag_v": "🥇", "estadio": "Atlanta"},
+        {"id": 96, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "07 de Julio", "hora": "19:00", "local": "GANADOR P88", "flag_l": "🥇", "visita": "GANADOR P87", "flag_v": "🥇", "estadio": "Vancouver"},
+        
+        # Cuartos de Final
         {"id": 97, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "09 de Julio", "hora": "16:00", "local": "GANADOR P89", "flag_l": "🥇", "visita": "GANADOR P90", "flag_v": "🥇", "estadio": "Boston"},
+        {"id": 98, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "10 de Julio", "hora": "15:00", "local": "GANADOR P91", "flag_l": "🥇", "visita": "GANADOR P92", "flag_v": "🥇", "estadio": "Los Angeles"},
+        {"id": 99, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "11 de Julio", "hora": "14:00", "local": "GANADOR P93", "flag_l": "🥇", "visita": "GANADOR P94", "flag_v": "🥇", "estadio": "Miami"},
+        {"id": 100, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "11 de Julio", "hora": "18:00", "local": "GANADOR P95", "flag_l": "🥇", "visita": "GANADOR P96", "flag_v": "🥇", "estadio": "Kansas City"},
+        
+        # Semifinales, Tercer Puesto y Final
         {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha": "14 de Julio", "hora": "15:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
+        {"id": 102, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha": "15 de Julio", "hora": "15:00", "local": "GANADOR P99", "flag_l": "🥇", "visita": "GANADOR P100", "flag_v": "🥇", "estadio": "Atlanta"},
+        {"id": 103, "fase_bloque": "Fases Finales", "grupo": "3er Puesto", "fecha": "18 de Julio", "hora": "17:00", "local": "PERDEDOR P101", "flag_l": "⚽", "visita": "PERDEDOR P102", "flag_v": "⚽", "estadio": "Miami"},
         {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🥇", "visita": "GANADOR P102", "flag_v": "🥇", "estadio": "N. York/N. Jersey"}
     ]
 
@@ -222,7 +253,7 @@ st.write("---")
 
 tabs = st.tabs(["📜 BASES DEL JUEGO", "📊 CLASIFICACIÓN EN VIVO", "✍️ REGISTRAR PRONÓSTICOS", "📅 CRONOGRAMA", "⚙️ PANEL CONTROL"])
 
-# --- TAB 1: BASES OFICIALES (Actualizado con tus reglas exactas) ---
+# --- TAB 1: BASES OFICIALES ---
 with tabs[0]:
     st.markdown("""
     ## 🏆 BASES POLLA MUNDIALERA 🏆
@@ -248,7 +279,7 @@ with tabs[0]:
     * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
-# --- TAB 2: CLASIFICACIÓN CON PODIO DE JUGADORES VISUALMENTE MEJORADO ---
+# --- TAB 2: CLASIFICACIÓN CON PODIO MEJORADO ---
 with tabs[1]:
     st.markdown("## 📊 RENDIMIENTO DE LA FAMILIA")
     
@@ -273,14 +304,12 @@ with tabs[1]:
     df_tabla = pd.DataFrame(tabla_posiciones).sort_values(by=["Puntos Totales 🌟", "Marcadores Exactos (3pts) 🎯"], ascending=False).reset_index(drop=True)
     df_tabla.index += 1
     
-    # Extraer punteros reales
     puntero_1 = df_tabla.iloc[0]["Participante"].upper() if len(df_tabla) > 0 else "POR DEFINIR"
     puntero_2 = df_tabla.iloc[1]["Participante"].upper() if len(df_tabla) > 1 else "POR DEFINIR"
     puntero_3 = df_tabla.iloc[2]["Participante"].upper() if len(df_tabla) > 2 else "POR DEFINIR"
     
     st.markdown(f"### 💰 Pozo Acumulado del Grupo: **${fondo_total:,.0f} CLP**")
     
-    # Podio con nombres más grandes, en negrita y llamativos (HTML inyectado limpio)
     c_p1, c_p2, c_p3 = st.columns(3)
     with c_p1:
         st.markdown(f"""
@@ -310,7 +339,7 @@ with tabs[1]:
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS (DISEÑO COMPACTO IPHONE) ---
 with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -371,7 +400,7 @@ with tabs[2]:
         animar_balon_oficial()
         st.success(f"¡Excelente {usuario}, tus pronósticos de la {filtro_fia} fueron guardados correctamente!")
 
-# --- TAB 4: CRONOGRAMA INTELIGENTE CON COLOR Y CONGELADOS ---
+# --- TAB 4: CRONOGRAMA INTELIGENTE (FILAS GRISES AL FINALIZAR) ---
 with tabs[3]:
     st.markdown("## 📅 CRONOGRAMA OFICIAL Y MARCADORES EN VIVO")
     
@@ -404,14 +433,12 @@ with tabs[3]:
         
     df_crono = pd.DataFrame(lista_cronograma)
     
-    # Aplicar formato de estilo visual: oscurece y opaca las filas de partidos que ya finalizaron
     def estilo_filas_finalizadas(row):
         if row["Estado"] == "🔒 FINALIZADO":
             return ['background-color: rgba(71, 85, 105, 0.25); color: #94a3b8; font-style: italic;'] * len(row)
         return [''] * len(row)
         
     df_estilizado = df_crono.style.apply(estilo_filas_finalizadas, axis=1)
-    
     st.dataframe(df_estilizado, use_container_width=True, hide_index=True)
 
 # --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
