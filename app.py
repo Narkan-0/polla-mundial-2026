@@ -4,6 +4,8 @@ import json
 import os
 import random
 import base64
+from datetime import datetime
+import pytz
 
 # CONFIGURACIÓN DE LA PÁGINA (Diseño Responsive)
 st.set_page_config(page_title="Polla Mundial 2026", page_icon="⚽", layout="wide")
@@ -13,123 +15,92 @@ st.set_page_config(page_title="Polla Mundial 2026", page_icon="⚽", layout="wid
 def obtener_fixture_completo():
     return [
         # --- FECHA 1 (Partidos 1 al 24) ---
-        {"id": 1, "fase_bloque": "Fecha 1", "grupo": "Grupo A", "fecha": "11 de Junio", "hora": "15:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "SUDÁFRICA", "flag_v": "🇿🇦", "estadio": "Ciudad de México"},
-        {"id": 2, "fase_bloque": "Fecha 1", "grupo": "Grupo A", "fecha": "11 de Junio", "hora": "22:00", "local": "COREA DEL SUR", "flag_l": "🇰🇷", "visita": "REP. CHECA", "flag_v": "🇨🇿", "estadio": "Guadalajara"},
-        {"id": 3, "fase_bloque": "Fecha 1", "grupo": "Grupo B", "fecha": "12 de Junio", "hora": "15:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Toronto"},
-        {"id": 4, "fase_bloque": "Fecha 1", "grupo": "Grupo D", "fecha": "12 de Junio", "hora": "21:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "Los Angeles"},
-        {"id": 5, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha": "13 de Junio", "hora": "21:00", "local": "HAITÍ", "flag_l": "🇭🇹", "visita": "ESCOCIA", "flag_v": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "estadio": "Boston"},
-        {"id": 6, "fase_bloque": "Fecha 1", "grupo": "Grupo D", "fecha": "14 de Junio", "hora": "00:00", "local": "AUSTRALIA", "flag_l": "🇦🇺", "visita": "TURQUÍA", "flag_v": "🇹🇷", "estadio": "Vancouver"},
-        {"id": 7, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha": "13 de Junio", "hora": "18:00", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "N. York/N. Jersey"},
-        {"id": 8, "fase_bloque": "Fecha 1", "grupo": "Grupo B", "fecha": "13 de Junio", "hora": "15:00", "local": "CATAR", "flag_l": "🇶🇦", "visita": "SUIZA", "flag_v": "🇨🇭", "estadio": "San Francisco"},
-        {"id": 9, "fase_bloque": "Fecha 1", "grupo": "Grupo E", "fecha": "14 de Junio", "hora": "19:00", "local": "COSTA DE MARFIL", "flag_l": "🇨🇮", "visita": "ECUADOR", "flag_v": "🇪🇨", "estadio": "Filadelfia"},
-        {"id": 10, "fase_bloque": "Fecha 1", "grupo": "Grupo E", "fecha": "14 de Junio", "hora": "13:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "CURAZAO", "flag_v": "🇨🇼", "estadio": "Houston"},
-        {"id": 11, "fase_bloque": "Fecha 1", "grupo": "Grupo F", "fecha": "14 de Junio", "hora": "16:00", "local": "PAÍSES BAJOS", "flag_l": "🇳🇱", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Dallas"},
-        {"id": 12, "fase_bloque": "Fecha 1", "grupo": "Grupo F", "fecha": "14 de Junio", "hora": "22:00", "local": "SUECIA", "flag_l": "🇸🇪", "visita": "TÚNEZ", "flag_v": "🇹🇳", "estadio": "Monterrey"},
-        {"id": 13, "fase_bloque": "Fecha 1", "grupo": "Grupo H", "fecha": "15 de Junio", "hora": "18:00", "local": "ARABIA SAUDITA", "flag_l": "🇸🇦", "visita": "URUGUAY", "flag_v": "🇺🇾", "estadio": "Miami"},
-        {"id": 14, "fase_bloque": "Fecha 1", "grupo": "Grupo H", "fecha": "15 de Junio", "hora": "12:00", "local": "ESPAÑA", "flag_l": "🇪🇸", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Atlanta"},
-        {"id": 15, "fase_bloque": "Fecha 1", "grupo": "Grupo G", "fecha": "15 de Junio", "hora": "21:00", "local": "IRÁN", "flag_l": "🇮🇷", "visita": "NUEVA ZELANDA", "flag_v": "🇳🇿", "estadio": "Los Angeles"},
-        {"id": 16, "fase_bloque": "Fecha 1", "grupo": "Grupo G", "fecha": "15 de Junio", "hora": "15:00", "local": "BÉLGICA", "flag_l": "🇧🇪", "visita": "EGIPTO", "flag_v": "🇪🇬", "estadio": "Seattle"},
-        {"id": 17, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha": "16 de Junio", "hora": "15:00", "local": "FRANCIA", "flag_l": "🇫🇷", "visita": "SENEGAL", "flag_v": "🇸🇳", "estadio": "N. York/N. Jersey"},
-        {"id": 18, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha": "16 de Junio", "hora": "18:00", "local": "IRAK", "flag_l": "🇮🇶", "visita": "NORUEGA", "flag_v": "🇳🇴", "estadio": "Boston"},
-        {"id": 19, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "16 de Junio", "hora": "21:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "Kansas City"},
-        {"id": 20, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "17 de Junio", "hora": "00:00", "local": "AUSTRIA", "flag_l": "🇦🇹", "visita": "JORDANIA", "flag_v": "🇯🇴", "estadio": "San Francisco"},
-        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
-        {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
-        {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Houston"},
-        {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
+        {"id": 1, "fase_bloque": "Fecha 1", "grupo": "Grupo A", "fecha_ref": "2026-06-11 15:00", "fecha": "11 de Junio", "hora": "15:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "SUDÁFRICA", "flag_v": "🇿🇦", "estadio": "Ciudad de México"},
+        {"id": 2, "fase_bloque": "Fecha 1", "grupo": "Grupo A", "fecha_ref": "2026-06-11 22:00", "fecha": "11 de Junio", "hora": "22:00", "local": "COREA DEL SUR", "flag_l": "🇰🇷", "visita": "REP. CHECA", "flag_v": "🇨🇿", "estadio": "Guadalajara"},
+        {"id": 3, "fase_bloque": "Fecha 1", "grupo": "Grupo B", "fecha_ref": "2026-06-12 15:00", "fecha": "12 de Junio", "hora": "15:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Toronto"},
+        {"id": 4, "fase_bloque": "Fecha 1", "grupo": "Grupo D", "fecha_ref": "2026-06-12 21:00", "fecha": "12 de Junio", "hora": "21:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "Los Angeles"},
+        {"id": 5, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha_ref": "2026-06-13 21:00", "fecha": "13 de Junio", "hora": "21:00", "local": "HAITÍ", "flag_l": "🇭🇹", "visita": "ESCOCIA", "flag_v": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "estadio": "Boston"},
+        {"id": 6, "fase_bloque": "Fecha 1", "grupo": "Grupo D", "fecha_ref": "2026-06-14 00:00", "fecha": "14 de Junio", "hora": "00:00", "local": "AUSTRALIA", "flag_l": "🇦🇺", "visita": "TURQUÍA", "flag_v": "🇹🇷", "estadio": "Vancouver"},
+        {"id": 7, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha_ref": "2026-06-13 18:00", "fecha": "13 de Junio", "hora": "18:00", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "N. York/N. Jersey"},
+        {"id": 8, "fase_bloque": "Fecha 1", "grupo": "Grupo B", "fecha_ref": "2026-06-13 15:00", "fecha": "13 de Junio", "hora": "15:00", "local": "CATAR", "flag_l": "🇶🇦", "visita": "SUIZA", "flag_v": "🇨🇭", "estadio": "San Francisco"},
+        {"id": 9, "fase_bloque": "Fecha 1", "grupo": "Grupo E", "fecha_ref": "2026-06-14 19:00", "fecha": "14 de Junio", "hora": "19:00", "local": "COSTA DE MARFIL", "flag_l": "🇨🇮", "visita": "ECUADOR", "flag_v": "🇪🇨", "estadio": "Filadelfia"},
+        {"id": 10, "fase_bloque": "Fecha 1", "grupo": "Grupo E", "fecha_ref": "2026-06-14 13:00", "fecha": "14 de Junio", "hora": "13:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "CURAZAO", "flag_v": "🇨🇼", "estadio": "Houston"},
+        {"id": 11, "fase_bloque": "Fecha 1", "grupo": "Grupo F", "fecha_ref": "2026-06-14 16:00", "fecha": "14 de Junio", "hora": "16:00", "local": "PAÍSES BAJOS", "flag_l": "🇳🇱", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Dallas"},
+        {"id": 12, "fase_bloque": "Fecha 1", "grupo": "Grupo F", "fecha_ref": "2026-06-14 22:00", "fecha": "14 de Junio", "hora": "22:00", "local": "SUECIA", "flag_l": "🇸🇪", "visita": "TÚNEZ", "flag_v": "🇹🇳", "estadio": "Monterrey"},
+        {"id": 13, "fase_bloque": "Fecha 1", "grupo": "Grupo H", "fecha_ref": "2026-06-15 18:00", "fecha": "15 de Junio", "hora": "18:00", "local": "ARABIA SAUDITA", "flag_l": "🇸🇦", "visita": "URUGUAY", "flag_v": "🇺🇾", "estadio": "Miami"},
+        {"id": 14, "fase_bloque": "Fecha 1", "grupo": "Grupo H", "fecha_ref": "2026-06-15 12:00", "fecha": "15 de Junio", "hora": "12:00", "local": "ESPAÑA", "flag_l": "🇪🇸", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Atlanta"},
+        {"id": 15, "fase_bloque": "Fecha 1", "grupo": "Grupo G", "fecha_ref": "2026-06-15 21:00", "fecha": "15 de Junio", "hora": "21:00", "local": "IRÁN", "flag_l": "🇮🇷", "visita": "NUEVA ZELANDA", "flag_v": "🇳🇿", "estadio": "Los Angeles"},
+        {"id": 16, "fase_bloque": "Fecha 1", "grupo": "Grupo G", "fecha_ref": "2026-06-15 15:00", "fecha": "15 de Junio", "hora": "15:00", "local": "BÉLGICA", "flag_l": "🇧🇪", "visita": "EGIPTO", "flag_v": "🇪🇬", "estadio": "Seattle"},
+        {"id": 17, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha_ref": "2026-06-16 15:00", "fecha": "16 de Junio", "hora": "15:00", "local": "FRANCIA", "flag_l": "🇫🇷", "visita": "SENEGAL", "flag_v": "🇸🇳", "estadio": "N. York/N. Jersey"},
+        {"id": 18, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha_ref": "2026-06-16 18:00", "fecha": "16 de Junio", "hora": "18:00", "local": "IRAK", "flag_l": "🇮🇶", "visita": "NORUEGA", "flag_v": "🇳🇴", "estadio": "Boston"},
+        {"id": 19, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha_ref": "2026-06-16 21:00", "fecha": "16 de Junio", "hora": "21:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "Kansas City"},
+        {"id": 20, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha_ref": "2026-06-17 00:00", "fecha": "17 de Junio", "hora": "00:00", "local": "AUSTRIA", "flag_l": "🇦🇹", "visita": "JORDANIA", "flag_v": "🇯🇴", "estadio": "San Francisco"},
+        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha_ref": "2026-06-17 19:00", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
+        {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha_ref": "2026-06-17 16:00", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
+        {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha_ref": "2026-06-17 13:00", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Houston"},
+        {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha_ref": "2026-06-17 22:00", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
 
         # --- FECHA 2 (Partidos 25 al 48) ---
-        {"id": 25, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha": "18 de Junio", "hora": "12:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "SUDÁFRICA", "flag_v": "🇿🇦", "estadio": "Atlanta"},
-        {"id": 26, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha": "18 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Los Angeles"},
-        {"id": 27, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha": "18 de Junio", "hora": "18:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Vancouver"},
-        {"id": 28, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha": "18 de Junio", "hora": "21:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Guadalajara"},
-        {"id": 29, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "20:30", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Filadelfia"},
-        {"id": 30, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁢󠁳󠁣󠁴󠁿", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "Boston"},
-        {"id": 31, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha": "19 de Junio", "hora": "23:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "San Francisco"},
-        {"id": 32, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha": "19 de Junio", "hora": "15:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "Seattle"},
-        {"id": 33, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha": "20 de Junio", "hora": "16:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "COSTA DE MARFIL", "flag_v": "🇨🇮", "estadio": "Toronto"},
-        {"id": 34, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha": "20 de Junio", "hora": "20:00", "local": "ECUADOR", "flag_l": "🇪🇨", "visita": "CURAZAO", "flag_v": "🇨🇼", "estadio": "Kansas City"},
-        {"id": 35, "fase_bloque": "Fecha 2", "grupo": "Grupo F", "fecha": "20 de Junio", "hora": "13:00", "local": "PAÍSES BAJOS", "flag_l": "🇳🇱", "visita": "SUECIA", "flag_v": "🇸🇪", "estadio": "Houston"},
-        {"id": 36, "fase_bloque": "Fecha 2", "grupo": "Grupo F", "fecha": "21 de Junio", "hora": "00:00", "local": "TÚNEZ", "flag_l": "🇹🇳", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Monterrey"},
-        {"id": 37, "fase_bloque": "Fecha 2", "grupo": "Grupo H", "fecha": "21 de Junio", "hora": "18:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Miami"},
-        {"id": 38, "fase_bloque": "Fecha 2", "grupo": "Grupo H", "fecha": "21 de Junio", "hora": "12:00", "local": "ESPAÑA", "flag_l": "🇪🇸", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Atlanta"},
-        {"id": 39, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha": "21 de Junio", "hora": "15:00", "local": "BÉLGICA", "flag_l": "🇧🇪", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Los Angeles"},
-        {"id": 40, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha": "21 de Junio", "hora": "21:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "EGIPTO", "flag_v": "🇪🇬", "estadio": "Vancouver"},
-        {"id": 41, "fase_bloque": "Fecha 2", "grupo": "Grupo I", "fecha": "22 de Junio", "hora": "20:00", "local": "NORUEGA", "flag_l": "🇳🇴", "visita": "SENEGAL", "flag_v": "🇸🇳", "estadio": "N. York/N. Jersey"},
-        {"id": 42, "fase_bloque": "Fecha 2", "grupo": "Grupo I", "fecha": "22 de Junio", "hora": "17:00", "local": "FRANCIA", "flag_l": "🇫🇷", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Filadelfia"},
-        {"id": 43, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha": "22 de Junio", "hora": "13:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Dallas"},
-        {"id": 44, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha": "22 de Junio", "hora": "23:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "San Francisco"},
-        {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
-        {"id": 46, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "19:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Toronto"},
-        {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha": "23 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Houston"},
-        {"id": 48, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Guadalajara"},
+        {"id": 25, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha_ref": "2026-06-18 12:00", "fecha": "18 de Junio", "hora": "12:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "SUDÁFRICA", "flag_v": "🇿🇦", "estadio": "Atlanta"},
+        {"id": 26, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha_ref": "2026-06-18 15:00", "fecha": "18 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Los Angeles"},
+        {"id": 27, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha_ref": "2026-06-18 18:00", "fecha": "18 de Junio", "hora": "18:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Vancouver"},
+        {"id": 28, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha_ref": "2026-06-18 21:00", "fecha": "18 de Junio", "hora": "21:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Guadalajara"},
+        {"id": 29, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha_ref": "2026-06-19 20:30", "fecha": "19 de Junio", "hora": "20:30", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Filadelfia"},
+        {"id": 30, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha_ref": "2026-06-19 18:00", "fecha": "19 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁢󠁳󠁣󠁴󠁿", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "Boston"},
+        {"id": 31, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha_ref": "2026-06-19 23:00", "fecha": "19 de Junio", "hora": "23:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "San Francisco"},
+        {"id": 32, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha_ref": "2026-06-19 15:00", "fecha": "19 de Junio", "hora": "15:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "Seattle"},
+        {"id": 33, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha_ref": "2026-06-20 16:00", "fecha": "20 de Junio", "hora": "16:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "COSTA DE MARFIL", "flag_v": "🇨🇮", "estadio": "Toronto"},
+        {"id": 34, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha_ref": "2026-06-20 20:00", "fecha": "20 de Junio", "hora": "20:00", "local": "ECUADOR", "flag_l": "🇪🇨", "visita": "CURAZAO", "flag_v": "🇨🇼", "estadio": "Kansas City"},
+        {"id": 35, "fase_bloque": "Fecha 2", "grupo": "Grupo F", "fecha_ref": "2026-06-20 13:00", "fecha": "20 de Junio", "hora": "13:00", "local": "PAÍSES BAJOS", "flag_l": "🇳🇱", "visita": "SUECIA", "flag_v": "🇸🇪", "estadio": "Houston"},
+        {"id": 36, "fase_bloque": "Fecha 2", "grupo": "Grupo F", "fecha_ref": "2026-06-21 00:00", "fecha": "21 de Junio", "hora": "00:00", "local": "TÚNEZ", "flag_l": "🇹🇳", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Monterrey"},
+        {"id": 37, "fase_bloque": "Fecha 2", "grupo": "Grupo H", "fecha_ref": "2026-06-21 18:00", "fecha": "21 de Junio", "hora": "18:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Miami"},
+        {"id": 38, "fase_bloque": "Fecha 2", "grupo": "Grupo H", "fecha_ref": "2026-06-21 12:00", "fecha": "21 de Junio", "hora": "12:00", "local": "ESPAÑA", "flag_l": "🇪🇸", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Atlanta"},
+        {"id": 39, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha_ref": "2026-06-21 15:00", "fecha": "21 de Junio", "hora": "15:00", "local": "BÉLGICA", "flag_l": "🇧🇪", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Los Angeles"},
+        {"id": 40, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha_ref": "2026-06-21 21:00", "fecha": "21 de Junio", "hora": "21:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "EGIPTO", "flag_v": "🇪🇬", "estadio": "Vancouver"},
+        {"id": 41, "fase_bloque": "Fecha 2", "grupo": "Grupo I", "fecha_ref": "2026-06-22 20:00", "fecha": "22 de Junio", "hora": "20:00", "local": "NORUEGA", "flag_l": "🇳🇴", "visita": "SENEGAL", "flag_v": "🇸🇳", "estadio": "N. York/N. Jersey"},
+        {"id": 42, "fase_bloque": "Fecha 2", "grupo": "Grupo I", "fecha_ref": "2026-06-22 17:00", "fecha": "22 de Junio", "hora": "17:00", "local": "FRANCIA", "flag_l": "🇫🇷", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Filadelfia"},
+        {"id": 43, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha_ref": "2026-06-22 13:00", "fecha": "22 de Junio", "hora": "13:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Dallas"},
+        {"id": 44, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha_ref": "2026-06-22 23:00", "fecha": "22 de Junio", "hora": "23:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "San Francisco"},
+        {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha_ref": "2026-06-23 16:00", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
+        {"id": 46, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha_ref": "2026-06-23 19:00", "fecha": "23 de Junio", "hora": "19:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Toronto"},
+        {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha_ref": "2026-06-23 13:00", "fecha": "23 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Houston"},
+        {"id": 48, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha_ref": "2026-06-23 22:00", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Guadalajara"},
 
         # --- FECHA 3 (Partidos 49 al 72) ---
-        {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁢󠁳󠁣󠁴󠁿", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
-        {"id": 50, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "MARRUECOS", "flag_l": "🇲🇦", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Atlanta"},
-        {"id": 51, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha": "24 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Vancouver"},
-        {"id": 52, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha": "24 de Junio", "hora": "15:00", "local": "BOSNIA Y HERZEG.", "flag_l": "🇧🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Seattle"},
-        {"id": 53, "fase_bloque": "Fecha 3", "grupo": "Grupo A", "fecha": "24 de Junio", "hora": "21:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "MÉXICO", "flag_v": "🇲🇽", "estadio": "Ciudad de México"},
-        {"id": 54, "fase_bloque": "Fecha 3", "grupo": "Grupo A", "fecha": "24 de Junio", "hora": "21:00", "local": "SUDÁFRICA", "flag_l": "🇿🇦", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Monterrey"},
-        {"id": 55, "fase_bloque": "Fecha 3", "grupo": "Grupo E", "fecha": "25 de Junio", "hora": "16:00", "local": "CURAZAO", "flag_l": "🇨🇼", "visita": "COSTA DE MARFIL", "flag_v": "🇨🇮", "estadio": "Filadelfia"},
-        {"id": 56, "fase_bloque": "Fecha 3", "grupo": "Grupo E", "fecha": "25 de Junio", "hora": "16:00", "local": "ECUADOR", "flag_l": "🇪🇨", "visita": "ALEMANIA", "flag_v": "🇩🇪", "estadio": "N. York/N. Jersey"},
-        {"id": 57, "fase_bloque": "Fecha 3", "grupo": "Grupo F", "fecha": "25 de Junio", "hora": "19:00", "local": "JAPÓN", "flag_l": "🇯🇵", "visita": "SUECIA", "flag_v": "🇸🇪", "estadio": "Dallas"},
-        {"id": 58, "fase_bloque": "Fecha 3", "grupo": "Grupo F", "fecha": "25 de Junio", "hora": "19:00", "local": "TÚNEZ", "flag_l": "🇹🇳", "visita": "PAÍSES BAJOS", "flag_v": "🇳🇱", "estadio": "Kansas City"},
-        {"id": 59, "fase_bloque": "Fecha 3", "grupo": "Grupo D", "fecha": "25 de Junio", "hora": "22:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "ESTADOS UNIDOS", "flag_v": "🇺🇸", "estadio": "Los Angeles"},
-        {"id": 60, "fase_bloque": "Fecha 3", "grupo": "Grupo D", "fecha": "25 de Junio", "hora": "22:00", "local": "PARAGUAY", "flag_l": "🇵🇾", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "San Francisco"},
-        {"id": 61, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha": "26 de Junio", "hora": "15:00", "local": "NORUEGA", "flag_l": "🇳🇴", "visita": "FRANCIA", "flag_v": "🇫🇷", "estadio": "Boston"},
-        {"id": 62, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha": "26 de Junio", "hora": "15:00", "local": "SENEGAL", "flag_l": "🇸🇳", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Toronto"},
-        {"id": 63, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha": "26 de Junio", "hora": "23:00", "local": "EGIPTO", "flag_l": "🇪🇬", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Seattle"},
-        {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
-        {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
-        {"id": 66, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "Guadalajara"},
-        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200d󠁢󠁥󠁮󠁧󠁿", "estadio": "N. York/N. Jersey"},
-        {"id": 68, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
-        {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
-        {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
-        {"id": 71, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha": "27 de Junio", "hora": "19:30", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "PORTUGAL", "flag_v": "🇵🇹", "estadio": "Miami"},
-        {"id": 72, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha": "27 de Junio", "hora": "19:30", "local": "REP. DEL CONGO", "flag_l": "🇨🇬", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Atlanta"},
+        {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha_ref": "2026-06-24 18:00", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁢󠁳󠁣󠁴󠁿", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
+        {"id": 50, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha_ref": "2026-06-24 18:00", "fecha": "24 de Junio", "hora": "18:00", "local": "MARRUECOS", "flag_l": "🇲🇦", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Atlanta"},
+        {"id": 51, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha_ref": "2026-06-24 15:00", "fecha": "24 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Vancouver"},
+        {"id": 52, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha_ref": "2026-06-24 15:00", "fecha": "24 de Junio", "hora": "15:00", "local": "BOSNIA Y HERZEG.", "flag_l": "🇧🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Seattle"},
+        {"id": 53, "fase_bloque": "Fecha 3", "grupo": "Grupo A", "fecha_ref": "2026-06-24 21:00", "fecha": "24 de Junio", "hora": "21:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "MÉXICO", "flag_v": "🇲🇽", "estadio": "Ciudad de México"},
+        {"id": 54, "fase_bloque": "Fecha 3", "grupo": "Grupo A", "fecha_ref": "2026-06-24 21:00", "fecha": "24 de Junio", "hora": "21:00", "local": "SUDÁFRICA", "flag_l": "🇿🇦", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Monterrey"},
+        {"id": 55, "fase_bloque": "Fecha 3", "grupo": "Grupo E", "fecha_ref": "2026-06-25 16:00", "fecha": "25 de Junio", "hora": "16:00", "local": "CURAZAO", "flag_l": "🇨🇼", "visita": "COSTA DE MARFIL", "flag_v": "🇨🇮", "estadio": "Filadelfia"},
+        {"id": 56, "fase_bloque": "Fecha 3", "grupo": "Grupo E", "fecha_ref": "2026-06-25 16:00", "fecha": "25 de Junio", "hora": "16:00", "local": "ECUADOR", "flag_l": "🇪🇨", "visita": "ALEMANIA", "flag_v": "🇩🇪", "estadio": "N. York/N. Jersey"},
+        {"id": 57, "fase_bloque": "Fecha 3", "grupo": "Grupo F", "fecha_ref": "2026-06-25 19:00", "fecha": "25 de Junio", "hora": "19:00", "local": "JAPÓN", "flag_l": "🇯🇵", "visita": "SUECIA", "flag_v": "🇸🇪", "estadio": "Dallas"},
+        {"id": 58, "fase_bloque": "Fecha 3", "grupo": "Grupo F", "fecha_ref": "2026-06-25 19:00", "fecha": "25 de Junio", "hora": "19:00", "local": "TÚNEZ", "flag_l": "🇹🇳", "visita": "PAÍSES BAJOS", "flag_v": "🇳🇱", "estadio": "Kansas City"},
+        {"id": 59, "fase_bloque": "Fecha 3", "grupo": "Grupo D", "fecha_ref": "2026-06-25 22:00", "fecha": "25 de Junio", "hora": "22:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "ESTADOS UNIDOS", "flag_v": "🇺🇸", "estadio": "Los Angeles"},
+        {"id": 60, "fase_bloque": "Fecha 3", "grupo": "Grupo D", "fecha_ref": "2026-06-25 22:00", "fecha": "25 de Junio", "hora": "22:00", "local": "PARAGUAY", "flag_l": "🇵🇾", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "San Francisco"},
+        {"id": 61, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha_ref": "2026-06-26 15:00", "fecha": "26 de Junio", "hora": "15:00", "local": "NORUEGA", "flag_l": "🇳🇴", "visita": "FRANCIA", "flag_v": "🇫🇷", "estadio": "Boston"},
+        {"id": 62, "fase_bloque": "Fecha 3", "grupo": "Grupo I", "fecha": "2026-06-26 15:00", "fecha": "26 de Junio", "hora": "15:00", "local": "SENEGAL", "flag_l": "🇸🇳", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Toronto"},
+        {"id": 63, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha_ref": "2026-06-26 23:00", "fecha": "26 de Junio", "hora": "23:00", "local": "EGIPTO", "flag_l": "🇪🇬", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Seattle"},
+        {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha_ref": "2026-06-26 23:00", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
+        {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha_ref": "2026-06-26 20:00", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
+        {"id": 66, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha_ref": "2026-06-26 20:00", "fecha": "26 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "Guadalajara"},
+        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha_ref": "2026-06-27 17:00", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200djs\u200dc\u200dt\u200d󠁿", "estadio": "N. York/N. Jersey"},
+        {"id": 68, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha_ref": "2026-06-27 17:00", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
+        {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
+        {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
+        {"id": 71, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha_ref": "2026-06-27 19:30", "fecha": "27 de Junio", "hora": "19:30", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "PORTUGAL", "flag_v": "🇵🇹", "estadio": "Miami"},
+        {"id": 72, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha_ref": "2026-06-27 19:30", "fecha": "27 de Junio", "hora": "19:30", "local": "REP. DEL CONGO", "flag_l": "🇨🇬", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Atlanta"},
 
-        # --- FASES FINALES (Sincronizado fielmente con el Calendario Oficial FIFA 2026) ---
-        # Dieciseisavos de Final (Ronda de 32)
-        {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "28 de Junio", "hora": "16:00", "local": "2A", "flag_l": "⚽", "visita": "2B", "flag_v": "⚽", "estadio": "Los Angeles"},
-        {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3C/E/F/I", "flag_v": "⚽", "estadio": "Boston"},
-        {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "18:00", "local": "1B", "flag_l": "⚽", "visita": "3A/C/F/H", "flag_v": "⚽", "estadio": "Atlanta"},
-        {"id": 76, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "29 de Junio", "hora": "21:00", "local": "2C", "flag_l": "⚽", "visita": "2D", "flag_v": "⚽", "estadio": "Houston"},
-        {"id": 77, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "30 de Junio", "hora": "14:00", "local": "1I", "flag_l": "⚽", "visita": "3C/D/E/G", "flag_v": "⚽", "estadio": "N. York/N. Jersey"},
-        {"id": 78, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "30 de Junio", "hora": "17:00", "local": "2E", "flag_l": "⚽", "visita": "2F", "flag_v": "⚽", "estadio": "Dallas"},
-        {"id": 79, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "30 de Junio", "hora": "21:00", "local": "1C", "flag_l": "⚽", "visita": "3F/G/H/I", "flag_v": "⚽", "estadio": "Ciudad de México"},
-        {"id": 80, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "01 de Julio", "hora": "13:00", "local": "1D", "flag_l": "⚽", "visita": "3A/B/E/F", "flag_v": "⚽", "estadio": "San Francisco"},
-        {"id": 81, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "01 de Julio", "hora": "16:00", "local": "1G", "flag_l": "⚽", "visita": "3A/B/C/L", "flag_v": "⚽", "estadio": "Seattle"},
-        {"id": 82, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "01 de Julio", "hora": "20:00", "local": "1E", "flag_l": "⚽", "visita": "3A/B/C/D", "flag_v": "⚽", "estadio": "Kansas City"},
-        {"id": 83, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "02 de Julio", "hora": "13:00", "local": "1H", "flag_l": "⚽", "visita": "2J", "flag_v": "⚽", "estadio": "Toronto"},
-        {"id": 84, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "02 de Julio", "hora": "17:00", "local": "1F", "flag_l": "⚽", "visita": "2G", "flag_v": "⚽", "estadio": "Los Angeles"},
-        {"id": 85, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "02 de Julio", "hora": "21:00", "local": "2H", "flag_l": "⚽", "visita": "2I", "flag_v": "⚽", "estadio": "Vancouver"},
-        {"id": 86, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "03 de Julio", "hora": "14:00", "local": "1J", "flag_l": "⚽", "visita": "3H/I/K/L", "flag_v": "⚽", "estadio": "Miami"},
-        {"id": 87, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "03 de Julio", "hora": "18:00", "local": "1K", "flag_l": "⚽", "visita": "3D/E/I/J", "flag_v": "⚽", "estadio": "Dallas"},
-        {"id": 88, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha": "03 de Julio", "hora": "21:00", "local": "1L", "flag_l": "⚽", "visita": "2K", "flag_v": "⚽", "estadio": "Kansas City"},
-        
-        # Octavos de Final (Ronda de 16)
-        {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "04 de Julio", "hora": "15:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P73", "flag_v": "🥇", "estadio": "Philadelphia"},
-        {"id": 90, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "04 de Julio", "hora": "19:00", "local": "GANADOR P75", "flag_l": "🥇", "visita": "GANADOR P76", "flag_v": "🥇", "estadio": "Houston"},
-        {"id": 91, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "05 de Julio", "hora": "14:00", "local": "GANADOR P77", "flag_l": "🥇", "visita": "GANADOR P78", "flag_v": "🥇", "estadio": "N. York/N. Jersey"},
-        {"id": 92, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "05 de Julio", "hora": "18:00", "local": "GANADOR P79", "flag_l": "🥇", "visita": "GANADOR P80", "flag_v": "🥇", "estadio": "Ciudad de México"},
-        {"id": 93, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "06 de Julio", "hora": "15:00", "local": "GANADOR P82", "flag_l": "🥇", "visita": "GANADOR P81", "flag_v": "🥇", "estadio": "Dallas"},
-        {"id": 94, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "06 de Julio", "hora": "19:00", "local": "GANADOR P83", "flag_l": "🥇", "visita": "GANADOR P84", "flag_v": "🥇", "estadio": "Seattle"},
-        {"id": 95, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "07 de Julio", "hora": "15:00", "local": "GANADOR P86", "flag_l": "🥇", "visita": "GANADOR P85", "flag_v": "🥇", "estadio": "Atlanta"},
-        {"id": 96, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha": "07 de Julio", "hora": "19:00", "local": "GANADOR P88", "flag_l": "🥇", "visita": "GANADOR P87", "flag_v": "🥇", "estadio": "Vancouver"},
-        
-        # Cuartos de Final
-        {"id": 97, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "09 de Julio", "hora": "16:00", "local": "GANADOR P89", "flag_l": "🥇", "visita": "GANADOR P90", "flag_v": "🥇", "estadio": "Boston"},
-        {"id": 98, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "10 de Julio", "hora": "15:00", "local": "GANADOR P91", "flag_l": "🥇", "visita": "GANADOR P92", "flag_v": "🥇", "estadio": "Los Angeles"},
-        {"id": 99, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "11 de Julio", "hora": "14:00", "local": "GANADOR P93", "flag_l": "🥇", "visita": "GANADOR P94", "flag_v": "🥇", "estadio": "Miami"},
-        {"id": 100, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha": "11 de Julio", "hora": "18:00", "local": "GANADOR P95", "flag_l": "🥇", "visita": "GANADOR P96", "flag_v": "🥇", "estadio": "Kansas City"},
-        
-        # Semifinales, Tercer Puesto y Final
-        {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha": "14 de Julio", "hora": "15:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
-        {"id": 102, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha": "15 de Julio", "hora": "15:00", "local": "GANADOR P99", "flag_l": "🥇", "visita": "GANADOR P100", "flag_v": "🥇", "estadio": "Atlanta"},
-        {"id": 103, "fase_bloque": "Fases Finales", "grupo": "3er Puesto", "fecha": "18 de Julio", "hora": "17:00", "local": "PERDEDOR P101", "flag_l": "⚽", "visita": "PERDEDOR P102", "flag_v": "⚽", "estadio": "Miami"},
-        {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🥇", "visita": "GANADOR P102", "flag_v": "🥇", "estadio": "N. York/N. Jersey"}
+        # --- FASES FINALES ---
+        {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-28 16:00", "fecha": "28 de Junio", "hora": "16:00", "local": "2A", "flag_l": "⚽", "visita": "2B", "flag_v": "⚽", "estadio": "Los Angeles"},
+        {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 15:00", "fecha": "29 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3C/E/F/I", "flag_v": "⚽", "estadio": "Boston"},
+        {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 18:00", "fecha": "29 de Junio", "hora": "18:00", "local": "1B", "flag_l": "⚽", "visita": "3A/C/F/H", "flag_v": "⚽", "estadio": "Atlanta"},
+        {"id": 76, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 21:00", "fecha": "29 de Junio", "hora": "21:00", "local": "2C", "flag_l": "⚽", "visita": "2D", "flag_v": "⚽", "estadio": "Houston"},
+        {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 15:00", "fecha": "04 de Julio", "hora": "15:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P73", "flag_v": "🥇", "estadio": "Philadelphia"},
+        {"id": 97, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-09 16:00", "fecha": "09 de Julio", "hora": "16:00", "local": "GANADOR P89", "flag_l": "🥇", "visita": "GANADOR P90", "flag_v": "🥇", "estadio": "Boston"},
+        {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-14 15:00", "fecha": "14 de Julio", "hora": "15:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
+        {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🥇", "visita": "GANADOR P102", "flag_v": "🥇", "estadio": "N. York/N. Jersey"}
     ]
 
 FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['id'])
@@ -161,7 +132,7 @@ img_fondo = codificar_imagen_local("fondo.png")
 img_portada = codificar_imagen_local("portada.png")
 img_balon = codificar_imagen_local("balon.png")
 
-# ESTILOS ADAPTADOS (Inyección de imágenes locales reales)
+# ESTILOS ADAPTADOS
 st.markdown(f"""
     <style>
     .main {{ 
@@ -217,6 +188,17 @@ def calcular_puntos(real_l, real_v, pred_l, pred_v):
         return 1, "#eab308", "🟡 Tendencia Acertada (+1 Pt)"
     return 0, "#ef4444", "🔴 Fallado (0 Pts)"
 
+# FUNCIÓN PARA CONTROLAR EL PITAZO INICIAL AUTOMÁTICO EN CHILE
+def verificar_partido_empezado(fecha_ref_str):
+    tz_chile = pytz.timezone('America/Santiago')
+    ahora_chile = datetime.now(tz_chile)
+    
+    # Formato de la fecha de referencia del Excel
+    hora_partido = datetime.strptime(fecha_ref_str, "%Y-%m-%d %H:%M")
+    hora_partido_tz = tz_chile.localize(hora_partido)
+    
+    return ahora_chile >= hora_partido_tz
+
 # ANIMACIÓN DEL BALÓN REAL (balon.png)
 def animar_balon_oficial():
     src_balon = img_balon if img_balon else "⚽"
@@ -260,7 +242,7 @@ with tabs[0]:
     
     ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo familiar.
     
-    📅 **Plazo de envío:** Se puede apostar o modificar el pronóstico **hasta el pitazo inicial** de cada partido. Una vez que empieza el juego, la apuesta se congela.
+    📅 **Plazo de envío:** Se puede apostar o modificar el pronóstico **hasta el pitazo inicial** de cada partido. Una vez que empieza el juego, el sistema bloquea automáticamente el partido.
     
     ⏱️ **Tiempo Reglamentario:** Todos los pronósticos son válidos **exclusivamente para los 90 minutos reglamentarios** (incluyendo el tiempo añadido por el árbitro). Si hay empate al 90', el partido se cuenta como EMPATE para la polla. Goles en prórrogas o tandas de penales **NO cuentan** para el marcador de la apuesta.
     
@@ -279,10 +261,9 @@ with tabs[0]:
     * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
-# --- TAB 2: CLASIFICACIÓN CON PODIO MEJORADO ---
+# --- TAB 2: CLASIFICACIÓN CON PODIO ---
 with tabs[1]:
     st.markdown("## 📊 RENDIMIENTO DE LA FAMILIA")
-    
     tabla_posiciones = []
     fondo_total = len(PARTICIPANTES) * CUOTA_INSCRIPCION
     
@@ -339,7 +320,7 @@ with tabs[1]:
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS (DISEÑO COMPACTO IPHONE) ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS (BLOQUEO AUTOMÁTICO POR FECHA Y HORA) ---
 with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -364,14 +345,23 @@ with tabs[2]:
         pid = str(part["id"])
         pred_actual = datos["pronosticos"].get(usuario, {}).get(pid, {"l": 0, "v": 0})
         real_actual = datos["resultados_reales"].get(pid)
-        ya_jugado = pid in datos["resultados_reales"]
+        
+        # EL CANDADO AUTOMÁTICO: Revisa si el reloj ya pasó la hora del partido
+        ya_empezo = verificar_partido_empezado(part["fecha_ref"])
+        congelado_por_admin = pid in datos["resultados_reales"]
+        bloquear_casilla = ya_empezo or congelado_por_admin
         
         _, color_hex, texto_status = calcular_puntos(
             real_actual["l"] if real_actual else None,
             real_actual["v"] if real_actual else None,
             pred_actual["l"], pred_actual["v"]
         )
-        if ya_jugado: texto_status += " | 🔒 CONGELADA"
+        
+        if congelado_por_admin:
+            texto_status += " | 🔒 APUESTA CERRADA"
+        elif ya_empezo:
+            texto_status += " | 🔒 CANDADO: PARTIDO EN CURSO"
+            color_hex = "#be123c"  # Cambia a rojo advertencia
         
         st.markdown(f"""
         <div style="background: rgba(30,41,59,0.7); padding: 6px 12px; border-radius: 8px 8px 0 0; border-left: 5px solid {color_hex}; font-size: 0.85rem; margin-top:12px; color:#cbd5e1;">
@@ -385,36 +375,40 @@ with tabs[2]:
         with col_inputs:
             c_in1, c_in2 = st.columns(2)
             with c_in1:
-                g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"l_{usuario}_{pid}", disabled=ya_jugado, label_visibility="collapsed")
+                g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"l_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
             with c_in2:
-                g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"v_{usuario}_{pid}", disabled=ya_jugado, label_visibility="collapsed")
+                g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"v_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
         with col_v:
             st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
         
-        if not ya_jugado: 
+        if not bloquear_casilla: 
             datos["pronosticos"][usuario][pid] = {"l": g_l, "v": g_v}
             
     st.write("---")
     if st.button("💾 GUARDAR APUESTAS DE ESTA FECHA", use_container_width=True):
         guardar_datos(datos)
         animar_balon_oficial()
-        st.success(f"¡Excelente {usuario}, tus pronósticos de la {filtro_fia} fueron guardados correctamente!")
+        st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
 
-# --- TAB 4: CRONOGRAMA INTELIGENTE (FILAS GRISES AL FINALIZAR) ---
+# --- TAB 4: CRONOGRAMA INTELIGENTE ---
 with tabs[3]:
     st.markdown("## 📅 CRONOGRAMA OFICIAL Y MARCADORES EN VIVO")
-    
     lista_cronograma = []
     for part in FIXTURE_DINAMICO:
         pid = str(part["id"])
         real = datos["resultados_reales"].get(pid)
+        ya_empezo = verificar_partido_empezado(part["fecha_ref"])
         
         if real:
             estado = "🔒 FINALIZADO"
             marcador_l = str(real["l"])
             marcador_v = str(real["v"])
+        elif ya_empezo:
+            estado = "⏱️ EN CURSO / EN JUEGO"
+            marcador_l = "-"
+            marcador_v = "-"
         else:
-            estado = "🟢 ABIERTO / JUGANDO"
+            estado = "🟢 ABIERTO / ESPERANDO"
             marcador_l = "-"
             marcador_v = "-"
             
@@ -432,10 +426,11 @@ with tabs[3]:
         })
         
     df_crono = pd.DataFrame(lista_cronograma)
-    
     def estilo_filas_finalizadas(row):
         if row["Estado"] == "🔒 FINALIZADO":
             return ['background-color: rgba(71, 85, 105, 0.25); color: #94a3b8; font-style: italic;'] * len(row)
+        elif row["Estado"] == "⏱️ EN CURSO / EN JUEGO":
+            return ['background-color: rgba(186, 18, 60, 0.15); color: #fda4af;'] * len(row)
         return [''] * len(row)
         
     df_estilizado = df_crono.style.apply(estilo_filas_finalizadas, axis=1)
@@ -448,13 +443,11 @@ with tabs[4]:
     
     if pass_input == PASSWORD_ADMIN:
         st.success("🔓 Acceso Concedido como Mandamás")
-        
         fase_admin = st.selectbox("Selecciona Fecha a Cargar en Sistema:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
         partidos_admin = [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]
         
         st.write("---")
         st.write("### 📝 RELLENAR MARCADORES OFICIALES MUNDIALISTAS")
-        
         nuevos_cierres = dict(datos["resultados_reales"])
         
         for part in partidos_admin:
@@ -482,7 +475,6 @@ with tabs[4]:
                         nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
             else:
                 nuevos_cierres.pop(pid, None)
-                
             st.markdown("<div style='margin-bottom:15px;'></div>", unsafe_allow_html=True)
             
         st.write("---")
