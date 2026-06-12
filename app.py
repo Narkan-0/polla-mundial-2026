@@ -229,7 +229,7 @@ with tabs[0]:
     
     ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo.
     
-    📅 **Plazo de envío:** Hasta 2 horas antes de que empiece cada partido.
+    📅 **Plazo de envío:** Hasta el pitazo inicial del partido.
     
     💰 **Premios (Al final del Mundial):**
     * 🥇 **1er Lugar:** 50% del pozo acumulado.
@@ -237,9 +237,10 @@ with tabs[0]:
     * 🥉 **3er Lugar:** 16,6% del pozo acumulado.
     
     📊 **Puntuación:**
+    * Válido solo para los 90' reglamentarios. Los goles de prórroga o de tanda de penales no cuentan para el resultado.
     * **3 puntos:** Resultado exacto.
     * **1 punto:** Acierto a Ganador o Empate (pero no al marcador exacto).
-    * **0 puntos:** No acierta nada. *(Válido solo para los 90' reglamentarios)*.
+    * **0 puntos:** No acierta nada.
     
     ⚔️ **Desempate (Si hay igualdad de puntos al final):**
     * Gana quien tenga más resultados exactos (de 3 puntos) anotados.
