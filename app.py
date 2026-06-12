@@ -17,7 +17,7 @@ def obtener_fixture_completo():
         {"id": 2, "fase_bloque": "Fecha 1", "grupo": "Grupo A", "fecha": "11 de Junio", "hora": "22:00", "local": "COREA DEL SUR", "flag_l": "🇰🇷", "visita": "REP. CHECA", "flag_v": "🇨🇿", "estadio": "Guadalajara"},
         {"id": 3, "fase_bloque": "Fecha 1", "grupo": "Grupo B", "fecha": "12 de Junio", "hora": "15:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Toronto"},
         {"id": 4, "fase_bloque": "Fecha 1", "grupo": "Grupo D", "fecha": "12 de Junio", "hora": "21:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "Los Angeles"},
-        {"id": 5, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha": "13 de Junio", "hora": "21:00", "local": "HAITÍ", "flag_l": "🇭🇹", "visita": "ESCOCIA", "flag_v": "🏴\u200d󠁧\u200db\u200ds\u200dc\u200dt\u200d󠁿", "estadio": "Boston"},
+        {"id": 5, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha": "13 de Junio", "hora": "21:00", "local": "HAITÍ", "flag_l": "🇭🇹", "visita": "ESCOCIA", "flag_v": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "estadio": "Boston"},
         {"id": 6, "fase_bloque": "Fecha 1", "grupo": "Grupo D", "fecha": "14 de Junio", "hora": "00:00", "local": "AUSTRALIA", "flag_l": "🇦🇺", "visita": "TURQUÍA", "flag_v": "🇹🇷", "estadio": "Vancouver"},
         {"id": 7, "fase_bloque": "Fecha 1", "grupo": "Grupo C", "fecha": "13 de Junio", "hora": "18:00", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "N. York/N. Jersey"},
         {"id": 8, "fase_bloque": "Fecha 1", "grupo": "Grupo B", "fecha": "13 de Junio", "hora": "15:00", "local": "CATAR", "flag_l": "🇶🇦", "visita": "SUIZA", "flag_v": "🇨🇭", "estadio": "San Francisco"},
@@ -34,7 +34,7 @@ def obtener_fixture_completo():
         {"id": 19, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "16 de Junio", "hora": "21:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "Kansas City"},
         {"id": 20, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha": "17 de Junio", "hora": "00:00", "local": "AUSTRIA", "flag_l": "🇦🇹", "visita": "JORDANIA", "flag_v": "🇯🇴", "estadio": "San Francisco"},
         {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
-        {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁧\u200de\u200dn\u200dg\u200dt\u200d󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
+        {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
         {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Houston"},
         {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
 
@@ -44,7 +44,7 @@ def obtener_fixture_completo():
         {"id": 27, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha": "18 de Junio", "hora": "18:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Vancouver"},
         {"id": 28, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha": "18 de Junio", "hora": "21:00", "local": "MÉXICO", "flag_l": "🇲🇽", "visita": "COREA DEL SUR", "flag_v": "🇰🇷", "estadio": "Guadalajara"},
         {"id": 29, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "20:30", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Filadelfia"},
-        {"id": 30, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁧\u200db\u200ds\u200dc\u200dt\u200d󠁿", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "Boston"},
+        {"id": 30, "fase_bloque": "Fecha 2", "grupo": "Grupo C", "fecha": "19 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "MARRUECOS", "flag_v": "🇲🇦", "estadio": "Boston"},
         {"id": 31, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha": "19 de Junio", "hora": "23:00", "local": "TURQUÍA", "flag_l": "🇹🇷", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "San Francisco"},
         {"id": 32, "fase_bloque": "Fecha 2", "grupo": "Grupo D", "fecha": "19 de Junio", "hora": "15:00", "local": "ESTADOS UNIDOS", "flag_l": "🇺🇸", "visita": "AUSTRALIA", "flag_v": "🇦🇺", "estadio": "Seattle"},
         {"id": 33, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha": "20 de Junio", "hora": "16:00", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "COSTA DE MARFIL", "flag_v": "🇨🇮", "estadio": "Toronto"},
@@ -59,13 +59,13 @@ def obtener_fixture_completo():
         {"id": 42, "fase_bloque": "Fecha 2", "grupo": "Grupo I", "fecha": "22 de Junio", "hora": "17:00", "local": "FRANCIA", "flag_l": "🇫🇷", "visita": "IRAK", "flag_v": "🇮🇶", "estadio": "Filadelfia"},
         {"id": 43, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha": "22 de Junio", "hora": "13:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Dallas"},
         {"id": 44, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha": "22 de Junio", "hora": "23:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "San Francisco"},
-        {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴\u200d󠁧\u200de\u200dn\u200dg\u200dt\u200d󠁿", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
+        {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
         {"id": 46, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha": "23 de Junio", "hora": "19:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Toronto"},
         {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha": "23 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Houston"},
         {"id": 48, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Guadalajara"},
 
         # --- FECHA 3 (Partidos 49 al 72) ---
-        {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴\u200d󠁧\u200db\u200ds\u200dc\u200dt\u200d󠁿", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
+        {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
         {"id": 50, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha": "24 de Junio", "hora": "18:00", "local": "MARRUECOS", "flag_l": "🇲🇦", "visita": "HAITÍ", "flag_v": "🇭🇹", "estadio": "Atlanta"},
         {"id": 51, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha": "24 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Vancouver"},
         {"id": 52, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha": "24 de Junio", "hora": "15:00", "local": "BOSNIA Y HERZEG.", "flag_l": "🇧🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Seattle"},
@@ -83,7 +83,7 @@ def obtener_fixture_completo():
         {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
         {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
         {"id": 66, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "Guadalajara"},
-        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200djs\u200dc\u200dt\u200d󠁿", "estadio": "N. York/N. Jersey"},
+        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200d󠁧\u200de\u200dn\u200dg\u200dt\u200d󠁿", "estadio": "N. York/N. Jersey"},
         {"id": 68, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
@@ -114,7 +114,7 @@ def obtener_frase_futbolera():
     ]
     return random.choice(frases)
 
-# CONFIGURACIÓN GENERAL DE USUARIOS (Mantenida exactamente como la tienes tú)
+# CONFIGURACIÓN GENERAL DE USUARIOS Manteniendo intacto tu orden manual
 PARTICIPANTES = ["Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
@@ -229,7 +229,7 @@ with tabs[0]:
     
     ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo.
     
-    📅 **Plazo de envío:** Hasta 2 horas antes de que empiece cada partido.
+    📅 **Plazo de envío:** Hasta 2 hours antes de que empiece cada partido.
     
     💰 **Premios (Al final del Mundial):**
     * 🥇 **1er Lugar:** 50% del pozo acumulado.
@@ -238,7 +238,7 @@ with tabs[0]:
     
     📊 **Puntuación:**
     * **3 puntos:** Resultado exacto.
-    * **1 point:** Acierto a Ganador o Empate (pero no al marcador exacto).
+    * **1 punto:** Acierto a Ganador o Empate (pero no al marcador exacto).
     * **0 puntos:** No acierta nada. *(Válido solo para los 90' reglamentarios)*.
     
     ⚔️ **Desempate (Si hay igualdad de puntos al final):**
@@ -246,10 +246,13 @@ with tabs[0]:
     * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
-# --- TAB 2: CLASIFICACIÓN ---
+# --- TAB 2: CLASIFICACIÓN Y PREMIOS RESTAURADA ---
 with tabs[1]:
+    st.markdown("## 📊 RENDIMIENTO DE LA FAMILIA")
+    
     tabla_posiciones = []
     fondo_total = len(PARTICIPANTES) * CUOTA_INSCRIPCION
+    
     for p in PARTICIPANTES:
         pts_totales = 0
         exactos = 0
@@ -264,12 +267,24 @@ with tabs[1]:
                 if pts == 3: exactos += 1
                 elif pts == 1: tendencias += 1
         tabla_posiciones.append({"Participante": p, "Puntos Totales 🌟": pts_totales, "Marcadores Exactos (3pts) 🎯": exactos, "Aciertos Simples (1pt) 🏟️": tendencias})
+    
     df_tabla = pd.DataFrame(tabla_posiciones).sort_values(by=["Puntos Totales 🌟", "Marcadores Exactos (3pts) 🎯"], ascending=False).reset_index(drop=True)
     df_tabla.index += 1
-    st.markdown(f"### 💰 Pozo Acumulado Familiar: **${fondo_total:,.0f}**")
+    
+    # El Podio Financiero de Premios Dinámicos
+    st.markdown(f"### 💰 Pozo Acumulado del Grupo: **${fondo_total:,.0f} CLP**")
+    c_p1, c_p2, c_p3 = st.columns(3)
+    with c_p1:
+        st.metric(label="🥇 1er Puesto Tentativo (50%)", value=f"${fondo_total * 0.50:,.0f}")
+    with c_p2:
+        st.metric(label="🥈 2do Puesto Tentativo (33.3%)", value=f"${fondo_total * 0.333:,.0f}")
+    with c_p3:
+        st.metric(label="🥉 3er Puesto Tentativo (16.6%)", value=f"${fondo_total * 0.166:,.0f}")
+        
+    st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS (DISEÑO RE-COMPACTADO ANTI-SCROLL IPHONE) ---
 with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -303,12 +318,25 @@ with tabs[2]:
         )
         if ya_jugado: texto_status += " | 🔒 CONGELADA"
         
-        st.markdown(f'<div style="background: rgba(15, 23, 42, 0.85); padding: 10px; border-radius: 8px; border-left: 5px solid {color_hex}; margin-top: 10px;"><b>{part["grupo"].upper()} — PARTIDO #{pid}</b> ({part["fecha"]} - {part["hora"]} hrs) | {part["estadio"]} | <span style="color:{color_hex}; font-weight:bold;">{texto_status}</span></div>', unsafe_allow_html=True)
-        col1, col2, col3, col4 = st.columns([3, 2, 2, 3])
-        with col1: st.markdown(f"<p style='text-align:right; font-weight:bold;'>{part['local']} {part['flag_l']}</p>", unsafe_allow_html=True)
-        with col2: g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"l_{usuario}_{pid}", disabled=ya_jugado, label_visibility="collapsed")
-        with col3: g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"v_{usuario}_{pid}", disabled=ya_jugado, label_visibility="collapsed")
-        with col4: st.markdown(f"<p style='font-weight:bold;'>{part['flag_v']} {part['visita']}</p>", unsafe_allow_html=True)
+        # Estructura de encabezado limpio por partido
+        st.markdown(f"""
+        <div style="background: rgba(30,41,59,0.7); padding: 6px 12px; border-radius: 8px 8px 0 0; border-left: 5px solid {color_hex}; font-size: 0.85rem; margin-top:12px; color:#cbd5e1;">
+            <b>{part["grupo"].upper()} — PARTIDO #{pid}</b> ({part["fecha"]} - {part["hora"]} hrs) | {part["estadio"]} | <span style="color:{color_hex}; font-weight:bold;">{texto_status}</span>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Contenedor unificado estrecho que junta casilleros y equipos (Perfecto para iPhone)
+        col_l, col_inputs, col_v = st.columns([4, 3, 4])
+        with col_l:
+            st.markdown(f"<div style='text-align:right; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['local']} {part['flag_l']}</div>", unsafe_allow_html=True)
+        with col_inputs:
+            c_in1, c_in2 = st.columns(2)
+            with c_in1:
+                g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual["l"]), key=f"l_{usuario}_{pid}", disabled=ya_jugado, label_visibility="collapsed")
+            with c_in2:
+                g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual["v"]), key=f"v_{usuario}_{pid}", disabled=ya_jugado, label_visibility="collapsed")
+        with col_v:
+            st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
         
         if not ya_jugado: 
             datos["pronosticos"][usuario][pid] = {"l": g_l, "v": g_v}
@@ -317,7 +345,7 @@ with tabs[2]:
     if st.button("💾 GUARDAR APUESTAS DE ESTA FECHA", use_container_width=True):
         guardar_datos(datos)
         animar_balon_oficial()
-        st.success(f"¡Excelente {usuario}, tus pronósticos de la {filtro_fase} fueron guardados correctamente con el balón oficial!")
+        st.success(f"¡Excelente {usuario}, tus pronósticos de la {filtro_fase} fueron guardados correctamente!")
 
 # --- TAB 4: CRONOGRAMA ---
 with tabs[3]:
@@ -325,7 +353,7 @@ with tabs[3]:
     df_cronograma = pd.DataFrame(FIXTURE_DINAMICO)[["id", "grupo", "fecha", "hora", "local", "visita", "estadio"]]
     st.dataframe(df_cronograma, use_container_width=True, hide_index=True)
 
-# --- TAB 5: PANEL CONTROL ADMINISTRADOR (REPARADO Y BLINDADO) ---
+# --- TAB 5: PANEL CONTROL ADMINISTRADOR (BLINDADO POR ID NUMÉRICO) ---
 with tabs[4]:
     st.markdown("## ⚙️ PANEL DE CONTROL DE ADMINISTRADOR")
     pass_input = st.text_input("Token de Seguridad Mandamás:", type="password")
@@ -339,8 +367,8 @@ with tabs[4]:
         st.write("---")
         st.write("### 📝 RELLENAR MARCADORES OFICIALES MUNDIALISTAS")
         
-        # Diccionario temporal para acumular los cambios antes del botón definitivo de guardado
-        nuevos_cierres = {}
+        # Reconstrucción del diccionario de cierres desde el estado actual
+        nuevos_cierres = dict(datos["resultados_reales"])
         
         for part in partidos_admin:
             pid = str(part["id"])
@@ -359,23 +387,21 @@ with tabs[4]:
             
             if finalizado:
                 nuevos_cierres[pid] = {"l": g_r_l, "v": g_r_v}
-                # Lógica dinámica para fases finales si hay empate
                 if "Fases Finales" in part["fase_bloque"]:
                     if g_r_l == g_r_v:
                         avanza_eq = st.selectbox(f"🏆 ¿Quién clasifica por penales?", [part['local'], part['visita']], key=f"avanza_{pid}")
                         nuevos_cierres[pid]["avanza"] = avanza_eq
                     else:
                         nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
+            else:
+                # Si se desmarca, se remueve de forma segura del diccionario por su ID numérico
+                nuevos_cierres.pop(pid, None)
+                
             st.markdown("<div style='margin-bottom:15px;'></div>", unsafe_allow_html=True)
             
         st.write("---")
-        # El botón unificado fuera del bucle que previene el bloqueo de Streamlit
         if st.button("🔄 ACTUALIZAR MARCADORES Y CONGELAR PARTIDOS", use_container_width=True):
-            # Limpiar los que se desmarcaron y guardar los nuevos cierres reales
-            datos["resultados_reales"] = {}
-            for k, v in nuevos_cierres.items():
-                datos["resultados_reales"][k] = v
-                
+            datos["resultados_reales"] = nuevos_cierres
             guardar_datos(datos)
-            st.toast("¡Tablas y llaves recalculadas con éxito para toda la familia!")
+            st.toast("¡Marcadores congelados y puntajes familiares recalculados con éxito!")
             st.rerun()
