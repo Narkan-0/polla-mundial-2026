@@ -104,7 +104,7 @@ def obtener_frase_futbolera():
 # CONFIGURACIÓN GENERAL DE USUARIOS (Edita tus 8 participantes reales acá)
 PARTICIPANTES = ["Constanza", "Leonardo", "José Alonso", "José Mario", "Mario", "Néstor", "Renato", "Sergio" ]
 CUOTA_INSCRIPCION = 5000
-PASSWORD_ADMIN = fifa26"
+PASSWORD_ADMIN = "fifa26"
 
 # ESTILOS ADAPTADOS AL ÁLBUM PANINI OFICIAL 2026 (Enlaces reales inyectados)
 st.markdown("""
