@@ -83,7 +83,7 @@ def obtener_fixture_completo():
         {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
         {"id": 65, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "CABO VERDE", "flag_l": "🇨🇻", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Houston"},
         {"id": 66, "fase_bloque": "Fecha 3", "grupo": "Grupo H", "fecha": "26 de Junio", "hora": "20:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "ESPAÑA", "flag_v": "🇪🇸", "estadio": "Guadalajara"},
-        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200d󠁧\u200de\u200dn\u200dg\u200dt\u200d󠁿", "estadio": "N. York/N. Jersey"},
+        {"id": 67, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "🏴\u200djs\u200dc\u200dt\u200d󠁿", "estadio": "N. York/N. Jersey"},
         {"id": 68, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
@@ -107,14 +107,14 @@ FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['id'])
 @st.cache_data(ttl=10)
 def obtener_frase_futbolera():
     frases = [
-        "«Todo lo que sé con mayor certeza sobre la moral y las obligaciones de los hombres, se lo debo al fútbol.» — Albert Camus",
+        "«Todo lo que sé con mayor certeza sobre la moral y las obligations de los hombres, se lo debo al fútbol.» — Albert Camus",
         "«El fútbol es el juego más lindo y más sano del mundo. Yo me equivoqué y pagué, pero la pelota no se mancha.» — Diego Maradona",
         "«El fútbol es música, danza y armonía. Y no hay nada más hermoso que la alegría que le da a la gente.» — Pelé",
         "«Por más que los poderosos lo manipulen, el fútbol sigue queriendo ser el arte de lo imprevisto.» — Eduardo Galeano"
     ]
     return random.choice(frases)
 
-# CONFIGURACIÓN GENERAL DE USUARIOS Manteniendo intacto tu orden manual
+# CONFIGURACIÓN GENERAL DE USUARIOS (Mantenida tal como la editaste a mano)
 PARTICIPANTES = ["Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
@@ -229,7 +229,7 @@ with tabs[0]:
     
     ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo.
     
-    📅 **Plazo de envío:** Hasta 2 hours antes de que empiece cada partido.
+    📅 **Plazo de envío:** Hasta 2 horas antes de que empiece cada partido.
     
     💰 **Premios (Al final del Mundial):**
     * 🥇 **1er Lugar:** 50% del pozo acumulado.
@@ -246,7 +246,7 @@ with tabs[0]:
     * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
-# --- TAB 2: CLASIFICACIÓN Y PREMIOS RESTAURADA ---
+# --- TAB 2: CLASIFICACIÓN CON PODIO DE JUGADORES REALES ---
 with tabs[1]:
     st.markdown("## 📊 RENDIMIENTO DE LA FAMILIA")
     
@@ -268,23 +268,30 @@ with tabs[1]:
                 elif pts == 1: tendencias += 1
         tabla_posiciones.append({"Participante": p, "Puntos Totales 🌟": pts_totales, "Marcadores Exactos (3pts) 🎯": exactos, "Aciertos Simples (1pt) 🏟️": tendencias})
     
+    # Ordenar estrictamente según el reglamento del juego para saber las posiciones reales
     df_tabla = pd.DataFrame(tabla_posiciones).sort_values(by=["Puntos Totales 🌟", "Marcadores Exactos (3pts) 🎯"], ascending=False).reset_index(drop=True)
     df_tabla.index += 1
     
-    # El Podio Financiero de Premios Dinámicos
+    # Extraer de forma dinámica los nombres de los punteros
+    puntero_1 = df_tabla.iloc[0]["Participante"] if len(df_tabla) > 0 else "Por definir"
+    puntero_2 = df_tabla.iloc[1]["Participante"] if len(df_tabla) > 1 else "Por definir"
+    puntero_3 = df_tabla.iloc[2]["Participante"] if len(df_tabla) > 2 else "Por definir"
+    
     st.markdown(f"### 💰 Pozo Acumulado del Grupo: **${fondo_total:,.0f} CLP**")
+    
+    # Despliegue del podio con nombre del jugador + monto tentativo correspondientes
     c_p1, c_p2, c_p3 = st.columns(3)
     with c_p1:
-        st.metric(label="🥇 1er Puesto Tentativo (50%)", value=f"${fondo_total * 0.50:,.0f}")
+        st.metric(label=f"🥇 1er Puesto: {puntero_1} (50%)", value=f"${fondo_total * 0.50:,.0f}")
     with c_p2:
-        st.metric(label="🥈 2do Puesto Tentativo (33.3%)", value=f"${fondo_total * 0.333:,.0f}")
+        st.metric(label=f"🥈 2do Puesto: {puntero_2} (33.3%)", value=f"${fondo_total * 0.333:,.0f}")
     with c_p3:
-        st.metric(label="🥉 3er Puesto Tentativo (16.6%)", value=f"${fondo_total * 0.166:,.0f}")
+        st.metric(label=f"🥉 3er Puesto: {puntero_3} (16.6%)", value=f"${fondo_total * 0.166:,.0f}")
         
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS (DISEÑO RE-COMPACTADO ANTI-SCROLL IPHONE) ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS ---
 with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -318,14 +325,12 @@ with tabs[2]:
         )
         if ya_jugado: texto_status += " | 🔒 CONGELADA"
         
-        # Estructura de encabezado limpio por partido
         st.markdown(f"""
         <div style="background: rgba(30,41,59,0.7); padding: 6px 12px; border-radius: 8px 8px 0 0; border-left: 5px solid {color_hex}; font-size: 0.85rem; margin-top:12px; color:#cbd5e1;">
             <b>{part["grupo"].upper()} — PARTIDO #{pid}</b> ({part["fecha"]} - {part["hora"]} hrs) | {part["estadio"]} | <span style="color:{color_hex}; font-weight:bold;">{texto_status}</span>
         </div>
         """, unsafe_allow_html=True)
         
-        # Contenedor unificado estrecho que junta casilleros y equipos (Perfecto para iPhone)
         col_l, col_inputs, col_v = st.columns([4, 3, 4])
         with col_l:
             st.markdown(f"<div style='text-align:right; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['local']} {part['flag_l']}</div>", unsafe_allow_html=True)
@@ -353,7 +358,7 @@ with tabs[3]:
     df_cronograma = pd.DataFrame(FIXTURE_DINAMICO)[["id", "grupo", "fecha", "hora", "local", "visita", "estadio"]]
     st.dataframe(df_cronograma, use_container_width=True, hide_index=True)
 
-# --- TAB 5: PANEL CONTROL ADMINISTRADOR (BLINDADO POR ID NUMÉRICO) ---
+# --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
 with tabs[4]:
     st.markdown("## ⚙️ PANEL DE CONTROL DE ADMINISTRADOR")
     pass_input = st.text_input("Token de Seguridad Mandamás:", type="password")
@@ -367,7 +372,6 @@ with tabs[4]:
         st.write("---")
         st.write("### 📝 RELLENAR MARCADORES OFICIALES MUNDIALISTAS")
         
-        # Reconstrucción del diccionario de cierres desde el estado actual
         nuevos_cierres = dict(datos["resultados_reales"])
         
         for part in partidos_admin:
@@ -394,7 +398,6 @@ with tabs[4]:
                     else:
                         nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
             else:
-                # Si se desmarca, se remueve de forma segura del diccionario por su ID numérico
                 nuevos_cierres.pop(pid, None)
                 
             st.markdown("<div style='margin-bottom:15px;'></div>", unsafe_allow_html=True)
