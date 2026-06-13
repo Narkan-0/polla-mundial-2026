@@ -11,7 +11,6 @@ import pytz
 st.set_page_config(page_title="Polla Mundial 2026", page_icon="⚽", layout="wide")
 
 # CONSOLIDADO OFICIAL DE LOS 104 PARTIDOS CON LLAVES ELIMINATORIAS SEGÚN FORMATO FIFA
-# CONSOLIDADO OFICIAL DE LOS 104 PARTIDOS CON LLAVES ELIMINATORIAS SEGÚN FORMATO FIFA
 @st.cache_data
 def obtener_fixture_completo():
     return [
