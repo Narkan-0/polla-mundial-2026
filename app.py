@@ -348,10 +348,10 @@ with tabs[1]:
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS (FUSIÓN INDESTRUCTIBLE + VOLVER ARRIBA) ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS (FUSIÓN INDESTRUCTIBLE + VOLVER ARRIBA SEGURO) ---
 with tabs[2]:
-    # 1. Colocamos un ancla invisible en la parte superior del TAB
-    st.anchor("arriba_tab3")
+    # 1. Creamos un punto de destino usando HTML puro al inicio del Tab
+    st.markdown("<div id='inicio_tab3'></div>", unsafe_allow_html=True)
     
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -434,10 +434,12 @@ with tabs[2]:
             
             guardar_datos(datos)
             animar_balon_oficial()
-            st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
             
-            # 2. El truco maestro: el rerun nativo limpia la memoria y el scroll se ancla automáticamente arriba
+            # 2. Inyectamos un pequeño salto invisible hacia el foco de arriba e instruimos la recarga
+            st.markdown("<script>parent.window.scrollTo(0,0);</script>", unsafe_allow_html=True)
+            st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
             st.rerun()
+
 
 # --- TAB 4: CRONOGRAMA INTELIGENTE ---
 with tabs[3]:
