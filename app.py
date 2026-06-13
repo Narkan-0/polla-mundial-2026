@@ -348,7 +348,7 @@ with tabs[1]:
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS (CORREGIDO CON FORMULARIO SEGURO) ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS (FUSIÓN INDESTRUCTIBLE) ---
 with tabs[2]:
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
@@ -369,10 +369,9 @@ with tabs[2]:
     st.write(f"### 🏟️ Mostrando {len(partidos_visibles)} partidos de: **{bloque_seleccionado}**")
     st.write("---")
     
-    # 1. Creamos un formulario único por usuario y fecha para evitar micro-recargas al escribir
-    with st.form(key=f"formulario_apuestas_{usuario}_{filtro_fia}"):
+    # Encapsulamos todo en un formulario rígido para cortar las auto-recargas destructivas
+    with st.form(key=f"form_seguro_{usuario}_{filtro_fia}"):
         
-        # Diccionario temporal para retener los goles dentro del formulario sin alterar el JSON antes de tiempo
         respuestas_temporales = {}
         
         for part in partidos_visibles:
@@ -406,37 +405,34 @@ with tabs[2]:
                 st.markdown(f"<div style='text-align:right; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['local']} {part['flag_l']}</div>", unsafe_allow_html=True)
             with col_inputs:
                 c_in1, c_in2 = st.columns(2)
-            with c_in1:
+                with c_in1:
                     val_l = pred_actual.get("l") if pred_actual.get("l") is not None else 0
                     g_l = st.number_input("GL", min_value=0, max_value=15, value=int(val_l), key=f"l_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
-            with c_in2:
+                with c_in2:
                     val_v = pred_actual.get("v") if pred_actual.get("v") is not None else 0
                     g_v = st.number_input("GV", min_value=0, max_value=15, value=int(val_v), key=f"v_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
             with col_v:
                 st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
             
-            # Guardamos los valores numéricos actuales en el diccionario temporal
+            # Guardamos localmente en memoria intermedia, sin tocar el archivo JSON todavía
             respuestas_temporales[pid] = {"l": g_l, "v": g_v}
             
         st.write("---")
+        boton_guardar = st.form_submit_button(label="💾 GUARDAR APUESTAS DE ESTA FECHA", use_container_width=True)
         
-        # 2. El botón ahora es un elemento oficial del formulario (form_submit_button)
-        enviar_formulario = st.form_submit_button(label="💾 GUARDAR APUESTAS DE ESTA FECHA EN BLOQUE", use_container_width=True)
-        
-        if enviar_formulario:
-            # 3. Al presionar, traspasamos todo el bloque temporal a la estructura de datos real
+        if boton_guardar:
+            if usuario not in datos["pronosticos"]:
+                datos["pronosticos"][usuario] = {}
+                
             for pid, scores in respuestas_temporales.items():
                 partido_info = next((m for m in partidos_visibles if str(m["id"]) == pid), None)
-                # Doble verificación de seguridad para no sobreescribir partidos ya iniciados o cerrados
                 if partido_info and not verificar_partido_empezado(partido_info.get("fecha_ref", "2026-06-11 00:00")) and pid not in datos["resultados_reales"]:
-                    datos["pronosticos"][usuario][pid] = scores
+                    datos["pronosticos"][usuario][pid] = {"l": int(scores["l"]), "v": int(scores["v"])}
             
-            # Guardamos la estructura final en el JSON de una sola pasada
             guardar_datos(datos)
             animar_balon_oficial()
-            st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron procesados y guardados de forma 100% segura!")
+            st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
             st.rerun()
-
 
 # --- TAB 4: CRONOGRAMA INTELIGENTE ---
 with tabs[3]:
