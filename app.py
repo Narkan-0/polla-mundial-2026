@@ -406,10 +406,12 @@ with tabs[2]:
                 st.markdown(f"<div style='text-align:right; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['local']} {part['flag_l']}</div>", unsafe_allow_html=True)
             with col_inputs:
                 c_in1, c_in2 = st.columns(2)
-                with c_in1:
-                    g_l = st.number_input("GL", min_value=0, max_value=15, value=int(pred_actual.get("l", 0)), key=f"l_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
-                with c_in2:
-                    g_v = st.number_input("GV", min_value=0, max_value=15, value=int(pred_actual.get("v", 0)), key=f"v_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
+            with c_in1:
+                    val_l = pred_actual.get("l") if pred_actual.get("l") is not None else 0
+                    g_l = st.number_input("GL", min_value=0, max_value=15, value=int(val_l), key=f"l_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
+            with c_in2:
+                    val_v = pred_actual.get("v") if pred_actual.get("v") is not None else 0
+                    g_v = st.number_input("GV", min_value=0, max_value=15, value=int(val_v), key=f"v_{usuario}_{pid}", disabled=bloquear_casilla, label_visibility="collapsed")
             with col_v:
                 st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
             
