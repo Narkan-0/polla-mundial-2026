@@ -426,9 +426,11 @@ with tabs[2]:
         animar_balon_oficial()
         st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
 
-# --- TAB 4: CRONOGRAMA INTELIGENTE ---
+# --- TAB 4: CRONOGRAMA INTELIGENTE (ORDENADO Y FILTRABLE) ---
 with tabs[3]:
     st.markdown("## 📅 CRONOGRAMA OFICIAL Y MARCADORES EN VIVO")
+    
+    # 1. Construir la lista base de datos de los partidos
     lista_cronograma = []
     for part in FIXTURE_DINAMICO:
         pid = str(part["id"])
@@ -449,8 +451,7 @@ with tabs[3]:
             marcador_v = "-"
             
         lista_cronograma.append({
-            "Partido #": part["id"],
-            "Bloque/Fecha": part["fase_bloque"],
+            "fecha_orden": part["fecha_ref"],  # Columna oculta técnica para ordenar
             "Grupo/Fase": part["grupo"],
             "Fecha/Hora": f"{part['fecha']} ({part['hora']} hrs)",
             "Local": f"{part['flag_l']} {part['local']}",
@@ -461,7 +462,29 @@ with tabs[3]:
             "Estado": estado
         })
         
+    # 2. Convertir a DataFrame y FORZAR el orden cronológico estricto
     df_crono = pd.DataFrame(lista_cronograma)
+    df_crono["fecha_orden"] = pd.to_datetime(df_crono["fecha_orden"])
+    df_crono = df_crono.sort_values(by="fecha_orden", ascending=True).reset_index(drop=True)
+    
+    # Eliminar la columna técnica de ordenación para que no la vea el usuario
+    df_crono = df_crono.drop(columns=["fecha_orden"])
+    
+    # 3. Añadir el filtro dinámico para buscar grupos o selecciones
+    busqueda = st.text_input("🔍 Buscar por Grupo o Selección (ej: Grupo C, Brasil, México):", "").strip().lower()
+    
+    if busqueda:
+        # Filtra si la palabra coincide en el Grupo, el Local o el Visitante
+        mask = (
+            df_crono["Grupo/Fase"].str.lower().str.contains(busqueda) |
+            df_crono["Local"].str.lower().str.contains(busqueda) |
+            df_crono["Visitante"].str.lower().str.contains(busqueda)
+        )
+        df_mostrar = df_crono[mask]
+    else:
+        df_mostrar = df_crono
+        
+    # 4. Aplicar el formato visual de filas grises y rojas según el estado
     def estilo_filas_finalizadas(row):
         if row["Estado"] == "🔒 FINALIZADO":
             return ['background-color: rgba(71, 85, 105, 0.25); color: #94a3b8; font-style: italic;'] * len(row)
@@ -469,8 +492,25 @@ with tabs[3]:
             return ['background-color: rgba(186, 18, 60, 0.15); color: #fda4af;'] * len(row)
         return [''] * len(row)
         
-    df_estilizado = df_crono.style.apply(estilo_filas_finalizadas, axis=1)
-    st.dataframe(df_estilizado, use_container_width=True, hide_index=True)
+    df_estilizado = df_mostrar.style.apply(estilo_filas_finalizadas, axis=1)
+    
+    # 5. Desplegar la tabla bloqueando el ordenamiento interactivo (column_order fija el diseño)
+    st.dataframe(
+        df_estilizado, 
+        use_container_width=True, 
+        hide_index=True,
+        column_config={
+            "Grupo/Fase": st.column_config.TextColumn(disabled=True),
+            "Fecha/Hora": st.column_config.TextColumn(disabled=True),
+            "Local": st.column_config.TextColumn(disabled=True),
+            "Goles L": st.column_config.TextColumn(disabled=True),
+            "Goles V": st.column_config.TextColumn(disabled=True),
+            "Visitante": st.column_config.TextColumn(disabled=True),
+            "Estadio": st.column_config.TextColumn(disabled=True),
+            "Estado": st.column_config.TextColumn(disabled=True)
+        }
+    )
+
 
 # # --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
 with tabs[4]:
