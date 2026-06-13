@@ -146,21 +146,28 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO (CONEXIÓN DIRECTA AL PANEL) ---
+# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO (MOLDE INDESTRUCTIBLE ANTIFALLOS) ---
 def inicializar_base_de_datos():
-    # Creamos un molde dinámico, limpio y completamente vacío para todos
+    # 1. Definimos la estructura base segura con todos los jugadores en blanco
     base_inicial = {
         "resultados_reales": {},
         "pronosticos": {p: {} for p in PARTICIPANTES}
     }
     
-    # Si ya existe el archivo en el servidor, lo cargamos para mantener la memoria viva
+    # 2. Si existe el archivo en el servidor, intentamos cargarlo
     if os.path.exists("datos_polla.json"):
         with open("datos_polla.json", "r") as f:
             try:
                 content = json.load(f)
-                if isinstance(content, dict) and "resultados_reales" in content:
-                    return content
+                if isinstance(content, dict):
+                    # Nos aseguramos de mantener la estructura interna pase lo que pase
+                    if "resultados_reales" in content:
+                        base_inicial["resultados_reales"] = content["resultados_reales"]
+                    if "pronosticos" in content:
+                        # Fusionamos los pronósticos del archivo resguardando que estén todos los participantes
+                        for p in PARTICIPANTES:
+                            base_inicial["pronosticos"][p] = content["pronosticos"].get(p, {})
+                    return base_inicial
             except:
                 pass
     return base_inicial
@@ -177,6 +184,7 @@ def guardar_datos(datos_completos):
             json.dump(datos_completos, f, indent=4)
     except:
         pass
+
 
 def resolver_fixture_dinamico(fixture_base, resultados_reales):
     fixture_copia = [dict(m) for m in fixture_base]
