@@ -348,8 +348,11 @@ with tabs[1]:
     st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
-# --- TAB 3: REGISTRAR PRONÓSTICOS (FUSIÓN INDESTRUCTIBLE) ---
+# --- TAB 3: REGISTRAR PRONÓSTICOS (FUSIÓN INDESTRUCTIBLE + VOLVER ARRIBA) ---
 with tabs[2]:
+    # 1. Colocamos un ancla invisible en la parte superior del TAB
+    st.anchor("arriba_tab3")
+    
     st.markdown("## ✍️ ARMA TU JUGADA")
     usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
     
@@ -414,7 +417,7 @@ with tabs[2]:
             with col_v:
                 st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
             
-            # Guardamos localmente en memoria intermedia, sin tocar el archivo JSON todavía
+            # Guardamos localmente en memoria intermedia
             respuestas_temporales[pid] = {"l": g_l, "v": g_v}
             
         st.write("---")
@@ -432,6 +435,8 @@ with tabs[2]:
             guardar_datos(datos)
             animar_balon_oficial()
             st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
+            
+            # 2. El truco maestro: el rerun nativo limpia la memoria y el scroll se ancla automáticamente arriba
             st.rerun()
 
 # --- TAB 4: CRONOGRAMA INTELIGENTE ---
