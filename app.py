@@ -510,53 +510,93 @@ with tabs[3]:
             "Estado": st.column_config.TextColumn(disabled=True)
         }
     )
-
-
-# # --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
+# --- TAB 5: PANEL CONTROL ADMINISTRADOR (SUPERPODERES TOTALES) ---
 with tabs[4]:
     st.markdown("## ⚙️ PANEL DE CONTROL DE ADMINISTRADOR")
     pass_input = st.text_input("Token de Seguridad Mandamás:", type="password")
     
     if pass_input == PASSWORD_ADMIN:
         st.success("🔓 Acceso Concedido como Mandamás")
-        fase_admin = st.selectbox("Selecciona Fecha a Cargar en Sistema:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
+        
+        # Selector de acción para el administrador
+        accion_admin = st.radio(
+            "¿Qué deseas gestionar con tus superpoderes?",
+            ["📝 Cargar Resultados Oficiales", "✍️ Inyectar/Corregir Apuestas de Jugadores"],
+            horizontal=True
+        )
+        
+        fase_admin = st.selectbox("Selecciona la Fase a gestionar:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
         partidos_admin = [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]
         
         st.write("---")
-        st.write("### 📝 RELLENAR MARCADORES OFICIALES MUNDIALISTAS")
-        nuevos_cierres = dict(datos["resultados_reales"])
         
-        for part in partidos_admin:
-            pid = str(part["id"])
-            real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
-            esta_cerrado = pid in datos["resultados_reales"]
+        # --- MODO 1: CARGAR RESULTADOS REALES ---
+        if accion_admin == "📝 Cargar Resultados Oficiales":
+            st.write("### 🏟️ REGISTRAR MARCADORES OFICIALES MUNDIALISTAS")
+            nuevos_cierres = dict(datos["resultados_reales"])
             
-            st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
-            c_al, c_av, c_check = st.columns([2, 2, 3])
+            for part in partidos_admin:
+                pid = str(part["id"])
+                real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
+                esta_cerrado = pid in datos["resultados_reales"]
+                
+                st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
+                c_al, c_av, c_check = st.columns([2, 2, 3])
+                
+                with c_al: 
+                    g_r_l = st.number_input(f"Goles {part['local']}", min_value=0, max_value=15, value=int(real_actual.get("l", 0)), key=f"rl_{pid}", label_visibility="collapsed")
+                with c_av: 
+                    g_r_v = st.number_input(f"Goles {part['visita']}", min_value=0, max_value=15, value=int(real_actual.get("v", 0)), key=f"rv_{pid}", label_visibility="collapsed")
+                with c_check:
+                    finalizado = st.checkbox("¿Cerrar y bloquear apuestas? (Resultado Oficial)", key=f"play_{pid}", value=esta_cerrado)
+                
+                if finalizado:
+                    nuevos_cierres[pid] = {"l": g_r_l, "v": g_r_v}
+                    if "Fases Finales" in part["fase_bloque"]:
+                        if g_r_l == g_r_v:
+                            avanza_eq = st.selectbox(f"🏆 ¿Quién clasifica?", [part['local'], part['visita']], key=f"avanza_{pid}")
+                            nuevos_cierres[pid]["avanza"] = avanza_eq
+                        else:
+                            nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
+                else:
+                    nuevos_cierres.pop(pid, None)
+                st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
+                
+            if st.button("🔄 ACTUALIZAR MARCADORES MUNDIALES", use_container_width=True):
+                datos["resultados_reales"] = nuevos_cierres
+                guardar_datos(datos)
+                st.toast("¡Marcadores actualizados e indestructiblemente guardados!")
+                st.rerun()
+
+        # --- MODO 2: INYECTAR O CORREGIR APUESTAS DE JUGADORES ---
+        elif accion_admin == "✍️ Inyectar/Corregir Apuestas de Jugadores":
+            st.write("### 👤 SALTAR BLOQUEO DE TIEMPO E INGRESA APUESTAS")
+            jugador_a_editar = st.selectbox("Selecciona al jugador que le vas a meter la apuesta:", PARTICIPANTES)
             
-            with c_al: 
-                # Se eliminó la restricción para que tú siempre puedas ingresar los goles reales
-                g_r_l = st.number_input(f"Goles {part['local']}", min_value=0, max_value=15, value=int(real_actual.get("l", 0)), key=f"rl_{pid}", label_visibility="collapsed")
-            with c_av: 
-                g_r_v = st.number_input(f"Goles {part['visita']}", min_value=0, max_value=15, value=int(real_actual.get("v", 0)), key=f"rv_{pid}", label_visibility="collapsed")
-            with c_check:
-                finalizado = st.checkbox("¿Cerrar y bloquear apuestas? (Resultado al término de los 90')", key=f"play_{pid}", value=esta_cerrado)
+            st.warning(f"Estás editando la cartilla de **{jugador_a_editar}**. Aquí NO opera el candado de tiempo.")
             
-            if finalizado:
-                nuevos_cierres[pid] = {"l": g_r_l, "v": g_r_v}
-                if "Fases Finales" in part["fase_bloque"]:
-                    if g_r_l == g_r_v:
-                        avanza_eq = st.selectbox(f"🏆 ¿Quién clasifica por penales/prórroga?", [part['local'], part['visita']], key=f"avanza_{pid}")
-                        nuevos_cierres[pid]["avanza"] = avanza_eq
-                    else:
-                        nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
-            else:
-                nuevos_cierres.pop(pid, None)
-            st.markdown("<div style='margin-bottom:15px;'></div>", unsafe_allow_html=True)
-            
-        st.write("---")
-        if st.button("🔄 ACTUALIZAR MARCADORES Y CONGELAR PARTIDOS", use_container_width=True):
-            datos["resultados_reales"] = nuevos_cierres
-            guardar_datos(datos)
-            st.toast("¡Marcadores congelados y puntajes familiares recalculados con éxito!")
-            st.rerun()
+            for part in partidos_admin:
+                pid = str(part["id"])
+                pred_actual = datos["pronosticos"].get(jugador_a_editar, {}).get(pid, {"l": 0, "v": 0})
+                
+                st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
+                c_il, c_iv = st.columns(2)
+                
+                with c_il:
+                    g_l = st.number_input(f"Goles Local", min_value=0, max_value=15, value=int(pred_actual.get("l", 0)), key=f"admin_l_{jugador_a_editar}_{pid}")
+                with c_iv:
+                    g_v = st.number_input(f"Goles Visita", min_value=0, max_value=15, value=int(pred_actual.get("v", 0)), key=f"admin_v_{jugador_a_editar}_{pid}")
+                
+                # Guardamos directamente en la estructura del jugador saltándonos el bloqueo
+                if jugador_a_editar not in datos["pronosticos"]:
+                    datos["pronosticos"][jugador_a_editar] = {}
+                datos["pronosticos"][jugador_a_editar][pid] = {"l": g_l, "v": g_v}
+                st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
+                
+            if st.button(f"💾 SALVAR CARTILLA DE {jugador_a_editar.upper()}", use_container_width=True):
+                guardar_datos(datos)
+                st.success(f"¡Modificación forzosa de {jugador_a_editar} guardada con éxito!")
+                st.rerun()
+
+
+cul
