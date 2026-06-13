@@ -597,6 +597,3 @@ with tabs[4]:
                 guardar_datos(datos)
                 st.success(f"¡Modificación forzosa de {jugador_a_editar} guardada con éxito!")
                 st.rerun()
-
-
-cul
