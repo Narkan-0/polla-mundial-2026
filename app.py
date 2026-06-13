@@ -146,26 +146,15 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO (CORREGIDA) ---
+# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO (CONEXIÓN DIRECTA AL PANEL) ---
 def inicializar_base_de_datos():
-    # Estructura limpia inicial
+    # Creamos un molde dinámico, limpio y completamente vacío para todos
     base_inicial = {
-        "resultados_reales": {
-            "2": { "l": 1, "v": 1 }  # Dejamos grabado el de Corea que ya pasó
-        },
-        "pronosticos": {
-            "Constanza": {"2": {"l": 1, "v": 0}, "3": {"l": 1, "v": 1}},
-            "José Alonso": {"2": {"l": 1, "v": 2}, "3": {"l": 1, "v": 0}},
-            "José Mario": {"2": {"l": 0, "v": 3}, "3": {"l": 0, "v": 2}},
-            "Leonardo": {"2": {"l": 0, "v": 1}, "3": {"l": 0, "v": 1}},
-            "Mario": {"2": {"l": 1, "v": 2}, "3": {"l": 2, "v": 0}},
-            "Néstor": {"2": {"l": 1, "v": 1}, "3": {"l": 0, "v": 1}},
-            "Renato": {"2": {"l": 1, "v": 1}, "3": {"l": 2, "v": 1}}, # Agregado Renato
-            "Sergio": {"3": {"l": 1, "v": 2}}
-        }
+        "resultados_reales": {},
+        "pronosticos": {p: {} for p in PARTICIPANTES}
     }
     
-    # Intentar cargar desde el archivo local si existe en el servidor
+    # Si ya existe el archivo en el servidor, lo cargamos para mantener la memoria viva
     if os.path.exists("datos_polla.json"):
         with open("datos_polla.json", "r") as f:
             try:
@@ -174,10 +163,8 @@ def inicializar_base_de_datos():
                     return content
             except:
                 pass
-                
     return base_inicial
 
-# Guardar los datos de forma persistente en la memoria de la sesión activa
 if "datos_globales" not in st.session_state:
     st.session_state["datos_globales"] = inicializar_base_de_datos()
 
@@ -190,7 +177,6 @@ def guardar_datos(datos_completos):
             json.dump(datos_completos, f, indent=4)
     except:
         pass
-
 
 def resolver_fixture_dinamico(fixture_base, resultados_reales):
     fixture_copia = [dict(m) for m in fixture_base]
