@@ -435,6 +435,7 @@ with tabs[2]:
             st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron procesados y guardados de forma 100% segura!")
             st.rerun()
 
+
 # --- TAB 4: CRONOGRAMA INTELIGENTE ---
 with tabs[3]:
     st.markdown("## 📅 CRONOGRAMA OFICIAL Y MARCADORES EN VIVO")
