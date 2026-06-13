@@ -117,7 +117,7 @@ def obtener_frase_futbolera():
     return random.choice(frases)
 
 # CONFIGURACIÓN GENERAL DE USUARIOS
-PARTICIPANTES = ["Christian", "Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
+PARTICIPANTES = [ "Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
 
@@ -434,12 +434,11 @@ with tabs[2]:
             
             guardar_datos(datos)
             animar_balon_oficial()
-            
-            # 2. Inyectamos un pequeño salto invisible hacia el foco de arriba e instruimos la recarga
-            st.markdown("<script>parent.window.scrollTo(0,0);</script>", unsafe_allow_html=True)
             st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron guardados correctamente!")
+            
+            # Formato correcto para inyectar el scroll nativo en el navegador antes de reiniciar
+            st.html("<script>window.parent.document.querySelector('section.main').scrollTo(0, 0);</script>")
             st.rerun()
-
 
 # --- TAB 4: CRONOGRAMA INTELIGENTE ---
 with tabs[3]:
@@ -518,7 +517,7 @@ with tabs[3]:
         }
     )
 
-# --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
+# --- TAB 5: PANEL CONTROL ADMINISTRADOR (FUSIÓN INDESTRUCTIBLE + SCROLL ARRIBA) ---
 with tabs[4]:
     st.markdown("## ⚙️ PANEL DE CONTROL DE ADMINISTRADOR")
     pass_input = st.text_input("Token de Seguridad Mandamás:", type="password")
@@ -568,11 +567,16 @@ with tabs[4]:
                 else:
                     nuevos_cierres.pop(pid, None)
                 st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
-                
+            
+            st.write("---")
             if st.button("🔄 ACTUALIZAR MARCADORES MUNDIALES", use_container_width=True):
+                # Guardamos los nuevos cierres reales procesados en el bucle
                 datos["resultados_reales"] = nuevos_cierres
                 guardar_datos(datos)
-                st.toast("¡Marcadores actualizados e indestructiblemente guardados!")
+                st.success("¡Marcadores oficiales actualizados y tabla recalculada!")
+                
+                # Mueve la pantalla al tope en iPad/PC antes de recargar
+                st.html("<script>window.parent.document.querySelector('section.main').scrollTo(0, 0);</script>")
                 st.rerun()
 
         # --- MODO 2: INYECTAR O CORREGIR APUESTAS DE JUGADORES ---
@@ -582,6 +586,8 @@ with tabs[4]:
             
             st.warning(f"Estás editando la cartilla de **{jugador_a_editar}**. Aquí NO opera el candado de tiempo.")
             
+            respuestas_temporales_admin = {}
+            
             for part in partidos_admin:
                 pid = str(part["id"])
                 pred_actual = datos["pronosticos"].get(jugador_a_editar, {}).get(pid, {"l": 0, "v": 0})
@@ -590,16 +596,26 @@ with tabs[4]:
                 c_il, c_iv = st.columns(2)
                 
                 with c_il:
-                    g_l = st.number_input(f"Goles Local", min_value=0, max_value=15, value=int(pred_actual.get("l", 0)), key=f"admin_l_{jugador_a_editar}_{pid}")
+                    val_admin_l = pred_actual.get("l") if pred_actual.get("l") is not None else 0
+                    g_l = st.number_input(f"Goles Local", min_value=0, max_value=15, value=int(val_admin_l), key=f"admin_l_{jugador_a_editar}_{pid}")
                 with c_iv:
-                    g_v = st.number_input(f"Goles Visita", min_value=0, max_value=15, value=int(pred_actual.get("v", 0)), key=f"admin_v_{jugador_a_editar}_{pid}")
+                    val_admin_v = pred_actual.get("v") if pred_actual.get("v") is not None else 0
+                    g_v = st.number_input(f"Goles Visita", min_value=0, max_value=15, value=int(val_admin_v), key=f"admin_v_{jugador_a_editar}_{pid}")
                 
-                if jugador_a_editar not in datos["pronosticos"]:
-                    datos["pronosticos"][jugador_a_editar] = {}
-                datos["pronosticos"][jugador_a_editar][pid] = {"l": g_l, "v": g_v}
+                respuestas_temporales_admin[pid] = {"l": g_l, "v": g_v}
                 st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
                 
+            st.write("---")
             if st.button(f"💾 SALVAR CARTILLA DE {jugador_a_editar.upper()}", use_container_width=True):
+                if jugador_a_editar not in datos["pronosticos"]:
+                    datos["pronosticos"][jugador_a_editar] = {}
+                
+                for pid, scores in respuestas_temporales_admin.items():
+                    datos["pronosticos"][jugador_a_editar][pid] = {"l": int(scores["l"]), "v": int(scores["v"])}
+                    
                 guardar_datos(datos)
                 st.success(f"¡Modificación forzosa de {jugador_a_editar} guardada con éxito!")
+                
+                # Mueve la pantalla al tope en iPad/PC antes de recargar
+                st.html("<script>window.parent.document.querySelector('section.main').scrollTo(0, 0);</script>")
                 st.rerun()
