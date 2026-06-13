@@ -40,7 +40,7 @@ def obtener_fixture_completo():
         {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha_ref": "2026-06-17 19:00", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
         {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha_ref": "2026-06-17 22:00", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
 
-        # --- FECHA 2 (Partidos 25 al 48) ---
+        # --- FECHA 2 (Partidos 25 al 48) — ORDENADO CRONOLÓGICAMENTE ---
         {"id": 25, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha_ref": "2026-06-18 12:00", "fecha": "18 de Junio", "hora": "12:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "SUDÁFRICA", "flag_v": "🇿🇦", "estadio": "Atlanta"},
         {"id": 26, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha_ref": "2026-06-18 15:00", "fecha": "18 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "BOSNIA Y HERZEG.", "flag_v": "🇧🇦", "estadio": "Los Angeles"},
         {"id": 27, "fase_bloque": "Fecha 2", "grupo": "Grupo B", "fecha_ref": "2026-06-18 18:00", "fecha": "18 de Junio", "hora": "18:00", "local": "CANADÁ", "flag_l": "🇨🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Vancouver"},
@@ -66,7 +66,7 @@ def obtener_fixture_completo():
         {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha_ref": "2026-06-23 22:00", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Guadalajara"},
         {"id": 48, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha_ref": "2026-06-22 23:00", "fecha": "22 de Junio", "hora": "23:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "San Francisco"},
 
-        # --- FECHA 3 (Partidos 49 al 72) ---
+        # --- FECHA 3 (Partidos 49 al 72) — ORDENADO CRONOLÓGICAMENTE ---
         {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha_ref": "2026-06-24 15:00", "fecha": "24 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Vancouver"},
         {"id": 50, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha_ref": "2026-06-24 15:00", "fecha": "24 de Junio", "hora": "15:00", "local": "BOSNIA Y HERZEG.", "flag_l": "🇧🇦", "visita": "CATAR", "flag_v": "🇶🇦", "estadio": "Seattle"},
         {"id": 51, "fase_bloque": "Fecha 3", "grupo": "Grupo C", "fecha_ref": "2026-06-24 18:00", "fecha": "24 de Junio", "hora": "18:00", "local": "ESCOCIA", "flag_l": "\U0001F3F4\U000E0067\U000E0062\U000E0073\U000E0063\U000E0074\U000E007F", "visita": "BRASIL", "flag_v": "🇧🇷", "estadio": "Miami"},
@@ -92,7 +92,7 @@ def obtener_fixture_completo():
         {"id": 71, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha_ref": "2026-06-26 23:00", "fecha": "26 de Junio", "hora": "23:00", "local": "EGIPTO", "flag_l": "🇪🇬", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Seattle"},
         {"id": 72, "fase_bloque": "Fecha 3", "grupo": "Grupo G", "fecha_ref": "2026-06-26 23:00", "fecha": "26 de Junio", "hora": "23:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "BÉLGICA", "flag_v": "🇧🇪", "estadio": "Vancouver"},
 
-        # --- FASES FINALES ---
+        # --- FASES FINALES (Estructura Intacta) ---
         {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-28 16:00", "fecha": "28 de Junio", "hora": "16:00", "local": "2A", "flag_l": "⚽", "visita": "2B", "flag_v": "⚽", "estadio": "Los Angeles"},
         {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 15:00", "fecha": "29 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3C/E/F/I", "flag_v": "⚽", "estadio": "Boston"},
         {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 18:00", "fecha": "29 de Junio", "hora": "18:00", "local": "1B", "flag_l": "⚽", "visita": "3A/C/F/H", "flag_v": "⚽", "estadio": "Atlanta"},
@@ -146,7 +146,7 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO ---
+# --- LÓGICA DE PERSISTENCIA DE DATOS EN VIVO (MOLDE INDESTRUCTIBLE ANTIFALLOS) ---
 def inicializar_base_de_datos():
     base_inicial = {
         "resultados_reales": {},
@@ -180,6 +180,7 @@ def guardar_datos(datos_completos):
             json.dump(datos_completos, f, indent=4)
     except:
         pass
+
 
 def resolver_fixture_dinamico(fixture_base, resultados_reales):
     fixture_copia = [dict(m) for m in fixture_base]
@@ -215,6 +216,7 @@ def calcular_puntos(real_l, real_v, pred_l, pred_v):
         return 1, "#eab308", "🟡 Tendencia Acertada (+1 Pt)"
     return 0, "#ef4444", "🔴 Fallado (0 Pts)"
 
+# FUNCIÓN PARA CONTROLAR EL PITAZO INICIAL AUTOMÁTICO EN CHILE
 def verificar_partido_empezado(fecha_ref_str):
     tz_chile = pytz.timezone('America/Santiago')
     ahora_chile = datetime.now(tz_chile)
@@ -225,7 +227,7 @@ def verificar_partido_empezado(fecha_ref_str):
     except:
         return False
 
-# ANIMACIÓN DEL BALÓN
+# ANIMACIÓN DEL BALÓN REAL (balon.png)
 def animar_balon_oficial():
     src_balon = img_balon if img_balon else "⚽"
     if img_balon:
@@ -265,7 +267,26 @@ tabs = st.tabs(["📜 BASES DEL JUEGO", "📊 CLASIFICACIÓN EN VIVO", "✍️ R
 with tabs[0]:
     st.markdown("""
     ## 🏆 BASES POLLA MUNDIALERA 🏆
-    ...
+    
+    ⚽ **Inscripción:** $5.000 por cartilla. El 100% va al pozo familiar.
+    
+    📅 **Plazo de envío:** Se puede apostar o modificar el pronóstico **hasta el pitazo inicial** de cada partido. Una vez que empieza el juego, el sistema bloquea automáticamente el partido.
+    
+    ⏱️ **Tiempo Reglamentario:** Todos los pronósticos son válidos **exclusivamente para los 90 minutos reglamentarios** (incluyendo el tiempo añadido por el árbitro). Si hay empate al 90', el partido se cuenta como EMPATE para la polla. Goles en prórrogas o tandas de penales **NO cuentan** para el marcador de la apuesta.
+    
+    💰 **Premios (Al final del Mundial):**
+    * 🥇 **1er Lugar:** 50% del pozo acumulado.
+    * 🥈 **2do Lugar:** 33,3% del pozo acumulado.
+    * 🥉 **3er Lugar:** 16,6% del pozo acumulado.
+    
+    📊 **Puntuación:**
+    * **3 puntos:** Resultado exacto.
+    * **1 punto:** Acierto a Ganador o Empate (pero no al marcador exacto).
+    * **0 puntos:** No acierta nada.
+    
+    ⚔️ **Desempate (Si hay igualdad de puntos al final):**
+    * Gana quien tenga más resultados exactos (de 3 puntos) anotados.
+    * Si persiste el empate, el premio del puesto se divide en partes iguales.
     """)
 
 # --- TAB 2: CLASIFICACIÓN EN VIVO ---
@@ -297,7 +318,34 @@ with tabs[1]:
     puntero_3 = df_tabla.iloc[2]["Participante"].upper() if len(df_tabla) > 2 else "POR DEFINIR"
     
     st.markdown(f"### 💰 Pozo Acumulado del Grupo: **${fondo_total:,.0f} CLP**")
-    ...
+    
+    c_p1, c_p2, c_p3 = st.columns(3)
+    with c_p1:
+        st.markdown(f"""
+        <div style="background: rgba(34, 197, 94, 0.15); padding: 15px; border-radius: 10px; border: 1px solid #22c55e; text-align: center;">
+            <span style="font-size: 0.95rem; color: #cbd5e1; display: block;">🥇 1er Lugar Tentativo (50%)</span>
+            <span style="font-size: 1.6rem; font-weight: 900; color: #fbbf24; display: block; margin: 5px 0;">{puntero_1}</span>
+            <span style="font-size: 1.3rem; font-weight: bold; color: #ffffff;">${fondo_total * 0.50:,.0f}</span>
+        </div>
+        """, unsafe_allow_html=True)
+    with c_p2:
+        st.markdown(f"""
+        <div style="background: rgba(234, 179, 8, 0.1); padding: 15px; border-radius: 10px; border: 1px solid #eab308; text-align: center;">
+            <span style="font-size: 0.95rem; color: #cbd5e1; display: block;">🥈 2do Lugar Tentativo (33.3%)</span>
+            <span style="font-size: 1.4rem; font-weight: bold; color: #e2e8f0; display: block; margin: 5px 0;">{puntero_2}</span>
+            <span style="font-size: 1.2rem; font-weight: bold; color: #ffffff;">${fondo_total * 0.333:,.0f}</span>
+        </div>
+        """, unsafe_allow_html=True)
+    with c_p3:
+        st.markdown(f"""
+        <div style="background: rgba(239, 68, 68, 0.1); padding: 15px; border-radius: 10px; border: 1px solid #ef4444; text-align: center;">
+            <span style="font-size: 0.95rem; color: #cbd5e1; display: block;">🥉 3er Lugar Tentativo (16.6%)</span>
+            <span style="font-size: 1.4rem; font-weight: bold; color: #e2e8f0; display: block; margin: 5px 0;">{puntero_3}</span>
+            <span style="font-size: 1.2rem; font-weight: bold; color: #ffffff;">${fondo_total * 0.166:,.0f}</span>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    st.write("---")
     st.dataframe(df_tabla, use_container_width=True)
 
 # --- TAB 3: REGISTRAR PRONÓSTICOS (CORREGIDO CON FORMULARIO SEGURO) ---
@@ -321,10 +369,10 @@ with tabs[2]:
     st.write(f"### 🏟️ Mostrando {len(partidos_visibles)} partidos de: **{bloque_seleccionado}**")
     st.write("---")
     
-    # Creamos un contenedor de formulario único para procesar todo sin micro-recargas intermedias
+    # 1. Creamos un formulario único por usuario y fecha para evitar micro-recargas al escribir
     with st.form(key=f"formulario_apuestas_{usuario}_{filtro_fia}"):
         
-        # Diccionario temporal interno para capturar los inputs del formulario de forma limpia
+        # Diccionario temporal para retener los goles dentro del formulario sin alterar el JSON antes de tiempo
         respuestas_temporales = {}
         
         for part in partidos_visibles:
@@ -365,21 +413,23 @@ with tabs[2]:
             with col_v:
                 st.markdown(f"<div style='text-align:left; font-weight:bold; font-size:1rem; padding-top:6px;'>{part['flag_v']} {part['visita']}</div>", unsafe_allow_html=True)
             
-            # Guardamos temporalmente el valor actual del input (esté bloqueado o no)
+            # Guardamos los valores numéricos actuales en el diccionario temporal
             respuestas_temporales[pid] = {"l": g_l, "v": g_v}
             
         st.write("---")
-        # El botón de guardado ahora envía el bloque completo de golpe de forma segura
+        
+        # 2. El botón ahora es un elemento oficial del formulario (form_submit_button)
         enviar_formulario = st.form_submit_button(label="💾 GUARDAR APUESTAS DE ESTA FECHA EN BLOQUE", use_container_width=True)
         
         if enviar_formulario:
-            # Transferimos los datos temporales limpios a nuestra base oficial
+            # 3. Al presionar, traspasamos todo el bloque temporal a la estructura de datos real
             for pid, scores in respuestas_temporales.items():
-                # Doble validación por si el partido expiró en el último segundo antes de presionar enviar
                 partido_info = next((m for m in partidos_visibles if str(m["id"]) == pid), None)
+                # Doble verificación de seguridad para no sobreescribir partidos ya iniciados o cerrados
                 if partido_info and not verificar_partido_empezado(partido_info.get("fecha_ref", "2026-06-11 00:00")) and pid not in datos["resultados_reales"]:
                     datos["pronosticos"][usuario][pid] = scores
             
+            # Guardamos la estructura final en el JSON de una sola pasada
             guardar_datos(datos)
             animar_balon_oficial()
             st.success(f"¡Excelente {usuario}, tus pronósticos activos de la {filtro_fia} fueron procesados y guardados de forma 100% segura!")
@@ -388,4 +438,162 @@ with tabs[2]:
 # --- TAB 4: CRONOGRAMA INTELIGENTE ---
 with tabs[3]:
     st.markdown("## 📅 CRONOGRAMA OFICIAL Y MARCADORES EN VIVO")
-    ...
+    
+    lista_cronograma = []
+    for part in FIXTURE_DINAMICO:
+        pid = str(part["id"])
+        real = datos["resultados_reales"].get(pid)
+        ya_empezo = verificar_partido_empezado(part.get("fecha_ref", "2026-06-11 00:00"))
+        
+        if real and "l" in real and "v" in real:
+            estado = "🔒 FINALIZADO"
+            marcador_l = str(real["l"])
+            marcador_v = str(real["v"])
+        elif ya_empezo:
+            estado = "⏱️ EN CURSO / EN JUEGO"
+            marcador_l = "-"
+            marcador_v = "-"
+        else:
+            estado = "🟢 ABIERTO / ESPERANDO"
+            marcador_l = "-"
+            marcador_v = "-"
+            
+        lista_cronograma.append({
+            "fecha_orden": part["fecha_ref"],
+            "Grupo/Fase": part["grupo"],
+            "Fecha/Hora": f"{part['fecha']} ({part['hora']} hrs)",
+            "Local": f"{part['flag_l']} {part['local']}",
+            "Goles L": marcador_l,
+            "Goles V": marcador_v,
+            "Visitante": f"{part['flag_v']} {part['visita']}",
+            "Estadio": part["estadio"],
+            "Estado": estado
+        })
+        
+    df_crono = pd.DataFrame(lista_cronograma)
+    df_crono["fecha_orden"] = pd.to_datetime(df_crono["fecha_orden"])
+    df_crono = df_crono.sort_values(by="fecha_orden", ascending=True).reset_index(drop=True)
+    df_crono = df_crono.drop(columns=["fecha_orden"])
+    
+    busqueda = st.text_input("🔍 Buscar por Grupo o Selección (ej: Grupo C, Brasil, México):", "").strip().lower()
+    
+    if busqueda:
+        mask = (
+            df_crono["Grupo/Fase"].str.lower().str.contains(busqueda) |
+            df_crono["Local"].str.lower().str.contains(busqueda) |
+            df_crono["Visitante"].str.lower().str.contains(busqueda)
+        )
+        df_mostrar = df_crono[mask]
+    else:
+        df_mostrar = df_crono
+        
+    def estilo_filas_finalizadas(row):
+        if row["Estado"] == "🔒 FINALIZADO":
+            return ['background-color: rgba(71, 85, 105, 0.25); color: #94a3b8; font-style: italic;'] * len(row)
+        elif row["Estado"] == "⏱️ EN CURSO / EN JUEGO":
+            return ['background-color: rgba(186, 18, 60, 0.15); color: #fda4af;'] * len(row)
+        return [''] * len(row)
+        
+    df_estilizado = df_mostrar.style.apply(estilo_filas_finalizadas, axis=1)
+    
+    st.dataframe(
+        df_estilizado, 
+        use_container_width=True, 
+        hide_index=True,
+        column_config={
+            "Grupo/Fase": st.column_config.TextColumn(disabled=True),
+            "Fecha/Hora": st.column_config.TextColumn(disabled=True),
+            "Local": st.column_config.TextColumn(disabled=True),
+            "Goles L": st.column_config.TextColumn(disabled=True),
+            "Goles V": st.column_config.TextColumn(disabled=True),
+            "Visitante": st.column_config.TextColumn(disabled=True),
+            "Estadio": st.column_config.TextColumn(disabled=True),
+            "Estado": st.column_config.TextColumn(disabled=True)
+        }
+    )
+
+# --- TAB 5: PANEL CONTROL ADMINISTRADOR ---
+with tabs[4]:
+    st.markdown("## ⚙️ PANEL DE CONTROL DE ADMINISTRADOR")
+    pass_input = st.text_input("Token de Seguridad Mandamás:", type="password")
+    
+    if pass_input == PASSWORD_ADMIN:
+        st.success("🔓 Acceso Concedido como Mandamás")
+        
+        accion_admin = st.radio(
+            "¿Qué deseas gestionar con tus superpoderes?",
+            ["📝 Cargar Resultados Oficiales", "✍️ Inyectar/Corregir Apuestas de Jugadores"],
+            horizontal=True
+        )
+        
+        fase_admin = st.selectbox("Selecciona la Fase a gestionar:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
+        partidos_admin = [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]
+        
+        st.write("---")
+        
+        # --- MODO 1: CARGAR RESULTADOS REALES ---
+        if accion_admin == "📝 Cargar Resultados Oficiales":
+            st.write("### 🏟️ REGISTRAR MARCADORES OFICIALES MUNDIALISTAS")
+            nuevos_cierres = dict(datos["resultados_reales"])
+            
+            for part in partidos_admin:
+                pid = str(part["id"])
+                real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
+                esta_cerrado = pid in datos["resultados_reales"]
+                
+                st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
+                c_al, c_av, c_check = st.columns([2, 2, 3])
+                
+                with c_al: 
+                    g_r_l = st.number_input(f"Goles {part['local']}", min_value=0, max_value=15, value=int(real_actual.get("l", 0)), key=f"rl_{pid}", label_visibility="collapsed")
+                with c_av: 
+                    g_r_v = st.number_input(f"Goles {part['visita']}", min_value=0, max_value=15, value=int(real_actual.get("v", 0)), key=f"rv_{pid}", label_visibility="collapsed")
+                with c_check:
+                    finalizado = st.checkbox("¿Cerrar y bloquear apuestas? (Resultado Oficial)", key=f"play_{pid}", value=esta_cerrado)
+                
+                if finalizado:
+                    nuevos_cierres[pid] = {"l": g_r_l, "v": g_r_v}
+                    if "Fases Finales" in part["fase_bloque"]:
+                        if g_r_l == g_r_v:
+                            avanza_eq = st.selectbox(f"🏆 ¿Quién clasifica?", [part['local'], part['visita']], key=f"avanza_{pid}")
+                            nuevos_cierres[pid]["avanza"] = avanza_eq
+                        else:
+                            nuevos_cierres[pid]["avanza"] = part['local'] if g_r_l > g_r_v else part['visita']
+                else:
+                    nuevos_cierres.pop(pid, None)
+                st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
+                
+            if st.button("🔄 ACTUALIZAR MARCADORES MUNDIALES", use_container_width=True):
+                datos["resultados_reales"] = nuevos_cierres
+                guardar_datos(datos)
+                st.toast("¡Marcadores actualizados e indestructiblemente guardados!")
+                st.rerun()
+
+        # --- MODO 2: INYECTAR O CORREGIR APUESTAS DE JUGADORES ---
+        elif accion_admin == "✍️ Inyectar/Corregir Apuestas de Jugadores":
+            st.write("### 👤 SALTAR BLOQUEO DE TIEMPO E INGRESA APUESTAS")
+            jugador_a_editar = st.selectbox("Selecciona al jugador que le vas a meter la apuesta:", PARTICIPANTES)
+            
+            st.warning(f"Estás editando la cartilla de **{jugador_a_editar}**. Aquí NO opera el candado de tiempo.")
+            
+            for part in partidos_admin:
+                pid = str(part["id"])
+                pred_actual = datos["pronosticos"].get(jugador_a_editar, {}).get(pid, {"l": 0, "v": 0})
+                
+                st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
+                c_il, c_iv = st.columns(2)
+                
+                with c_il:
+                    g_l = st.number_input(f"Goles Local", min_value=0, max_value=15, value=int(pred_actual.get("l", 0)), key=f"admin_l_{jugador_a_editar}_{pid}")
+                with c_iv:
+                    g_v = st.number_input(f"Goles Visita", min_value=0, max_value=15, value=int(pred_actual.get("v", 0)), key=f"admin_v_{jugador_a_editar}_{pid}")
+                
+                if jugador_a_editar not in datos["pronosticos"]:
+                    datos["pronosticos"][jugador_a_editar] = {}
+                datos["pronosticos"][jugador_a_editar][pid] = {"l": g_l, "v": g_v}
+                st.markdown("<div style='margin-bottom:10px;'></div>", unsafe_allow_html=True)
+                
+            if st.button(f"💾 SALVAR CARTILLA DE {jugador_a_editar.upper()}", use_container_width=True):
+                guardar_datos(datos)
+                st.success(f"¡Modificación forzosa de {jugador_a_editar} guardada con éxito!")
+                st.rerun()
