@@ -6,6 +6,7 @@
         "4": { "l": 4, "v": 1 }
     },
     "pronosticos": {
+        "Christian": {},
         "Constanza": {
             "2": { "l": 1, "v": 0 },
             "3": { "l": 1, "v": 1 },
