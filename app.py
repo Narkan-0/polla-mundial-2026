@@ -117,7 +117,7 @@ def obtener_frase_futbolera():
     return random.choice(frases)
 
 # CONFIGURACIÓN GENERAL DE USUARIOS
-PARTICIPANTES = ["Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
+PARTICIPANTES = ["Christian", "Constanza", "José Alonso", "José Mario", "Leonardo", "Mario", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
 
