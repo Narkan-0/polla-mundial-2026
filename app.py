@@ -14,7 +14,7 @@ st.set_page_config(page_title="Polla Mundial 2026 - LABORATORIO DE PRUEBAS", pag
 PARTICIPANTES = ["Constanza", "David", "Franco", "José Alonso", "José Mario", "Leonardo", "Marlene", "Mario", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
-ARCHIVO_DATOS = "datos_prueba.json"
+ARCHIVO_DATOS = "datos_polla.json"
 
 # CONSOLIDADO OFICIAL DE LOS 104 PARTIDOS SEGÚN FORMATO FIFA
 @st.cache_data
