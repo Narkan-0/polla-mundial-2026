@@ -191,7 +191,8 @@ estilos_css = f"""
         background-color: #0e1117;
         color: #ffffff;
     }}
-    {" .stApp { background-image: linear-gradient(rgba(14, 17, 23, 0.85), rgba(14, 17, 23, 0.85)), url('data:image/png;base64," + fondo_base64 + "'); background-size: cover; background-attachment: fixed; }" if fondo_base64 else ""}
+    {" .stApp { background-image: linear-gradient(rgba(14, 17, 23, 0.85), rgba(14, 17, 23, 0.85)), url('data:image/png;base64," + fondo_base64 + "'); background-size: cover; background-position: top center; background-attachment: scroll; }" if fondo_base64 else ""}
+
     .banner-portada {{
         width: 100%;
         height: 220px;
