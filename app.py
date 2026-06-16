@@ -643,7 +643,7 @@ with tabs[5]:
         # 📱 UBICACIÓN SEGURA: GENERADOR DIARIO PARA WHATSAPP
         st.markdown("### 📱 GENERADOR DIARIO RECORDATORIO WHATSAPP")
         
-        # CORRECCIÓN 1: Fechas en estricto orden cronológico temporal
+        # Fechas en estricto orden cronológico temporal según el fixture
         fechas_disponibles = []
         for m in FIXTURE_DINAMICO:
             if m["fecha"] not in fechas_disponibles:
@@ -669,11 +669,44 @@ with tabs[5]:
                 texto_whatsapp += f"🕣 *{part['hora']} hrs* ({grupo_fmt}):\n{part['flag_l']} {part['local']} *vs* {part['visita']} {part['flag_v']}\n\n"
                 
         texto_whatsapp += "⚽*¡No olviden ingresar o modificar sus pronósticos en la app antes del pitazo inicial de cada partido!*⚽"
-        
-        # CORRECCIÓN 2: Bloque con botón integrado de copiado rápido para iPad/iPhone
-        st.markdown("Toca el botón de copiar arriba a la derecha para llevarlo directo a WhatsApp:")
-        st.code(texto_whatsapp, language="text")
+        st.text_area("Haz TRIPLE TOQUE adentro para seleccionar todo y copiar los partidos del día:", value=texto_whatsapp, height=180)
         st.write("---")
+        
+        # 📊 NUEVA MEJORA: GENERADOR DE RESUMEN DE APUESTAS POR PARTIDO
+        st.markdown("### 📊 GENERADOR DE RESUMEN DE APUESTAS")
+        
+        # Diccionario de apodos oficiales de la familia
+        MAPA_APODOS = {
+            "Constanza": "Coni", "David": "David", "Franco": "Franco", 
+            "José Alonso": "José Alonso", "José Mario": "José Mario", 
+            "Leonardo": "Leo", "Marlene": "Mane", "Mario": "Mario", 
+            "Néstor": "Néstor", "Renato": "Renato", "Sergio": "Sergio"
+        }
+        
+        # Crear lista desplegable con todos los partidos disponibles para elegir
+        opciones_partidos = [f"Partido #{p['id']} | {p['local']} vs {p['visita']}" for p in FIXTURE_DINAMICO]
+        partido_seleccionado = st.selectbox("Selecciona el partido para el resumen de WhatsApp:", opciones_partidos)
+        
+        # Extraer el ID del partido seleccionado
+        pid_seleccionado = partido_seleccionado.split("Partido #")[1].split(" |")[0]
+        p_obj = next((x for x in FIXTURE_DINAMICO if str(x["id"]) == pid_seleccionado), None)
+        
+        if p_obj:
+            texto_resumen = f"Resumen {p_obj['flag_l']} vs {p_obj['flag_v']}\n"
+            texto_resumen += "=============================\n"
+            
+            for part_name in PARTICIPANTES:
+                apodo = MAPA_APODOS.get(part_name, part_name)
+                pred_user = datos["pronosticos"].get(part_name, {}).get(pid_seleccionado)
+                
+                if pred_user and "l" in pred_user and "v" in pred_user:
+                    texto_resumen += f"{apodo}: {p_obj['flag_l']}{pred_user['l']}-{pred_user['v']}{p_obj['flag_v']}\n"
+                else:
+                    texto_resumen += f"{apodo}: ⚪ Sin Pronóstico\n"
+            
+            st.text_area("Haz TRIPLE TOQUE adentro para seleccionar todo y copiar el resumen de apuestas:", value=texto_resumen, height=280)
+        st.write("---")
+
 
         
         # ADMINISTRACIÓN DE RESULTADOS
