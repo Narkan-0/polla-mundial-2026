@@ -492,10 +492,12 @@ with tabs[3]:
     for part in FIXTURE_DINAMICO:
         pid = str(part["id"])
         real = datos["resultados_reales"].get(pid)
-        if real: estado, ml, mv = "🔒 FINALIZADO", str(real["l"]), str(real["v"])
-        elif verificar_partido_empezado(part.get("fecha_ref", "")): estado, ml, mv = "⏱️ EN CURSO", "-", "-"
-        else: estado, ml, mv = "🔒 CERRADO" if (pid in datos["resultados_reales"]) else "🟢 ABIERTO"
-        
+              if real: 
+            estado, ml, mv = "🔒 FINALIZADO", str(real["l"]), str(real["v"])
+        elif verificar_partido_empezado(part.get("fecha_ref", "")): 
+            estado, ml, mv = "⏱️ EN CURSO", "-", "-"
+        else: 
+            estado, ml, mv = ("🔒 CERRADO", "-", "-") if (pid in datos["resultados_reales"]) else ("🟢 ABIERTO", "-", "-")     
         lista_cronograma.append({
             "fecha_orden": part["fecha_ref"],
             "N°": pid,
