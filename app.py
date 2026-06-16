@@ -645,8 +645,7 @@ with tabs[5]:
         fechas_disponibles = sorted(list(set([m["fecha"] for m in FIXTURE_DINAMICO])))
         fecha_sel = st.selectbox("Elige la fecha para enviar al grupo familiar:", fechas_disponibles)
         
-        texto_whatsapp = f"🏆 *POLLA MUNDIALERA - PARTIDOS DEL {fecha_sel.upper()}* 🏆\n"
-        texto_whatsapp += "⚽ *¡A asegurar esos puntos familiares!* ⚽\n"
+        texto_whatsapp = f"🏆 *PARTIDOS DEL {fecha_sel.upper()}* 🏆\n"
         texto_whatsapp += "=============================\n\n"
         
         partidos_del_dia = [m for m in FIXTURE_DINAMICO if m["fecha"] == fecha_sel]
@@ -657,13 +656,13 @@ with tabs[5]:
             grupo_fmt = abreviar_fase(part["grupo"])
                 
             if real:
-                texto_whatsapp += f"🏁 *Part. #{pid}* ({grupo_fmt}):\n👉 {part['flag_l']} {part['local']} *{real['l']} - {real['v']}* {part['visita']} {part['flag_v']} ✅\n\n"
+                texto_whatsapp += f"🏁 *Part. #{pid}* ({grupo_fmt}):\n⚽ {part['flag_l']} {part['local']} *{real['l']} - {real['v']}* {part['visita']} {part['flag_v']} ✅\n\n"
             elif ya_empezo:
-                texto_whatsapp += f"⏱️ *Part. #{pid}* ({grupo_fmt}):\n👉 {part['flag_l']} {part['local']} *vs* {part['visita']} {part['flag_v']} ⏳ (Jugándose)\n\n"
+                texto_whatsapp += f"⏱️ *Part. #{pid}* ({grupo_fmt}):\n⚽ {part['flag_l']} {part['local']} *vs* {part['visita']} {part['flag_v']} ⏳ (Jugándose)\n\n"
             else:
-                texto_whatsapp += f"⏱️ *Part. #{pid}* — *{part['hora']} hrs* ({grupo_fmt}):\n👉 {part['flag_l']} {part['local']} *vs* {part['visita']} {part['flag_v']}\n\n"
+                texto_whatsapp += f"⏱️ *Part. #{pid}* — *{part['hora']} hrs* ({grupo_fmt}):\n⚽ {part['flag_l']} {part['local']} *vs* {part['visita']} {part['flag_v']}\n\n"
                 
-        texto_whatsapp += "🔥 *¡No olviden ingresar o modificar sus pronósticos en la app antes del pitazo inicial de cada partido!* 🚀"
+        texto_whatsapp += "⏱️ *¡No olviden ingresar o modificar sus pronósticos en la app antes del pitazo inicial de cada partido!* ⚽"
         st.text_area("Copia este bloque de texto y pégalo directo en WhatsApp a las 8:00 AM:", value=texto_whatsapp, height=200)
         st.write("---")
         
