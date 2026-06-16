@@ -19,7 +19,7 @@ ARCHIVO_DATOS = "datos_polla.json"
 
 # 🚨 CONFIGURACIÓN DE TU REPOSITORIO PARA EL AUTO-GUARDADO 🚨
 # Cambia 'tu-usuario' por tu nombre de usuario exacto de GitHub
-REPO_GITHUB = "tu-usuario/prueba-polla" 
+REPO_GITHUB = "Narkan-0/polla-mundial-2026" 
 
 # CONSOLIDADO OFICIAL DE LOS 104 PARTIDOS SEGÚN FORMATO FIFA
 @st.cache_data
