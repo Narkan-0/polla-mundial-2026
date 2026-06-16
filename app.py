@@ -449,8 +449,9 @@ with tabs[0]:
     with c_p2: st.markdown(f"<div style='background:rgba(234,179,8,0.1);padding:15px;border-radius:10px;border:1px solid #eab308;text-align:center;'><span>🥈 2do Lugar</span><br><strong style='font-size:1.4rem;color:#e2e8f0;'>{df_tabla.iloc[1]['Participante'].upper()}</strong><br><span>${fondo_total * 0.333:,.0f}</span></div>", unsafe_allow_html=True)
     with c_p3: st.markdown(f"<div style='background:rgba(239,68,68,0.1);padding:15px;border-radius:10px;border:1px solid #ef4444;text-align:center;'><span>🥉 3er Lugar</span><br><strong style='font-size:1.4rem;color:#e2e8f0;'>{df_tabla.iloc[2]['Participante'].upper()}</strong><br><span>${fondo_total * 0.166:,.0f}</span></div>", unsafe_allow_html=True)
     st.write("---")
-    # ALTURA DE 450PX FUERZA EL DESPLIEGUE DE LOS 11 JUGADORES COMPLETOS SIN SCROLLBARS
-    st.dataframe(df_tabla, use_container_width=True, height=450)
+    # ST.TABLE USA HTML NATIVO: NO FALLA EN IPAD Y MUESTRA A LOS 11 JUGADORES DE GOLPE
+    st.table(df_tabla)
+
 
 # --- TAB 2: PRONÓSTICOS ---
 with tabs[1]:
