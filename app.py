@@ -150,7 +150,7 @@ def obtener_fixture_completo():
 # FIJAR ORDEN CRONOLÓGICO NATURAL POR FECHA DE REFERENCIA
 FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['fecha_ref'])
 
-@st.cache_data(ttl=10)
+@st.cache_data(ttl=120)
 def obtener_frase_futbolera():
     frases = [
         "«Todo lo que sé con mayor certeza sobre la moral y las obligaciones de los hombres, se lo debo al fútbol.» — Albert Camus",
