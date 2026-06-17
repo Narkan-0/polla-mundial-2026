@@ -452,11 +452,10 @@ with tabs[0]:
     # ST.TABLE USA HTML NATIVO: NO FALLA EN IPAD Y MUESTRA A LOS 11 JUGADORES DE GOLPE
     st.table(df_tabla)
 
-
 # --- TAB 2: PRONÓSTICOS ---
-    with tabs[1]:
-        st.markdown("<h2>✍️ ARMA TU JUGADA MUNDIALERA</h2>", unsafe_allow_html=True)
-        usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
+with tabs[1]:
+    st.markdown("<h2>✍️ ARMA TU JUGADA MUNDIALERA</h2>", unsafe_allow_html=True)
+    usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
     
     # Lógica inteligente para ocultar fases que ya están completamente terminadas
     fases_opciones = []
@@ -509,7 +508,6 @@ with tabs[0]:
             animar_balon_oficial()
             st.session_state["mensaje_exito"] = "¡Tus pronósticos se guardaron y sincronizaron con éxito!"
             st.rerun()
-
 # --- TAB 3: CRONOGRAMA DE IMPRESIÓN LIMPIA (SIN ENCABEZADOS DE NÚMERO NI ESTADIO) ---
 with tabs[2]:
     st.markdown("<h2>📅 CRONOGRAMA COMPLETO MUNDIAL</h2>", unsafe_allow_html=True)
