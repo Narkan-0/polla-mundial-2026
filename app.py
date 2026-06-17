@@ -454,11 +454,21 @@ with tabs[0]:
 
 
 # --- TAB 2: PRONÓSTICOS ---
-with tabs[1]:
-    st.markdown("<h2>✍️ ARMA TU JUGADA MUNDIALERA</h2>", unsafe_allow_html=True)
-    usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
+    with tabs[1]:
+        st.markdown("<h2>✍️ ARMA TU JUGADA MUNDIALERA</h2>", unsafe_allow_html=True)
+        usuario = st.selectbox("Selecciona tu nombre para apostar:", PARTICIPANTES)
     
-    bloque_seleccionado = st.radio("Filtrar por fase del torneo:", ["Fecha 1 (Partidos 1-24)", "Fecha 2 (Partidos 25-48)", "Fecha 3 (Partidos 49-72)", "Fases Finales"], horizontal=True)
+    # Lógica inteligente para ocultar fases que ya están completamente terminadas
+    fases_opciones = []
+    for fase_val, etiqueta in [("Fecha 1", "Fecha 1 (Partidos 1-24)"), ("Fecha 2", "Fecha 2 (Partidos 25-48)"), ("Fecha 3", "Fecha 3 (Partidos 49-72)"), ("Fases Finales", "Fases Finales")]:
+        partidos_fase = [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_val or (fase_val=="Fases Finales" and "Fases" in m["fase_bloque"])]
+        todos_cerrados = all(str(p["id"]) in datos["resultados_reales"] for p in partidos_fase)
+        if not todos_cerrados or not partidos_fase:
+            fases_opciones.append(etiqueta)
+
+    if not fases_opciones: fases_opciones = ["Fases Finales"] # Respaldo por si todo terminó
+    
+    bloque_seleccionado = st.radio("Filtrar por fase del torneo:", fases_opciones, horizontal=True)
     filtro_fia = bloque_seleccionado.split(" (")[0] if "(" in bloque_seleccionado else "Fases Finales"
     
     with st.form(key=f"form_seguro_{usuario}_{filtro_fia}"):
