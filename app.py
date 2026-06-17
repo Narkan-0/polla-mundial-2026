@@ -45,11 +45,10 @@ def obtener_fixture_completo():
         {"id": 18, "fase_bloque": "Fecha 1", "grupo": "Grupo I", "fecha_ref": "2026-06-16 18:00", "fecha": "16 de Junio", "hora": "18:00", "local": "IRAK", "flag_l": "🇮🇶", "visita": "NORUEGA", "flag_v": "🇳🇴", "estadio": "Boston"},
         {"id": 19, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha_ref": "2026-06-16 21:00", "fecha": "16 de Junio", "hora": "21:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "ARGELIA", "flag_v": "🇩🇿", "estadio": "Kansas City"},
         {"id": 20, "fase_bloque": "Fecha 1", "grupo": "Grupo J", "fecha_ref": "2026-06-17 00:00", "fecha": "17 de Junio", "hora": "00:00", "local": "AUSTRIA", "flag_l": "🇦🇹", "visita": "JORDANIA", "flag_v": "🇯🇴", "estadio": "San Francisco"},
-        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha_ref": "2026-06-17 13:00", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Houston"},
+        {"id": 21, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha_ref": "2026-06-17 13:00", "fecha": "17 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "RD CONGO", "flag_v": "🇨🇩", "estadio": "Houston"},
         {"id": 22, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha_ref": "2026-06-17 16:00", "fecha": "17 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "\U0001F3F4\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Dallas"},
         {"id": 23, "fase_bloque": "Fecha 1", "grupo": "Grupo L", "fecha_ref": "2026-06-17 19:00", "fecha": "17 de Junio", "hora": "19:00", "local": "GHANA", "flag_l": "🇬🇭", "visita": "PANAMÁ", "flag_v": "🇵🇦", "estadio": "Toronto"},
         {"id": 24, "fase_bloque": "Fecha 1", "grupo": "Grupo K", "fecha_ref": "2026-06-17 22:00", "fecha": "17 de Junio", "hora": "22:00", "local": "UZBEKISTÁN", "flag_l": "🇺🇿", "visita": "COLOMBIA", "flag_v": "🇨🇴", "estadio": "Ciudad de México"},
-
 
         # --- FECHA 2 ---
         {"id": 25, "fase_bloque": "Fecha 2", "grupo": "Grupo A", "fecha_ref": "2026-06-18 12:00", "fecha": "18 de Junio", "hora": "12:00", "local": "REP. CHECA", "flag_l": "🇨🇿", "visita": "SUDÁFRICA", "flag_v": "🇿🇦", "estadio": "Atlanta"},
@@ -65,7 +64,7 @@ def obtener_fixture_completo():
         {"id": 35, "fase_bloque": "Fecha 2", "grupo": "Grupo E", "fecha_ref": "2026-06-20 20:00", "fecha": "20 de Junio", "hora": "20:00", "local": "ECUADOR", "flag_l": "🇪🇨", "visita": "CURAZAO", "flag_v": "🇨🇼", "estadio": "Kansas City"},
         {"id": 36, "fase_bloque": "Fecha 2", "grupo": "Grupo F", "fecha_ref": "2026-06-21 00:00", "fecha": "21 de Junio", "hora": "00:00", "local": "TÚNEZ", "flag_l": "🇹🇳", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Monterrey"},
         {"id": 37, "fase_bloque": "Fecha 2", "grupo": "Grupo H", "fecha_ref": "2026-06-21 12:00", "fecha": "21 de Junio", "hora": "12:00", "local": "ESPAÑA", "flag_l": "🇪🇸", "visita": "ARABIA SAUDITA", "flag_v": "🇸🇦", "estadio": "Atlanta"},
-        {"id": 38, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha_ref": "2026-06-21 15:00", "fecha": "21 de Junio", "hora": "15:00", "local": "BÉLGICA", "flag_l": "🇧🇪", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Los Angeles"},
+        {"id": 38, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha_ref": "2026-06-21 15:00", "fecha": "21 de Junio", "hora": "21:00", "local": "BÉLGICA", "flag_l": "🇧🇪", "visita": "IRÁN", "flag_v": "🇮🇷", "estadio": "Los Angeles"},
         {"id": 39, "fase_bloque": "Fecha 2", "grupo": "Grupo H", "fecha_ref": "2026-06-21 18:00", "fecha": "21 de Junio", "hora": "18:00", "local": "URUGUAY", "flag_l": "🇺🇾", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Miami"},
         {"id": 40, "fase_bloque": "Fecha 2", "grupo": "Grupo G", "fecha_ref": "2026-06-21 21:00", "fecha": "21 de Junio", "hora": "21:00", "local": "NUEVA ZELANDA", "flag_l": "🇳🇿", "visita": "EGIPTO", "flag_v": "🇪🇬", "estadio": "Vancouver"},
         {"id": 42, "fase_bloque": "Fecha 2", "grupo": "Grupo J", "fecha_ref": "2026-06-22 13:00", "fecha": "22 de Junio", "hora": "13:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Dallas"},
@@ -75,7 +74,7 @@ def obtener_fixture_completo():
         {"id": 41, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha_ref": "2026-06-23 13:00", "fecha": "23 de Junio", "hora": "13:00", "local": "PORTUGAL", "flag_l": "🇵🇹", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Houston"},
         {"id": 43, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha_ref": "2026-06-23 16:00", "fecha": "23 de Junio", "hora": "16:00", "local": "INGLATERRA", "flag_l": "\U0001F3F4\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Boston"},
         {"id": 45, "fase_bloque": "Fecha 2", "grupo": "Grupo L", "fecha_ref": "2026-06-23 19:00", "fecha": "23 de Junio", "hora": "19:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "CROACIA", "flag_v": "🇭🇷", "estadio": "Toronto"},
-        {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha_ref": "2026-06-23 22:00", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "REP. DEL CONGO", "flag_v": "🇨🇬", "estadio": "Guadalajara"},
+        {"id": 47, "fase_bloque": "Fecha 2", "grupo": "Grupo K", "fecha_ref": "2026-06-23 22:00", "fecha": "23 de Junio", "hora": "22:00", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "RD CONGO", "flag_v": "🇨🇩", "estadio": "Guadalajara"},
 
         # --- FECHA 3 ---
         {"id": 49, "fase_bloque": "Fecha 3", "grupo": "Grupo B", "fecha_ref": "2026-06-24 15:00", "fecha": "24 de Junio", "hora": "15:00", "local": "SUIZA", "flag_l": "🇨🇭", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Vancouver"},
@@ -99,7 +98,7 @@ def obtener_fixture_completo():
         {"id": 59, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha_ref": "2026-06-27 17:00", "fecha": "27 de Junio", "hora": "17:00", "local": "PANAMÁ", "flag_l": "🇵🇦", "visita": "INGLATERRA", "flag_v": "\U0001F3F4\U000E0067\U000E0062\U000E0065\U000E006E\U000E0067\U000E007F", "estadio": "N. York/N. Jersey"},
         {"id": 60, "fase_bloque": "Fecha 3", "grupo": "Grupo L", "fecha_ref": "2026-06-27 17:00", "fecha": "27 de Junio", "hora": "17:00", "local": "CROACIA", "flag_l": "🇭🇷", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Filadelfia"},
         {"id": 63, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha_ref": "2026-06-27 19:30", "fecha": "27 de Junio", "hora": "19:30", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "PORTUGAL", "flag_v": "🇵🇹", "estadio": "Miami"},
-        {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha_ref": "2026-06-27 19:30", "fecha": "27 de Junio", "hora": "19:30", "local": "REP. DEL CONGO", "flag_l": "🇨🇬", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Atlanta"},
+        {"id": 64, "fase_bloque": "Fecha 3", "grupo": "Grupo K", "fecha_ref": "2026-06-27 19:30", "fecha": "27 de Junio", "hora": "19:30", "local": "RD CONGO", "flag_l": "🇨🇩", "visita": "UZBEKISTÁN", "flag_v": "🇺🇿", "estadio": "Atlanta"},
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
 
