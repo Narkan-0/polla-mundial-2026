@@ -508,10 +508,12 @@ with tabs[1]:
             animar_balon_oficial()
             st.session_state["mensaje_exito"] = "¡Tus pronósticos se guardaron y sincronizaron con éxito!"
             st.rerun()
-# --- TAB 3: CRONOGRAMA DE IMPRESIÓN LIMPIA (SIN ENCABEZADOS DE NÚMERO NI ESTADIO) ---
+# --- TAB 3: CRONOGRAMA DE IMPRESIÓN LIMPIA (INTERFAZ TÁCTIL SIN TABLAS) ---
 with tabs[2]:
     st.markdown("<h2>📅 CRONOGRAMA COMPLETO MUNDIAL</h2>", unsafe_allow_html=True)
-    lista_cronograma = []
+    lista_pasados = []
+    lista_proximos = []
+    
     for part in FIXTURE_DINAMICO:
         pid = str(part["id"])
         real = datos["resultados_reales"].get(pid)
@@ -520,25 +522,52 @@ with tabs[2]:
         dia_hora_fmt = f"{part['fecha'].replace(' de ', ' ')}, {part['hora']} hrs"
         
         if real:
+            # Diseño para partidos finalizados (apagado, grisáceo)
             estado = "🔒 FINALIZADO"
-            partido_fmt = f"{part['flag_l']} {part['local']}  {real['l']} - {real['v']}  {part['flag_v']} {part['visita']}"
-        elif verificar_partido_empezado(part.get("fecha_ref", "")):
-            estado = "⏱️ EN CURSO"
-            partido_fmt = f"{part['flag_l']} {part['local']}  vs  {part['flag_v']} {part['visita']}"
+            color_borde = "#64748b" 
+            color_estado = "#94a3b8"
+            bg_color = "rgba(15, 23, 42, 0.4)"
+            partido_fmt = f"{part['flag_l']} {part['local']} &nbsp;<span style='color:#fbbf24; font-size:1.1rem;'><b>{real['l']} - {real['v']}</b></span>&nbsp; {part['flag_v']} {part['visita']}"
+            
+            lista_pasados.append(f"""
+            <div style='background:{bg_color}; border-left:5px solid {color_borde}; border-radius:8px; padding:12px; margin-bottom:10px;'>
+                <div style='font-size:0.8rem; color:#cbd5e1; margin-bottom:4px;'><b>{fase_abr}</b> | {dia_hora_fmt}</div>
+                <div style='font-size:1.05rem; color:#e2e8f0;'>{partido_fmt}</div>
+                <div style='font-size:0.75rem; color:{color_estado}; margin-top:6px; font-weight:bold;'>{estado}</div>
+            </div>
+            """)
         else:
-            estado = "🔒 CERRADO" if (pid in datos["resultados_reales"]) else "🟢 ABIERTO"
-            partido_fmt = f"{part['flag_l']} {part['local']}  vs  {part['flag_v']} {part['visita']}"
-        
-        lista_cronograma.append({
-            "fecha_orden": part["fecha_ref"],
-            "Fase": fase_abr,
-            "Día y Hora": dia_hora_fmt,
-            "Partido y Resultado": partido_fmt,
-            "Estado": estado
-        })
-        
-    df_crono = pd.DataFrame(lista_cronograma).sort_values("fecha_orden").drop(columns=["fecha_orden"])
-    st.dataframe(df_crono.style.apply(lambda r: ['background:rgba(71,85,105,0.3);color:#cbd5e1;font-style:italic;']*len(r) if r["Estado"]=="🔒 FINALIZADO" else ['background:rgba(186,18,60,0.2);color:#fda4af;font-weight:bold;']*len(r) if r["Estado"]=="⏱️ EN CURSO" else ['']*len(r), axis=1), use_container_width=True, hide_index=True)
+            # Diseño para partidos en curso (Rojo) o Abiertos (Verde)
+            if verificar_partido_empezado(part.get("fecha_ref", "")):
+                estado = "⏱️ EN CURSO"
+                color_borde = "#e11d48"
+                color_estado = "#fda4af"
+                bg_color = "rgba(186,18,60,0.15)"
+            else:
+                estado = "🟢 ABIERTO"
+                color_borde = "#22c55e"
+                color_estado = "#86efac"
+                bg_color = "rgba(30,41,59,0.6)"
+                
+            partido_fmt = f"{part['flag_l']} {part['local']} &nbsp;<b>vs</b>&nbsp; {part['flag_v']} {part['visita']}"
+                
+            lista_proximos.append(f"""
+            <div style='background:{bg_color}; border-left:5px solid {color_borde}; border-radius:8px; padding:12px; margin-bottom:10px;'>
+                <div style='font-size:0.8rem; color:#cbd5e1; margin-bottom:4px;'><b>{fase_abr}</b> | {dia_hora_fmt}</div>
+                <div style='font-size:1.1rem; font-weight:bold; color:#ffffff;'>{partido_fmt}</div>
+                <div style='font-size:0.75rem; color:{color_estado}; margin-top:6px; font-weight:bold;'>{estado}</div>
+            </div>
+            """)
+
+    # 1. MOSTRAR LOS PARTIDOS PASADOS EN UN BOTÓN DESPLEGABLE
+    if lista_pasados:
+        with st.expander("⏳ VER PARTIDOS ANTERIORES (FINALIZADOS)"):
+            st.markdown("".join(lista_pasados), unsafe_allow_html=True)
+            
+    # 2. MOSTRAR LOS PARTIDOS EN CURSO Y FUTUROS DIRECTAMENTE
+    if lista_proximos:
+        st.markdown("<h4 style='color:#fbbf24; margin-top:15px; margin-bottom:15px;'>🔜 PRÓXIMOS PARTIDOS</h4>", unsafe_allow_html=True)
+        st.markdown("".join(lista_proximos), unsafe_allow_html=True)
 
 # --- TAB 4: EL MUNDIAL (FUSIÓN RESPONSIVA GRUPOS + LLAVES DINÁMICAS) ---
 with tabs[3]:
