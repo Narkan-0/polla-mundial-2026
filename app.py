@@ -289,11 +289,6 @@ def verificar_partido_empezado(fecha_ref_str):
         return datetime.now(tz_chile) >= hora_partido_tz
     except: return False
 
-def animar_balon_oficial():
-    src_balon = f"data:image/jpeg;base64,{balon_base64}" if balon_base64 else "⚽"
-    html_anim = f"<div id='ball-box' style='position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;display:flex;justify-content:center;align-items:center;'><img src='{src_balon}' style='width:160px;height:160px;border-radius:50%;animation: spin 1.5s ease-out forwards;'></div><script>setTimeout(() => {{ document.getElementById('ball-box').remove(); }}, 1500);</script>"
-    st.components.v1.html(html_anim, height=0, width=0)
-
 def abreviar_fase(nombre_fase):
     for orig, dest in [("Dieciseisavos", "16avos"), ("Octavos", "8vos"), ("Cuartos", "4tos"), ("Semifinales", "Semis"), ("Tercer Puesto", "3er Puesto"), ("Gran Final", "Final")]:
         nombre_fase = nombre_fase.replace(orig, dest)
