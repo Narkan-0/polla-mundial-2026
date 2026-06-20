@@ -181,8 +181,8 @@ def cargar_imagen_local(nombre_archivo):
     return ""
 
 portada_base64 = cargar_imagen_local("portada.jpeg")
-fondo_base64 = cargar_imagen_local("fondo.png")
-balon_base64 = cargar_imagen_local("balon.jpeg")
+# Cambiamos el archivo al nuevo fondo Panini
+fondo_base64 = cargar_imagen_local("fondo_panini.jpg")
 
 # --- DISEÑO Y CSS ---
 estilos_css = f"""
@@ -191,7 +191,9 @@ estilos_css = f"""
         background-color: #0e1117;
         color: #ffffff;
     }}
-    {" .stApp { background-image: linear-gradient(rgba(14, 17, 23, 0.85), rgba(14, 17, 23, 0.85)), url('data:image/png;base64," + fondo_base64 + "'); background-size: cover; background-position: top center; background-attachment: scroll; }" if fondo_base64 else ""}
+    
+    /* Nueva capa de fondo con la estética Panini oscurecida y difuminada */
+    {" .stApp::before { content: ''; position: fixed; top: -5%; left: -5%; width: 110%; height: 110%; background-image: linear-gradient(rgba(14, 17, 23, 0.75), rgba(14, 17, 23, 0.93)), url('data:image/jpeg;base64," + fondo_base64 + "'); background-size: cover; background-position: center; filter: blur(20px); z-index: -1; pointer-events: none; }" if fondo_base64 else ""}
 
     .banner-portada {{
         width: 100%;
