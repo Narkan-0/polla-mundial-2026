@@ -509,7 +509,6 @@ with tabs[1]:
                     if scores["l"] is not None and scores["v"] is not None: datos["pronosticos"][usuario][pid] = {"l": int(scores["l"]), "v": int(scores["v"])}
                     else: datos["pronosticos"][usuario].pop(pid, None)
             guardar_datos(datos)
-            animar_balon_oficial()
             st.session_state["mensaje_exito"] = "¡Tus pronósticos se guardaron y sincronizaron con éxito!"
             st.rerun()
 
