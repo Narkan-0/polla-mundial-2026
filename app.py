@@ -444,7 +444,7 @@ with tabs[0]:
     df_tabla = pd.DataFrame(tabla_posiciones).sort_values(by=["Puntos Totales 🌟", "Marcadores Exactos 🎯"], ascending=False).reset_index(drop=True)
     df_tabla.index += 1
     
-        c_p1, c_p2, c_p3 = st.columns(3)
+    c_p1, c_p2, c_p3 = st.columns(3)
     
     # Aplicamos la fórmula matemática para redondear al millar más cercano (cierre al mil)
     premio_1 = int(round((fondo_total * 0.50) / 1000) * 1000)
