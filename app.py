@@ -370,9 +370,16 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
         elif loc_key.startswith("3") and "/" in loc_key:
             letras_ok = [c for c in loc_key if c.isalpha()]
             found = None
+            # 1. Intentar respetar la regla
             for t in top_8_thirds_arbol:
                 if t["letra"] in letras_ok and t["name"] not in usados_thirds:
                     found = t; break
+            # 2. PARCHE: Si no hay de esas letras, tomar al siguiente disponible
+            if not found:
+                for t in top_8_thirds_arbol:
+                    if t["name"] not in usados_thirds:
+                        found = t; break
+            
             if found:
                 m["local"] = found["name"].upper(); m["flag_l"] = found["flag"]; usados_thirds.add(found["name"])
         elif "GANADOR P" in loc_key:
@@ -395,9 +402,16 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
         elif vis_key.startswith("3") and "/" in vis_key:
             letras_ok = [c for c in vis_key if c.isalpha()]
             found = None
+            # 1. Intentar respetar la regla
             for t in top_8_thirds_arbol:
                 if t["letra"] in letras_ok and t["name"] not in usados_thirds:
                     found = t; break
+            # 2. PARCHE: Si no hay de esas letras, tomar al siguiente disponible
+            if not found:
+                for t in top_8_thirds_arbol:
+                    if t["name"] not in usados_thirds:
+                        found = t; break
+
             if found:
                 m["visita"] = found["name"].upper(); m["flag_v"] = found["flag"]; usados_thirds.add(found["name"])
         elif "GANADOR P" in vis_key:
