@@ -145,7 +145,7 @@ def obtener_fixture_completo():
 
         # --- GRAN FINAL ---
         {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Jersey"}
-
+    ]
 # FIJAR ORDEN CRONOLÓGICO NATURAL POR FECHA DE REFERENCIA
 FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['fecha_ref'])
 
