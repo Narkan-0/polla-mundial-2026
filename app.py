@@ -102,25 +102,25 @@ def obtener_fixture_completo():
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
 
-        # --- DIECISEISAVOS DE FINAL ---
+        # --- DIECISEISAVOS DE FINAL (REGLAMENTO OFICIAL FIFA) ---
         {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-28 16:00", "fecha": "28 de Junio", "hora": "16:00", "local": "2A", "flag_l": "⚽", "visita": "2B", "flag_v": "⚽", "estadio": "Los Angeles"},
-        {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 15:00", "fecha": "29 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3C/E/F/I", "flag_v": "⚽", "estadio": "Boston"},
-        {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 18:00", "fecha": "29 de Junio", "hora": "18:00", "local": "1B", "flag_l": "⚽", "visita": "3A/C/F/H", "flag_v": "⚽", "estadio": "Atlanta"},
-        {"id": 76, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 21:00", "fecha": "29 de Junio", "hora": "21:00", "local": "2C", "flag_l": "⚽", "visita": "2D", "flag_v": "⚽", "estadio": "Houston"},
+        {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 15:00", "fecha": "29 de Junio", "hora": "15:00", "local": "1A", "flag_l": "⚽", "visita": "3A/B/C/D/F", "flag_v": "⚽", "estadio": "Boston"},
+        {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 18:00", "fecha": "29 de Junio", "hora": "18:00", "local": "1B", "flag_l": "⚽", "visita": "3E/F/G/H/I", "flag_v": "⚽", "estadio": "Atlanta"},
+        {"id": 76, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 21:00", "fecha": "29 de Junio", "hora": "21:00", "local": "1C", "flag_l": "⚽", "visita": "2F", "flag_v": "⚽", "estadio": "Houston"},
         {"id": 77, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-30 14:00", "fecha": "30 de Junio", "hora": "14:00", "local": "1F", "flag_l": "⚽", "visita": "2E", "flag_v": "⚽", "estadio": "Dallas"},
-        {"id": 78, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-30 17:00", "fecha": "30 de Junio", "hora": "17:00", "local": "1E", "flag_l": "⚽", "visita": "3A/B/C/D", "flag_v": "⚽", "estadio": "Seattle"},
-        {"id": 79, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-30 20:00", "fecha": "30 de Junio", "hora": "20:00", "local": "1D", "flag_l": "⚽", "visita": "3F/G/H/I", "flag_v": "⚽", "estadio": "San Francisco"},
-        {"id": 80, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-01 13:00", "fecha": "01 de Julio", "hora": "13:00", "local": "1C", "flag_l": "⚽", "visita": "3D/E/I/J", "flag_v": "⚽", "estadio": "Toronto"},
-        {"id": 81, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-01 16:00", "fecha": "01 de Julio", "hora": "16:00", "local": "1I", "flag_l": "⚽", "visita": "3G/H/K/L", "flag_v": "⚽", "estadio": "Filadelfia"},
+        {"id": 78, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-30 17:00", "fecha": "30 de Junio", "hora": "17:00", "local": "1E", "flag_l": "⚽", "visita": "3A/B/C/D/L", "flag_v": "⚽", "estadio": "Seattle"},
+        {"id": 79, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-30 20:00", "fecha": "30 de Junio", "hora": "20:00", "local": "1D", "flag_l": "⚽", "visita": "3I/J/K/L/E", "flag_v": "⚽", "estadio": "San Francisco"},
+        {"id": 80, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-01 13:00", "fecha": "01 de Julio", "hora": "13:00", "local": "2C", "flag_l": "⚽", "visita": "2D", "flag_v": "⚽", "estadio": "Toronto"},
+        {"id": 81, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-01 16:00", "fecha": "01 de Julio", "hora": "16:00", "local": "1I", "flag_l": "⚽", "visita": "3C/D/E/G/H", "flag_v": "⚽", "estadio": "Filadelfia"},
         {"id": 82, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-01 19:00", "fecha": "01 de Julio", "hora": "19:00", "local": "2G", "flag_l": "⚽", "visita": "2H", "flag_v": "⚽", "estadio": "Kansas City"},
-        {"id": 83, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-02 14:00", "fecha": "02 de Julio", "hora": "14:00", "local": "1K", "flag_l": "⚽", "visita": "3I/J/L", "flag_v": "⚽", "estadio": "Miami"},
-        {"id": 84, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-02 17:00", "fecha": "02 de Julio", "hora": "17:00", "local": "1G", "flag_l": "⚽", "visita": "3A/B/E/F", "flag_v": "⚽", "estadio": "Vancouver"},
+        {"id": 83, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-02 14:00", "fecha": "02 de Julio", "hora": "14:00", "local": "1K", "flag_l": "⚽", "visita": "3G/H/I/J/K", "flag_v": "⚽", "estadio": "Miami"},
+        {"id": 84, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-02 17:00", "fecha": "02 de Julio", "hora": "17:00", "local": "1G", "flag_l": "⚽", "visita": "3A/B/F/G/H", "flag_v": "⚽", "estadio": "Vancouver"},
         {"id": 85, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-02 20:00", "fecha": "02 de Julio", "hora": "20:00", "local": "1H", "flag_l": "⚽", "visita": "2J", "flag_v": "⚽", "estadio": "Ciudad de México"},
         {"id": 86, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 14:00", "fecha": "03 de Julio", "hora": "14:00", "local": "1J", "flag_l": "⚽", "visita": "2K", "flag_v": "⚽", "estadio": "Monterrey"},
-        {"id": 87, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 17:00", "fecha": "03 de Julio", "hora": "17:00", "local": "1L", "flag_l": "⚽", "visita": "3G/H/J/K", "flag_v": "⚽", "estadio": "Houston"},
+        {"id": 87, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 17:00", "fecha": "03 de Julio", "hora": "17:00", "local": "1L", "flag_l": "⚽", "visita": "3A/B/J/K/L", "flag_v": "⚽", "estadio": "Houston"},
         {"id": 88, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 20:00", "fecha": "03 de Julio", "hora": "20:00", "local": "2I", "flag_l": "⚽", "visita": "2L", "flag_v": "⚽", "estadio": "Dallas"},
 
-        # --- OCTAVOS DE FINAL ---
+        # --- OCTAVOS DE FINAL (ORDEN CRUZADO POR SEDE FIFA) ---
         {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 15:00", "fecha": "04 de Julio", "hora": "15:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P73", "flag_v": "🥇", "estadio": "Philadelphia"},
         {"id": 90, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 18:00", "fecha": "04 de Julio", "hora": "18:00", "local": "GANADOR P75", "flag_l": "🥇", "visita": "GANADOR P76", "flag_v": "🥇", "estadio": "Houston"},
         {"id": 91, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-05 14:00", "fecha": "05 de Julio", "hora": "14:00", "local": "GANADOR P77", "flag_l": "🥇", "visita": "GANADOR P78", "flag_v": "🥇", "estadio": "N. York/N. Jersey"},
@@ -145,7 +145,6 @@ def obtener_fixture_completo():
 
         # --- GRAN FINAL ---
         {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Jersey"}
-    ]
 
 # FIJAR ORDEN CRONOLÓGICO NATURAL POR FECHA DE REFERENCIA
 FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['fecha_ref'])
