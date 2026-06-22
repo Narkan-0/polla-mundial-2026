@@ -528,7 +528,9 @@ with tabs[1]:
 # --- TAB 3: CRONOGRAMA DE IMPRESIÓN LIMPIA (INTERFAZ TÁCTIL SIN TABLAS) ---
 with tabs[2]:
     st.markdown("<h2>📅 CRONOGRAMA COMPLETO MUNDIAL</h2>", unsafe_allow_html=True)
-    lista_pasados = []
+    
+    # Diccionario para agrupar los partidos pasados por grupo/fase
+    dict_pasados = {}
     lista_proximos = []
     
     for part in FIXTURE_DINAMICO:
@@ -546,13 +548,19 @@ with tabs[2]:
             bg_color = "rgba(15, 23, 42, 0.4)"
             partido_fmt = f"{part['flag_l']} {part['local']} &nbsp;<span style='color:#fbbf24; font-size:1.1rem;'><b>{real['l']} - {real['v']}</b></span>&nbsp; {part['flag_v']} {part['visita']}"
             
-            lista_pasados.append(f"""
+            tarjeta = f"""
             <div style='background:{bg_color}; border-left:5px solid {color_borde}; border-radius:8px; padding:12px; margin-bottom:10px;'>
                 <div style='font-size:0.8rem; color:#cbd5e1; margin-bottom:4px;'><b>{fase_abr}</b> | {dia_hora_fmt}</div>
                 <div style='font-size:1.05rem; color:#e2e8f0;'>{partido_fmt}</div>
                 <div style='font-size:0.75rem; color:{color_estado}; margin-top:6px; font-weight:bold;'>{estado}</div>
             </div>
-            """)
+            """
+            # Guardamos la tarjeta en la categoría correspondiente (Ej: "Grupo A", "Octavos")
+            categoria = part["grupo"]
+            if categoria not in dict_pasados:
+                dict_pasados[categoria] = []
+            dict_pasados[categoria].append(tarjeta)
+            
         else:
             # Diseño para partidos en curso (Rojo) o Abiertos (Verde)
             if verificar_partido_empezado(part.get("fecha_ref", "")):
@@ -576,15 +584,25 @@ with tabs[2]:
             </div>
             """)
 
-    # 1. MOSTRAR LOS PARTIDOS PASADOS EN UN BOTÓN DESPLEGABLE
-    if lista_pasados:
+    # 1. MOSTRAR LOS PARTIDOS PASADOS AGRUPADOS
+    if dict_pasados:
         with st.expander("⏳ VER PARTIDOS ANTERIORES (FINALIZADOS)"):
-            st.markdown("".join(lista_pasados), unsafe_allow_html=True)
+            # Creamos una lista con el orden lógico para mostrarlos (De la A a la L, y luego fases finales)
+            orden_categorias = [f"Grupo {chr(i)}" for i in range(65, 77)] + ["Dieciseisavos", "Octavos", "Cuartos", "Semifinales", "Tercer Puesto", "Gran Final"]
             
+            for cat in orden_categorias:
+                if cat in dict_pasados:
+                    # Título de la categoría
+                    icono = "🏆" if "Grupo" in cat else "🔥"
+                    st.markdown(f"<h4 style='color:#fbbf24; margin-top:15px; margin-bottom:10px; border-bottom: 1px solid #475569; padding-bottom:5px;'>{icono} {cat.upper()}</h4>", unsafe_allow_html=True)
+                    # Imprimir las tarjetas de esa categoría
+                    st.markdown("".join(dict_pasados[cat]), unsafe_allow_html=True)
+                    
     # 2. MOSTRAR LOS PARTIDOS EN CURSO Y FUTUROS DIRECTAMENTE
     if lista_proximos:
         st.markdown("<h4 style='color:#fbbf24; margin-top:15px; margin-bottom:15px;'>🔜 PRÓXIMOS PARTIDOS</h4>", unsafe_allow_html=True)
         st.markdown("".join(lista_proximos), unsafe_allow_html=True)
+
 
 # --- TAB 4: EL MUNDIAL (FUSIÓN RESPONSIVA GRUPOS + LLAVES DINÁMICAS) ---
 with tabs[3]:
