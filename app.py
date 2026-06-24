@@ -12,7 +12,7 @@ import pytz
 st.set_page_config(page_title="Polla Mundial 2026", page_icon="🏆", layout="wide")
 
 # CONFIGURACIÓN GENERAL DE USUARIOS Y VARIABLES
-PARTICIPANTES = ["Constanza", "David", "Franco", "Florencia", "José Alonso", "José Mario", "Leonardo", "Mario", "Marlene", "Néstor", "Renato", "Sergio"]
+PARTICIPANTES = ["Constanza", "David", "Florencia", "Franco", "José Alonso", "José Mario", "Leonardo", "Mario", "Marlene", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
 ARCHIVO_DATOS = "datos_polla.json"
