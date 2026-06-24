@@ -754,7 +754,7 @@ with tabs[5]:
         st.markdown("### 📊 GENERADOR DE RESUMEN DE APUESTAS")
         
         MAPA_APODOS = {
-            "Constanza": "Coni", "David": "David", "Florencia": "Flo"
+            "Constanza": "Coni", "David": "David", "Florencia": "Flo",
             "Franco": "Franco", "José Alonso": "José Alonso", "José Mario": "José Mario", 
             "Leonardo": "Leo", "Marlene": "Mane", "Mario": "Mario", 
             "Néstor": "Néstor", "Renato": "Renato", "Sergio": "Sergio"
