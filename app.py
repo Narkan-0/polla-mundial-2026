@@ -12,7 +12,7 @@ import pytz
 st.set_page_config(page_title="Polla Mundial 2026", page_icon="🏆", layout="wide")
 
 # CONFIGURACIÓN GENERAL DE USUARIOS Y VARIABLES
-PARTICIPANTES = ["Constanza", "David", "Franco", "José Alonso", "José Mario", "Leonardo", "Marlene", "Mario", "Néstor", "Renato", "Sergio"]
+PARTICIPANTES = ["Constanza", "David", "Franco", "Florencia", "José Alonso", "José Mario", "Leonardo", "Mario", "Marlene", "Néstor", "Renato", "Sergio"]
 CUOTA_INSCRIPCION = 5000
 PASSWORD_ADMIN = "admin123"
 ARCHIVO_DATOS = "datos_polla.json"
@@ -754,8 +754,8 @@ with tabs[5]:
         st.markdown("### 📊 GENERADOR DE RESUMEN DE APUESTAS")
         
         MAPA_APODOS = {
-            "Constanza": "Coni", "David": "David", "Franco": "Franco", 
-            "José Alonso": "José Alonso", "José Mario": "José Mario", 
+            "Constanza": "Coni", "David": "David", "Florencia": "Flo"
+            "Franco": "Franco", "José Alonso": "José Alonso", "José Mario": "José Mario", 
             "Leonardo": "Leo", "Marlene": "Mane", "Mario": "Mario", 
             "Néstor": "Néstor", "Renato": "Renato", "Sergio": "Sergio"
         }
