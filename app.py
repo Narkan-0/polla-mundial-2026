@@ -605,7 +605,6 @@ with tabs[2]:
         st.markdown("<h4 style='color:#fbbf24; margin-top:15px; margin-bottom:15px;'>🔜 PRÓXIMOS PARTIDOS</h4>", unsafe_allow_html=True)
         st.markdown("".join(lista_proximos), unsafe_allow_html=True)
 
-
 # --- TAB 4: EL MUNDIAL (FUSIÓN RESPONSIVA GRUPOS + LLAVES DINÁMICAS) ---
 with tabs[3]:
     st.markdown("<h2>🏆 ESTADÍSTICAS DEL MUNDIAL REAL</h2>", unsafe_allow_html=True)
@@ -662,22 +661,45 @@ with tabs[3]:
                 pid = str(p["id"])
                 real = datos["resultados_reales"].get(pid)
                 estado_texto = "⏳ Esperando clasificación de fase previa" if ("GANADOR" in p['local'] or "1A" in p['local'] or "2A" in p['local']) else "🔜 Listo para jugarse"
-                bg_color, borde, goles_l, goles_v = "rgba(30, 41, 59, 0.6)", "1px solid #475569", "-", "-"
+                bg_color, borde = "rgba(30, 41, 59, 0.6)", "1px solid #475569"
+                caja_goles = "-  -"
                 
                 if real:
                     goles_l, goles_v = real["l"], real["v"]
-                    estado_texto = f"✅ Avanza: {real.get('avanza', 'Ganador')}"
+                    tipo_res = real.get("tipo_resolucion", "90 min")
+                    avanza = real.get("avanza", "Ganador")
+                    
+                    # Lógica de renderizado según método de resolución
+                    if tipo_res == "Prórroga":
+                        goles_l = real.get("l_display", real["l"])
+                        goles_v = real.get("v_display", real["v"])
+                        caja_goles = f"{goles_l} - {goles_v}"
+                        estado_texto = f"✅ Avanza: {avanza} (Prórroga)"
+                        
+                    elif tipo_res == "Penales":
+                        l_pen = real.get("l_pen", 0)
+                        v_pen = real.get("v_pen", 0)
+                        # Renderizado del empate con penales sutiles al costado
+                        caja_goles = f"{goles_l} <span style='font-size:0.75em; color:#94a3b8;'>({l_pen})</span> - <span style='font-size:0.75em; color:#94a3b8;'>({v_pen})</span> {goles_v}"
+                        estado_texto = f"✅ Avanza: {avanza} (Penales)"
+                        
+                    else:
+                        caja_goles = f"{goles_l} - {goles_v}"
+                        estado_texto = f"✅ Avanza: {avanza}"
+                        
                     bg_color, borde = "rgba(15, 23, 42, 0.9)", "2px solid #22c55e"
+                    
                 elif verificar_partido_empezado(p.get("fecha_ref", "")):
                     estado_texto, borde = "⏱️ En Curso", "2px solid #e11d48"
                     
+                # Anchos reajustados (36% - 28% - 36%) para dar espacio a los paréntesis sin desarmar la tarjeta
                 tarjeta_html = f"""
                 <div style='background:{bg_color}; border:{borde}; border-radius:8px; padding:12px; margin-bottom:15px;'>
                     <div style='font-size:0.8rem; color:#94a3b8; text-align:center; margin-bottom:8px;'>{p['fecha']} ({p['hora']} hrs)</div>
                     <div style='display:flex; justify-content:space-between; align-items:center;'>
-                        <div style='width:42%; text-align:right; font-weight:bold;'>{p['local']} {p['flag_l']}</div>
-                        <div style='width:16%; text-align:center; font-size:1.1rem; font-weight:bold; color:#fbbf24; background:#000; padding:2px; border-radius:4px;'>{goles_l} - {goles_v}</div>
-                        <div style='width:42%; text-align:left; font-weight:bold;'>{p['flag_v']} {p['visita']}</div>
+                        <div style='width:36%; text-align:right; font-weight:bold;'>{p['local']} {p['flag_l']}</div>
+                        <div style='width:28%; text-align:center; font-size:1.1rem; font-weight:bold; color:#fbbf24; background:#000; padding:2px; border-radius:4px;'>{caja_goles}</div>
+                        <div style='width:36%; text-align:left; font-weight:bold;'>{p['flag_v']} {p['visita']}</div>
                     </div>
                     <div style='font-size:0.75rem; color:#64748b; text-align:center; margin-top:8px; font-weight:bold;'>{estado_texto}</div>
                 </div>
