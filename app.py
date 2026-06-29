@@ -121,32 +121,33 @@ def obtener_fixture_completo():
         {"id": 87, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 18:00", "fecha": "03 de Julio", "hora": "18:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Miami"},
         {"id": 88, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 21:30", "fecha": "03 de Julio", "hora": "21:30", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Kansas City"},
 
-        # --- OCTAVOS DE FINAL (ORDEN CRUZADO POR SEDE FIFA) ---
-        {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 15:00", "fecha": "04 de Julio", "hora": "15:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P73", "flag_v": "🥇", "estadio": "Philadelphia"},
-        {"id": 90, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 18:00", "fecha": "04 de Julio", "hora": "18:00", "local": "GANADOR P75", "flag_l": "🥇", "visita": "GANADOR P76", "flag_v": "🥇", "estadio": "Houston"},
-        {"id": 91, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-05 14:00", "fecha": "05 de Julio", "hora": "14:00", "local": "GANADOR P77", "flag_l": "🥇", "visita": "GANADOR P78", "flag_v": "🥇", "estadio": "N. York/N. Jersey"},
-        {"id": 92, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-05 18:00", "fecha": "05 de Julio", "hora": "18:00", "local": "GANADOR P79", "flag_l": "🥇", "visita": "GANADOR P80", "flag_v": "🥇", "estadio": "Mexico City"},
-        {"id": 93, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-06 15:00", "fecha": "06 de Julio", "hora": "15:00", "local": "GANADOR P81", "flag_l": "🥇", "visita": "GANADOR P82", "flag_v": "🥇", "estadio": "Dallas"},
-        {"id": 94, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-06 19:00", "fecha": "06 de Julio", "hora": "19:00", "local": "GANADOR P83", "flag_l": "🥇", "visita": "GANADOR P84", "flag_v": "🥇", "estadio": "Seattle"},
-        {"id": 95, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-07 16:00", "fecha": "07 de Julio", "hora": "16:00", "local": "GANADOR P85", "flag_l": "🥇", "visita": "GANADOR P86", "flag_v": "🥇", "estadio": "Atlanta"},
-        {"id": 96, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-07 20:00", "fecha": "07 de Julio", "hora": "20:00", "local": "GANADOR P87", "flag_l": "🥇", "visita": "GANADOR P88", "flag_v": "🥇", "estadio": "Vancouver"},
+        # --- OCTAVOS DE FINAL (CUADRO OFICIAL FIFA - HORARIO CHILE) ---
+        {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 17:00", "fecha": "04 de Julio", "hora": "17:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P77", "flag_v": "🥇", "estadio": "Filadelfia"},
+        {"id": 90, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 14:00", "fecha": "04 de Julio", "hora": "14:00", "local": "GANADOR P73", "flag_l": "🥇", "visita": "GANADOR P75", "flag_v": "🥇", "estadio": "Houston"},
+        {"id": 91, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-05 16:00", "fecha": "05 de Julio", "hora": "16:00", "local": "GANADOR P76", "flag_l": "🥇", "visita": "GANADOR P78", "flag_v": "🥇", "estadio": "N. York/N. Jersey"},
+        {"id": 92, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-05 20:00", "fecha": "05 de Julio", "hora": "20:00", "local": "GANADOR P79", "flag_l": "🥇", "visita": "GANADOR P80", "flag_v": "🥇", "estadio": "Ciudad de México"},
+        {"id": 93, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-06 16:00", "fecha": "06 de Julio", "hora": "16:00", "local": "GANADOR P83", "flag_l": "🥇", "visita": "GANADOR P84", "flag_v": "🥇", "estadio": "Dallas"},
+        {"id": 94, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-06 20:00", "fecha": "06 de Julio", "hora": "20:00", "local": "GANADOR P81", "flag_l": "🥇", "visita": "GANADOR P82", "flag_v": "🥇", "estadio": "Seattle"},
+        {"id": 95, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-07 12:00", "fecha": "07 de Julio", "hora": "12:00", "local": "GANADOR P86", "flag_l": "🥇", "visita": "GANADOR P88", "flag_v": "🥇", "estadio": "Atlanta"},
+        {"id": 96, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-07 16:00", "fecha": "07 de Julio", "hora": "16:00", "local": "GANADOR P85", "flag_l": "🥇", "visita": "GANADOR P87", "flag_v": "🥇", "estadio": "Vancouver"},
 
         # --- CUARTOS DE FINAL ---
         {"id": 97, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-09 16:00", "fecha": "09 de Julio", "hora": "16:00", "local": "GANADOR P89", "flag_l": "🥇", "visita": "GANADOR P90", "flag_v": "🥇", "estadio": "Boston"},
-        {"id": 98, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-10 18:00", "fecha": "10 de Julio", "hora": "18:00", "local": "GANADOR P91", "flag_l": "🥇", "visita": "GANADOR P92", "flag_v": "🥇", "estadio": "Los Angeles"},
-        {"id": 99, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-11 15:00", "fecha": "11 de Julio", "hora": "15:00", "local": "GANADOR P93", "flag_l": "🥇", "visita": "GANADOR P94", "flag_v": "🥇", "estadio": "Miami"},
-        {"id": 100, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-11 20:00", "fecha": "11 de Julio", "hora": "20:00", "local": "GANADOR P95", "flag_l": "🥇", "visita": "GANADOR P96", "flag_v": "🥇", "estadio": "Kansas City"},
+        {"id": 98, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-10 22:00", "fecha": "10 de Julio", "hora": "22:00", "local": "GANADOR P93", "flag_l": "🥇", "visita": "GANADOR P94", "flag_v": "🥇", "estadio": "Los Angeles"},
+        {"id": 99, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-11 20:00", "fecha": "11 de Julio", "hora": "20:00", "local": "GANADOR P91", "flag_l": "🥇", "visita": "GANADOR P92", "flag_v": "🥇", "estadio": "Miami"},
+        {"id": 100, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-11 19:00", "fecha": "11 de Julio", "hora": "19:00", "local": "GANADOR P95", "flag_l": "🥇", "visita": "GANADOR P96", "flag_v": "🥇", "estadio": "Kansas City"},
 
         # --- SEMIFINALES ---
-        {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-14 15:00", "fecha": "14 de Julio", "hora": "15:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
-        {"id": 102, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-15 18:00", "fecha": "15 de Julio", "hora": "18:00", "local": "GANADOR P99", "flag_l": "🥇", "visita": "GANADOR P100", "flag_v": "🥇", "estadio": "Atlanta"},
+        {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-14 20:00", "fecha": "14 de Julio", "hora": "20:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
+        {"id": 102, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-15 20:00", "fecha": "15 de Julio", "hora": "20:00", "local": "GANADOR P99", "flag_l": "🥇", "visita": "GANADOR P100", "flag_v": "🥇", "estadio": "Atlanta"},
 
         # --- TERCER PUESTO ---
-        {"id": 103, "fase_bloque": "Fases Finales", "grupo": "Tercer Puesto", "fecha_ref": "2026-07-18 15:00", "fecha": "18 de Julio", "hora": "15:00", "local": "PERDEDOR P101", "flag_l": "🥉", "visita": "PERDEDOR P102", "flag_v": "🥉", "estadio": "Miami"},
+        {"id": 103, "fase_bloque": "Fases Finales", "grupo": "Tercer Puesto", "fecha_ref": "2026-07-18 20:00", "fecha": "18 de Julio", "hora": "20:00", "local": "PERDEDOR P101", "flag_l": "🥉", "visita": "PERDEDOR P102", "flag_v": "🥉", "estadio": "Miami"},
 
         # --- GRAN FINAL ---
         {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Jersey"}
     ]
+
 # FIJAR ORDEN CRONOLÓGICO NATURAL POR FECHA DE REFERENCIA
 FIXTURE = sorted(obtener_fixture_completo(), key=lambda x: x['fecha_ref'])
 
