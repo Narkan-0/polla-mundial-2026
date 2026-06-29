@@ -291,12 +291,22 @@
         "73": {
             "l": 0,
             "v": 1,
+            "tipo_resolucion": "90 min",
             "avanza": "CANADÁ"
         },
         "74": {
             "l": 2,
             "v": 1,
+            "tipo_resolucion": "90 min",
             "avanza": "BRASIL"
+        },
+        "75": {
+            "l": 1,
+            "v": 1,
+            "tipo_resolucion": "Penales",
+            "l_pen": 3,
+            "v_pen": 4,
+            "avanza": "PARAGUAY"
         }
     },
     "pronosticos": {
