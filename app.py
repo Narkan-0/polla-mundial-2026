@@ -813,8 +813,18 @@ with tabs[5]:
                 if fin: 
                     nuevos_cierres[pid] = {"l": g_l, "v": g_v}
                     if "Fases Finales" in part["fase_bloque"]:
-                        if g_l == g_v: nuevos_cierres[pid]["avanza"] = st.selectbox("🏆 Clasifica:", [part['local'], part['visita']], key=f"avanza_{pid}")
-                        else: nuevos_cierres[pid]["avanza"] = part['local'] if g_l > g_v else part['visita']
+                        if g_l == g_v: 
+                            st.warning(f"⚖️ ¡Empate {g_l}-{g_v} en los 90 minutos! ¿Quién avanzó en Prórroga/Penales?")
+                            # Selector amigable horizontal que solo aparece si hay empate
+                            nuevos_cierres[pid]["avanza"] = st.radio(
+                                "Selecciona al ganador definitivo:", 
+                                [part['local'], part['visita']], 
+                                key=f"avanza_{pid}",
+                                horizontal=True,
+                                label_visibility="collapsed"
+                            )
+                        else: 
+                            nuevos_cierres[pid]["avanza"] = part['local'] if g_l > g_v else part['visita']
                 else: nuevos_cierres.pop(pid, None)
             
             if st.button("🔄 ACTUALIZAR MARCADORES MUNDIALES", use_container_width=True):
