@@ -304,17 +304,23 @@
             "l": 1,
             "v": 1,
             "tipo_resolucion": "Penales",
-            "l_pen": 3,
-            "v_pen": 4,
+            "l_pen": 0,
+            "v_pen": 0,
             "avanza": "PARAGUAY"
         },
         "76": {
             "l": 1,
             "v": 1,
             "tipo_resolucion": "Penales",
-            "l_pen": 2,
-            "v_pen": 3,
+            "l_pen": 0,
+            "v_pen": 0,
             "avanza": "MARRUECOS"
+        },
+        "77": {
+            "l": 1,
+            "v": 2,
+            "tipo_resolucion": "90 min",
+            "avanza": "NORUEGA"
         }
     },
     "pronosticos": {
