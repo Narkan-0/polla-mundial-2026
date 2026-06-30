@@ -307,6 +307,14 @@
             "l_pen": 3,
             "v_pen": 4,
             "avanza": "PARAGUAY"
+        },
+        "76": {
+            "l": 1,
+            "v": 1,
+            "tipo_resolucion": "Penales",
+            "l_pen": 2,
+            "v_pen": 3,
+            "avanza": "MARRUECOS"
         }
     },
     "pronosticos": {
