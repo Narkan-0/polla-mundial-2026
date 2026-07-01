@@ -827,42 +827,58 @@ with tabs[5]:
                 pid = str(part["id"])
                 real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
                 st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
+                
                 c_l, c_v, c_chk = st.columns([2, 2, 3])
                 
-                # Goles base (90 minutos - ÚNICOS que importan para los puntos de la familia)
+                # Goles base (90 minutos) SIEMPRE visibles y editables
                 with c_l: g_l = st.number_input("L", 0, 15, int(real_actual.get("l", 0)), key=f"ar_{pid}l", label_visibility="collapsed")
                 with c_v: g_v = st.number_input("V", 0, 15, int(real_actual.get("v", 0)), key=f"ar_{pid}v", label_visibility="collapsed")
+                
+                # LÓGICA DE DESEMPATE EXTERNA: Aparece inmediatamente si detecta empate, independiente del check.
+                es_empate_final = ("Fases Finales" in part["fase_bloque"] and g_l == g_v)
+                
+                tipo_res = "90 min"
+                gl_pro, gv_pro = g_l, g_v
+                gl_pen, gv_pen = 0, 0
+                
+                if es_empate_final:
+                    st.warning(f"⚖️ Empate {g_l}-{g_v}. Define el resultado final antes de marcar 'Cerrar Oficial':")
+                    
+                    # Memoria visual del radio button
+                    tipo_guardado = real_actual.get("tipo_resolucion", "Penales")
+                    idx_tipo = 1 if tipo_guardado == "Prórroga" else 0
+                    
+                    tipo_res = st.radio("Método de resolución:", ["Penales", "Prórroga"], key=f"tipo_{pid}", index=idx_tipo, horizontal=True, label_visibility="collapsed")
+                    
+                    if tipo_res == "Prórroga":
+                        st.caption("⚽ Marcador final tras 120 min:")
+                        cp1, cp2 = st.columns(2)
+                        with cp1: gl_pro = st.number_input("L", 0, 15, int(real_actual.get("l_display", g_l)), key=f"pro_l_{pid}")
+                        with cp2: gv_pro = st.number_input("V", 0, 15, int(real_actual.get("v_display", g_v)), key=f"pro_v_{pid}")
+                    elif tipo_res == "Penales":
+                        st.caption("🥅 Goles en tanda de Penales:")
+                        cp1, cp2 = st.columns(2)
+                        with cp1: gl_pen = st.number_input("L", 0, 15, int(real_actual.get("l_pen", 0)), key=f"pen_l_{pid}")
+                        with cp2: gv_pen = st.number_input("V", 0, 15, int(real_actual.get("v_pen", 0)), key=f"pen_v_{pid}")
+
+                # El check ahora solo sirve para CONFIRMAR y guardar el bloque que ya armaste
                 with c_chk: fin = st.checkbox("Cerrar Oficial", value=(pid in datos["resultados_reales"]), key=f"chk_{pid}")
                 
                 if fin: 
                     nuevos_cierres[pid] = {"l": g_l, "v": g_v}
-                    if "Fases Finales" in part["fase_bloque"]:
-                        if g_l == g_v: 
-                            st.warning(f"⚖️ Empate {g_l}-{g_v} en 90 min. ¿Cómo se definió?")
-                            tipo_res = st.radio("Método de resolución:", ["Penales", "Prórroga"], key=f"tipo_{pid}", horizontal=True, label_visibility="collapsed")
-                            
-                            nuevos_cierres[pid]["tipo_resolucion"] = tipo_res
-                            
-                            if tipo_res == "Prórroga":
-                                st.caption("⚽ Ingresa el marcador FINAL tras los 120 minutos:")
-                                cp1, cp2 = st.columns(2)
-                                with cp1: gl_pro = st.number_input(f"L ({part['local']})", 0, 15, g_l, key=f"pro_l_{pid}")
-                                with cp2: gv_pro = st.number_input(f"V ({part['visita']})", 0, 15, g_v, key=f"pro_v_{pid}")
-                                nuevos_cierres[pid]["l_display"] = gl_pro
-                                nuevos_cierres[pid]["v_display"] = gv_pro
-                                nuevos_cierres[pid]["avanza"] = part['local'] if gl_pro > gv_pro else part['visita']
-                                
-                            elif tipo_res == "Penales":
-                                st.caption("🥅 Ingresa los goles de la tanda de penales:")
-                                cp1, cp2 = st.columns(2)
-                                with cp1: gl_pen = st.number_input(f"L ({part['local']})", 0, 15, 0, key=f"pen_l_{pid}")
-                                with cp2: gv_pen = st.number_input(f"V ({part['visita']})", 0, 15, 0, key=f"pen_v_{pid}")
-                                nuevos_cierres[pid]["l_pen"] = gl_pen
-                                nuevos_cierres[pid]["v_pen"] = gv_pen
-                                nuevos_cierres[pid]["avanza"] = part['local'] if gl_pen > gv_pen else part['visita']
-                        else: 
-                            nuevos_cierres[pid]["tipo_resolucion"] = "90 min"
-                            nuevos_cierres[pid]["avanza"] = part['local'] if g_l > g_v else part['visita']
+                    if es_empate_final:
+                        nuevos_cierres[pid]["tipo_resolucion"] = tipo_res
+                        if tipo_res == "Prórroga":
+                            nuevos_cierres[pid]["l_display"] = gl_pro
+                            nuevos_cierres[pid]["v_display"] = gv_pro
+                            nuevos_cierres[pid]["avanza"] = part['local'] if gl_pro > gv_pro else part['visita']
+                        elif tipo_res == "Penales":
+                            nuevos_cierres[pid]["l_pen"] = gl_pen
+                            nuevos_cierres[pid]["v_pen"] = gv_pen
+                            nuevos_cierres[pid]["avanza"] = part['local'] if gl_pen > gv_pen else part['visita']
+                    else: 
+                        nuevos_cierres[pid]["tipo_resolucion"] = "90 min"
+                        nuevos_cierres[pid]["avanza"] = part['local'] if g_l > g_v else part['visita']
                 else: 
                     nuevos_cierres.pop(pid, None)
             
@@ -892,3 +908,5 @@ with tabs[5]:
                 guardar_datos(datos)
                 st.session_state["mensaje_exito"] = f"¡Las apuestas forzadas de {jugador} se subieron con éxito!"
                 st.rerun()
+
+    
