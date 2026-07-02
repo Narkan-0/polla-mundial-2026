@@ -121,7 +121,7 @@ def obtener_fixture_completo():
         {"id": 87, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 18:00", "fecha": "03 de Julio", "hora": "18:00", "local": "ARGENTINA", "flag_l": "🇦🇷", "visita": "CABO VERDE", "flag_v": "🇨🇻", "estadio": "Miami"},
         {"id": 88, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-07-03 21:30", "fecha": "03 de Julio", "hora": "21:30", "local": "COLOMBIA", "flag_l": "🇨🇴", "visita": "GHANA", "flag_v": "🇬🇭", "estadio": "Kansas City"},
 
-        # --- OCTAVOS DE FINAL (CUADRO OFICIAL FIFA - HORARIO CHILE) ---
+        # --- OCTAVOS DE FINAL (CUADRO OFICIAL FIFA) ---
         {"id": 89, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 17:00", "fecha": "04 de Julio", "hora": "17:00", "local": "GANADOR P74", "flag_l": "🥇", "visita": "GANADOR P77", "flag_v": "🥇", "estadio": "Filadelfia"},
         {"id": 90, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-04 14:00", "fecha": "04 de Julio", "hora": "14:00", "local": "GANADOR P73", "flag_l": "🥇", "visita": "GANADOR P75", "flag_v": "🥇", "estadio": "Houston"},
         {"id": 91, "fase_bloque": "Fases Finales", "grupo": "Octavos", "fecha_ref": "2026-07-05 16:00", "fecha": "05 de Julio", "hora": "16:00", "local": "GANADOR P76", "flag_l": "🥇", "visita": "GANADOR P78", "flag_v": "🥇", "estadio": "N. York/N. Jersey"},
@@ -145,7 +145,8 @@ def obtener_fixture_completo():
         {"id": 103, "fase_bloque": "Fases Finales", "grupo": "Tercer Puesto", "fecha_ref": "2026-07-18 20:00", "fecha": "18 de Julio", "hora": "20:00", "local": "PERDEDOR P101", "flag_l": "🥉", "visita": "PERDEDOR P102", "flag_v": "🥉", "estadio": "Miami"},
 
         # --- GRAN FINAL ---
-        {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Jersey"}
+        {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Yersey"}, 
+        "}
     ]
 
 # FIJAR ORDEN CRONOLÓGICO NATURAL POR FECHA DE REFERENCIA
