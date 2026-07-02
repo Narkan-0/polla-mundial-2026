@@ -102,8 +102,7 @@ def obtener_fixture_completo():
         {"id": 69, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "ARGELIA", "flag_l": "🇩🇿", "visita": "AUSTRIA", "flag_v": "🇦🇹", "estadio": "Kansas City"},
         {"id": 70, "fase_bloque": "Fecha 3", "grupo": "Grupo J", "fecha_ref": "2026-06-27 22:00", "fecha": "27 de Junio", "hora": "22:00", "local": "JORDANIA", "flag_l": "🇯🇴", "visita": "ARGENTINA", "flag_v": "🇦🇷", "estadio": "Dallas"},
 
-        
-                # --- DIECISEISAVOS DE FINAL (IDs EXACTOS DE LAS APUESTAS FAMILIARES) ---
+        # --- DIECISEISAVOS DE FINAL (IDs EXACTOS DE LAS APUESTAS FAMILIARES) ---
         {"id": 73, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-28 15:00", "fecha": "28 de Junio", "hora": "15:00", "local": "SUDÁFRICA", "flag_l": "🇿🇦", "visita": "CANADÁ", "flag_v": "🇨🇦", "estadio": "Los Angeles"},
         {"id": 74, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 13:00", "fecha": "29 de Junio", "hora": "13:00", "local": "BRASIL", "flag_l": "🇧🇷", "visita": "JAPÓN", "flag_v": "🇯🇵", "estadio": "Houston"},
         {"id": 75, "fase_bloque": "Fases Finales", "grupo": "Dieciseisavos", "fecha_ref": "2026-06-29 16:30", "fecha": "29 de Junio", "hora": "16:30", "local": "ALEMANIA", "flag_l": "🇩🇪", "visita": "PARAGUAY", "flag_v": "🇵🇾", "estadio": "Boston"},
