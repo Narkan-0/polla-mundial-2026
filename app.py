@@ -145,8 +145,7 @@ def obtener_fixture_completo():
         {"id": 103, "fase_bloque": "Fases Finales", "grupo": "Tercer Puesto", "fecha_ref": "2026-07-18 20:00", "fecha": "18 de Julio", "hora": "20:00", "local": "PERDEDOR P101", "flag_l": "🥉", "visita": "PERDEDOR P102", "flag_v": "🥉", "estadio": "Miami"},
 
         # --- GRAN FINAL ---
-        {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Yersey"}, 
-        "}
+        {"id": 104, "fase_bloque": "Fases Finales", "grupo": "Gran Final", "fecha_ref": "2026-07-19 15:00", "fecha": "19 de Julio", "hora": "15:00", "local": "GANADOR P101", "flag_l": "🏆", "visita": "GANADOR P102", "flag_v": "🏆", "estadio": "N. York/N. Yersey"}
     ]
 
 # FIJAR ORDEN CRONOLÓGICO NATURAL POR FECHA DE REFERENCIA
