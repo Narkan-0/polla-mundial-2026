@@ -731,6 +731,17 @@ with tabs[4]:
 # --- TAB 6: PANEL CONTROL (ADMIN + GENERADOR WHATSAPP SEGURO) ---
 with tabs[5]:
     st.markdown("<h2>⚙️ PANEL DE CONTROL EXCLUSIVO</h2>", unsafe_allow_html=True)
+        # 🚨 BOTÓN DE EMERGENCIA: MIGRACIÓN DE APUESTAS A FORMATO FIFA
+    if st.button("🛠️ CORREGIR APUESTAS DE LA FAMILIA (Un solo clic)", type="primary"):
+        mapeo = {"74":"76", "75":"74", "76":"75", "77":"78", "78":"77", "81":"82", "82":"81", "83":"84", "84":"83", "86":"88", "87":"86", "88":"87"}
+        for jugador in datos["pronosticos"]:
+            nuevas = {}
+            for pid, apuesta in datos["pronosticos"][jugador].items():
+                nuevo_pid = mapeo.get(pid, pid)
+                nuevas[nuevo_pid] = apuesta
+            datos["pronosticos"][jugador] = nuevas
+        guardar_datos(datos)
+        st.success("¡LISTO! Todas las apuestas fueron reasignadas a los países correctos.")
     if st.text_input("Ingresa Token de Seguridad Mandamás:", type="password") == PASSWORD_ADMIN:
         st.success("🔓 Acceso Concedido de forma exitosa")
         
