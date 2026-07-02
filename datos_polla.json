@@ -339,6 +339,20 @@
             "v": 1,
             "tipo_resolucion": "90 min",
             "avanza": "INGLATERRA"
+        },
+        "81": {
+            "l": 2,
+            "v": 2,
+            "tipo_resolucion": "Prórroga",
+            "l_display": 3,
+            "v_display": 2,
+            "avanza": "BÉLGICA"
+        },
+        "82": {
+            "l": 2,
+            "v": 0,
+            "tipo_resolucion": "90 min",
+            "avanza": "ESTADOS UNIDOS"
         }
     },
     "pronosticos": {
