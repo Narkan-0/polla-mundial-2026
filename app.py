@@ -442,14 +442,24 @@ with tabs[0]:
         pts_totales, exactos, tendencias = 0, 0, 0
         for part in FIXTURE_DINAMICO:
             pid = str(part["id"])
-            real, pred = datos["resultados_reales"].get(pid), datos["pronosticos"].get(p, {}).get(pid)
+            
+            # CORREGIDO: Asignación limpia en líneas separadas sin romper la sintaxis de Python
+            real = datos["resultados_reales"].get(pid)
+            pred = datos["pronosticos"].get(p, {}).get(pid)
+            
             if real and pred and "l" in real and "v" in real and "l" in pred and "v" in pred:
                 pts, _, _ = calcular_puntos(real["l"], real["v"], pred["l"], pred["v"])
                 pts_totales += pts
                 if pts == 3: exactos += 1
                 elif pts == 1: tendencias += 1
-        tabla_posiciones.append({"Participante": p, "Puntos Totales 🌟": pts_totales, "Marcadores Exactos 🎯": exactos, "Aciertos Simples (1pt) 🏟️": tendencias})
-    
+                
+        tabla_posiciones.append({
+            "Participante": p, 
+            "Puntos Totales 🌟": pts_totales, 
+            "Marcadores Exactos 🎯": exactos, 
+            "Aciertos Simples (1pt) 🏟️": tendencias
+        })
+
     df_tabla = pd.DataFrame(tabla_posiciones).sort_values(by=["Puntos Totales 🌟", "Marcadores Exactos 🎯"], ascending=False).reset_index(drop=True)
     df_tabla.index += 1
     
