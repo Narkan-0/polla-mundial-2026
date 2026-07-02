@@ -288,72 +288,37 @@
             "l": 1,
             "v": 3
         },
-        "73": {
-            "l": 0,
-            "v": 1,
-            "tipo_resolucion": "90 min",
-            "avanza": "CANADÁ"
+         "73": {
+            "l": 0, "v": 1, "tipo_resolucion": "90 min", "avanza": "CANADÁ"
         },
         "74": {
-            "l": 2,
-            "v": 1,
-            "tipo_resolucion": "90 min",
-            "avanza": "BRASIL"
+            "l": 1, "v": 1, "tipo_resolucion": "Penales", "l_pen": 3, "v_pen": 4, "avanza": "PARAGUAY"
         },
         "75": {
-            "l": 1,
-            "v": 1,
-            "tipo_resolucion": "Penales",
-            "l_pen": 3,
-            "v_pen": 4,
-            "avanza": "PARAGUAY"
+            "l": 1, "v": 1, "tipo_resolucion": "Penales", "l_pen": 2, "v_pen": 3, "avanza": "MARRUECOS"
         },
         "76": {
-            "l": 1,
-            "v": 1,
-            "tipo_resolucion": "Penales",
-            "l_pen": 2,
-            "v_pen": 3,
-            "avanza": "MARRUECOS"
+            "l": 2, "v": 1, "tipo_resolucion": "90 min", "avanza": "BRASIL"
         },
         "77": {
-            "l": 1,
-            "v": 2,
-            "tipo_resolucion": "90 min",
-            "avanza": "NORUEGA"
+            "l": 1, "v": 2, "tipo_resolucion": "90 min", "avanza": "NORUEGA"
         },
         "78": {
-            "l": 3,
-            "v": 0,
-            "tipo_resolucion": "90 min",
-            "avanza": "FRANCIA"
+            "l": 3, "v": 0, "tipo_resolucion": "90 min", "avanza": "FRANCIA"
         },
         "79": {
-            "l": 2,
-            "v": 0,
-            "tipo_resolucion": "90 min",
-            "avanza": "MÉXICO"
+            "l": 2, "v": 0, "tipo_resolucion": "90 min", "avanza": "MÉXICO"
         },
         "80": {
-            "l": 2,
-            "v": 1,
-            "tipo_resolucion": "90 min",
-            "avanza": "INGLATERRA"
+            "l": 2, "v": 1, "tipo_resolucion": "90 min", "avanza": "INGLATERRA"
         },
         "81": {
-            "l": 2,
-            "v": 2,
-            "tipo_resolucion": "Prórroga",
-            "l_display": 3,
-            "v_display": 2,
-            "avanza": "BÉLGICA"
+            "l": 2, "v": 2, "tipo_resolucion": "Prórroga", "l_display": 3, "v_display": 2, "avanza": "BÉLGICA"
         },
         "82": {
-            "l": 2,
-            "v": 0,
-            "tipo_resolucion": "90 min",
-            "avanza": "ESTADOS UNIDOS"
+            "l": 2, "v": 0, "tipo_resolucion": "90 min", "avanza": "ESTADOS UNIDOS"
         }
+
     },
     "pronosticos": {
         "Constanza": {
