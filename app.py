@@ -426,7 +426,7 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
                     if int(r_m["l"]) > int(r_m["v"]): m["visita"] = prev_match["visita"].upper(); m["flag_v"] = prev_match["flag_v"]
                     else: m["visita"] = prev_match["local"].upper(); m["flag_v"] = prev_match["flag_l"]
     return fixture_copia
-
+FIXTURE = obtener_fixture_completo()
 FIXTURE_DINAMICO = resolver_fixture_dinamico(FIXTURE, datos["resultados_reales"])
 
 # --- PESTAÑAS PRINCIPALES CON ORDEN DE PORTADA REESTRUCTURADO ---
