@@ -317,16 +317,16 @@
             "avanza": "BRASIL"
         },
         "77": {
-            "l": 1,
-            "v": 2,
-            "tipo_resolucion": "90 min",
-            "avanza": "NORUEGA"
-        },
-        "78": {
             "l": 3,
             "v": 0,
             "tipo_resolucion": "90 min",
             "avanza": "FRANCIA"
+        },
+        "78": {
+            "l": 1,
+            "v": 2,
+            "tipo_resolucion": "90 min",
+            "avanza": "NORUEGA"
         },
         "79": {
             "l": 2,
