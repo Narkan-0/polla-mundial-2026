@@ -1,4 +1,3 @@
-
 {
     "resultados_reales": {
         "1": {
@@ -354,6 +353,12 @@
             "v": 0,
             "tipo_resolucion": "90 min",
             "avanza": "ESTADOS UNIDOS"
+        },
+        "83": {
+            "l": 3,
+            "v": 0,
+            "tipo_resolucion": "90 min",
+            "avanza": "ESPAÑA"
         }
     },
     "pronosticos": {
