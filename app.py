@@ -636,7 +636,7 @@ with tabs[2]:
 # --- TAB 4: EL MUNDIAL (FUSIÓN RESPONSIVA GRUPOS + LLAVES DINÁMICAS) ---
 with tabs[3]:
     st.markdown("<h2>🏆 ESTADÍSTICAS DEL MUNDIAL REAL</h2>", unsafe_allow_html=True)
-    seccion_mundial = st.radio("Selecciona qué deseas revisar:", ["Tablas de Posiciones (Grupos)", "Llaves de la Fase Final (Árbol Dynamic)"], horizontal=True)
+    seccion_mundial = st.radio("Vista del Mundial:", ["Tablas de Posiciones (Grupos)", "Llaves de la Fase Final (Árbol Dinámico)"], index=1, key="forzar_llaves_default", horizontal=True)
     st.write("---")
     
     if seccion_mundial == "Tablas de Posiciones (Grupos)":
