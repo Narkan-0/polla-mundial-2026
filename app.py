@@ -428,6 +428,27 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
     return fixture_copia
 FIXTURE = obtener_fixture_completo()
 FIXTURE_DINAMICO = resolver_fixture_dinamico(FIXTURE, datos["resultados_reales"])
+# 🛠️ PARCHE PARA RECUPERAR LAS BANDERAS EN OCTAVOS Y FASES SIGUIENTES
+diccionario_banderas = {}
+for partido in FIXTURE:
+    # Memoriza todas las banderas originales (Fase de grupos y 16avos)
+    if partido["id"] <= 88: 
+        diccionario_banderas[partido["local"]] = partido["flag_l"]
+        diccionario_banderas[partido["visita"]] = partido["flag_v"]
+
+for partido in FIXTURE_DINAMICO:
+    # Si es un partido de Octavos en adelante (ID 89 al 104)...
+    if partido["id"] > 88: 
+        # Limpiamos el nombre por si la función le pegó un checkmark
+        eq_local = partido["local"].replace("✅", "").strip()
+        eq_visita = partido["visita"].replace("✅", "").strip()
+        
+        # Le devolvemos su bandera original en lugar del "✅"
+        if eq_local in diccionario_banderas:
+            partido["flag_l"] = diccionario_banderas[eq_local]
+        if eq_visita in diccionario_banderas:
+            partido["flag_v"] = diccionario_banderas[eq_visita]
+
 
 # --- PESTAÑAS PRINCIPALES CON ORDEN DE PORTADA REESTRUCTURADO ---
 tabs = st.tabs(["📊 RANKING FAMILIAR", "✍️ PRONÓSTICOS", "📅 CRONOGRAMA COMPLETO MUNDIAL", "🏆 EL MUNDIAL", "📜 BASES DEL JUEGO", "⚙️ PANEL CONTROL"])
