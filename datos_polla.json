@@ -387,6 +387,12 @@
             "l_display": 3,
             "v_display": 2,
             "avanza": "ARGENTINA"
+        },
+        "88": {
+            "l": 1,
+            "v": 0,
+            "tipo_resolucion": "90 min",
+            "avanza": "COLOMBIA"
         }
     },
     "pronosticos": {
