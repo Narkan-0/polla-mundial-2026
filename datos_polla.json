@@ -379,6 +379,14 @@
             "l_pen": 2,
             "v_pen": 4,
             "avanza": "EGIPTO"
+        },
+        "87": {
+            "l": 1,
+            "v": 1,
+            "tipo_resolucion": "Prórroga",
+            "l_display": 3,
+            "v_display": 2,
+            "avanza": "ARGENTINA"
         }
     },
     "pronosticos": {
