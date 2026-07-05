@@ -399,6 +399,12 @@
             "v": 3,
             "tipo_resolucion": "90 min",
             "avanza": "MARRUECOS"
+        },
+        "89": {
+            "l": 0,
+            "v": 1,
+            "tipo_resolucion": "90 min",
+            "avanza": "FRANCIA"
         }
     },
     "pronosticos": {
