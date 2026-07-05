@@ -405,6 +405,12 @@
             "v": 1,
             "tipo_resolucion": "90 min",
             "avanza": "FRANCIA"
+        },
+        "91": {
+            "l": 1,
+            "v": 2,
+            "tipo_resolucion": "90 min",
+            "avanza": "NORUEGA"
         }
     },
     "pronosticos": {
