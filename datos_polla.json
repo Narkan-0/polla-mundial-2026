@@ -417,6 +417,12 @@
             "v": 3,
             "tipo_resolucion": "90 min",
             "avanza": "INGLATERRA"
+        },
+        "93": {
+            "l": 0,
+            "v": 1,
+            "tipo_resolucion": "90 min",
+            "avanza": "ESPAÑA"
         }
     },
     "pronosticos": {
