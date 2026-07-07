@@ -429,6 +429,12 @@
             "v": 1,
             "tipo_resolucion": "90 min",
             "avanza": "BÉLGICA"
+        },
+        "95": {
+            "l": 3,
+            "v": 2,
+            "tipo_resolucion": "90 min",
+            "avanza": "ARGENTINA"
         }
     },
     "pronosticos": {
