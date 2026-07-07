@@ -423,6 +423,12 @@
             "v": 1,
             "tipo_resolucion": "90 min",
             "avanza": "ESPAÑA"
+        },
+        "94": {
+            "l": 4,
+            "v": 1,
+            "tipo_resolucion": "90 min",
+            "avanza": "BÉLGICA"
         }
     },
     "pronosticos": {
