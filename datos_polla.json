@@ -449,6 +449,12 @@
             "v": 0,
             "tipo_resolucion": "90 min",
             "avanza": "FRANCIA"
+        },
+        "98": {
+            "l": 2,
+            "v": 1,
+            "tipo_resolucion": "90 min",
+            "avanza": "ESPAÑA"
         }
     },
     "pronosticos": {
