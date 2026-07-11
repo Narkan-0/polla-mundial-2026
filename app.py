@@ -769,7 +769,6 @@ with tabs[5]:
         # 📱 UBICACIÓN SEGURA: GENERADOR DIARIO PARA WHATSAPP
         st.markdown("### 📱 GENERADOR DIARIO RECORDATORIO WHATSAPP")
         
-        # Filtro inteligente: Mostrar solo fechas que tengan partidos pendientes o en curso
         fechas_disponibles = []
         for m in FIXTURE_DINAMICO:
             partidos_dia = [p for p in FIXTURE_DINAMICO if p["fecha"] == m["fecha"]]
@@ -812,7 +811,6 @@ with tabs[5]:
             "Néstor": "Néstor", "Renato": "Renato", "Sergio": "Sergio"
         }
         
-        # Filtro inteligente: Mostrar solo partidos que NO tienen resultado oficial
         opciones_partidos = []
         for p in FIXTURE_DINAMICO:
             if str(p["id"]) not in datos["resultados_reales"]:
@@ -827,7 +825,6 @@ with tabs[5]:
             p_obj = next((x for x in FIXTURE_DINAMICO if str(x["id"]) == pid_seleccionado), None)
             
             if p_obj:
-                # El título ahora incluye las banderas Y los nombres
                 texto_resumen = f"Resumen {p_obj['flag_l']} {p_obj['local']} vs {p_obj['visita']} {p_obj['flag_v']}\n"
                 texto_resumen += "=============================\n"
                 
@@ -836,7 +833,6 @@ with tabs[5]:
                     pred_user = datos["pronosticos"].get(part_name, {}).get(pid_seleccionado)
                     
                     if pred_user and "l" in pred_user and "v" in pred_user:
-                        # El cuerpo solo muestra las banderas
                         texto_resumen += f"{apodo}: {p_obj['flag_l']} {pred_user['l']} - {pred_user['v']} {p_obj['flag_v']}\n"
                     else:
                         texto_resumen += f"{apodo}: ⚪ Sin Pronóstico\n"
@@ -849,8 +845,7 @@ with tabs[5]:
         fase_admin = st.selectbox("Bloque de Partidos:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
         st.write("---")
         
-                if accion_admin == "Marcadores Oficiales Reales":
-            # EL ESCUDO: Formulario para evitar el colapso del servidor al renderizar múltiples marcadores
+        if accion_admin == "Marcadores Oficiales Reales":
             with st.form(key=f"form_resultados_{fase_admin}"):
                 st.info(f"🏆 Administrando resultados oficiales para: **{fase_admin}**")
                 nuevos_cierres = dict(datos["resultados_reales"])
