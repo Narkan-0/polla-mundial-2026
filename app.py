@@ -916,31 +916,41 @@ with tabs[5]:
                 st.session_state["mensaje_exito"] = "¡Marcadores actualizados con éxito y sincronizados en GitHub!"
                 st.rerun()
 
-        elif accion_admin == "Forzar Apuestas Familiares":
+                elif accion_admin == "Forzar Apuestas Familiares":
             jugador = st.selectbox("Seleccionar Jugador:", PARTICIPANTES)
-            resp_admin = {}
-            for part in [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]:
-                pid = str(part["id"])
-                pred = datos["pronosticos"].get(jugador, {}).get(pid, {})
-                st.markdown(f"**Partido #{pid}: {part['local']} vs {part['visita']}**")
-                c_l, c_v = st.columns(2)
-                with c_l: gl = st.number_input("L", 0, 15, pred.get("l"), key=f"fa_{jugador}_{pid}l")
-                with c_v: gv = st.number_input("V", 0, 15, pred.get("v"), key=f"fa_{jugador}_{pid}v")
-                resp_admin[pid] = {"l": gl, "v": gv}
+            
+            # EL ESCUDO: Envolvemos todo en un formulario para evitar el loop de recargas
+            with st.form(key=f"form_admin_{jugador}_{fase_admin}"):
+                st.info(f"📝 Ingresando cartilla manual para: **{jugador}**")
+                resp_admin = {}
                 
-            if st.button(f"💾 SALVAR CARTILLA DE {jugador.upper()}", use_container_width=True):
-                if jugador not in datos["pronosticos"]: datos["pronosticos"][jugador] = {}
-                for pid, sc in resp_admin.items():
-                    if sc["l"] is not None and sc["v"] is not None: datos["pronosticos"][jugador][pid] = {"l": int(sc["l"]), "v": int(sc["v"])}
-                    else: datos["pronosticos"][jugador].pop(pid, None)
-                guardar_datos(datos)
-                st.session_state["mensaje_exito"] = f"¡Las apuestas forzadas de {jugador} se subieron con éxito!"
-                st.rerun()
-
-
-
-
-
-
-
-    
+                for part in [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]:
+                    pid = str(part["id"])
+                    pred = datos["pronosticos"].get(jugador, {}).get(pid, {})
+                    st.markdown(f"**Partido #{pid}: {part['local']} vs {part['visita']}**")
+                    
+                    c_l, c_v = st.columns(2)
+                    
+                    # Manejo seguro para que no haya errores si la cajita está vacía
+                    val_l = pred.get("l")
+                    val_v = pred.get("v")
+                    val_l = int(val_l) if val_l is not None else 0
+                    val_v = int(val_v) if val_v is not None else 0
+                    
+                    with c_l: gl = st.number_input("L", 0, 15, val_l, key=f"fa_{jugador}_{pid}l")
+                    with c_v: gv = st.number_input("V", 0, 15, val_v, key=f"fa_{jugador}_{pid}v")
+                    resp_admin[pid] = {"l": gl, "v": gv}
+                    
+                st.write("---")
+                
+                # El botón ahora es tipo "submit" y procesa todo de una sola vez
+                if st.form_submit_button(f"💾 SALVAR CARTILLA DE {jugador.upper()}", use_container_width=True):
+                    if jugador not in datos["pronosticos"]: datos["pronosticos"][jugador] = {}
+                    for pid, sc in resp_admin.items():
+                        if sc["l"] is not None and sc["v"] is not None: 
+                            datos["pronosticos"][jugador][pid] = {"l": int(sc["l"]), "v": int(sc["v"])}
+                        else: 
+                            datos["pronosticos"][jugador].pop(pid, None)
+                    guardar_datos(datos)
+                    st.session_state["mensaje_exito"] = f"¡Las apuestas forzadas de {jugador} se subieron con éxito!"
+                    st.rerun()
