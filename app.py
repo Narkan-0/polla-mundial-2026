@@ -937,4 +937,10 @@ with tabs[5]:
                 st.session_state["mensaje_exito"] = f"¡Las apuestas forzadas de {jugador} se subieron con éxito!"
                 st.rerun()
 
+
+
+
+
+
+
     
