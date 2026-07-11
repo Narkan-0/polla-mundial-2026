@@ -916,7 +916,7 @@ with tabs[5]:
                 st.session_state["mensaje_exito"] = "¡Marcadores actualizados con éxito y sincronizados en GitHub!"
                 st.rerun()
 
-                elif accion_admin == "Forzar Apuestas Familiares":
+        elif accion_admin == "Forzar Apuestas Familiares":
             jugador = st.selectbox("Seleccionar Jugador:", PARTICIPANTES)
             
             # EL ESCUDO: Envolvemos todo en un formulario para evitar el loop de recargas
