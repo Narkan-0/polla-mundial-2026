@@ -319,23 +319,22 @@ def obtener_tablas_grupos():
                     stats[g][loc]["Pts"] += 1; stats[g][loc]["PE"] += 1; stats[g][vis]["Pts"] += 1; stats[g][vis]["PE"] += 1
     return stats
 
-# MOTOR INTERNO: CALCULAR EN TIEMPO REAL LOS 8 MEJORES TERCEROS
+# MOTOR INTERNO: CALCULAR EN TIEMPO REAL LOS 8 MEJORES TERCEROS (VERSIÓN LIVIANA)
 def calcular_mejores_terceros_globales(stats_grupos):
     lista_terceros = []
     for g_nome, equipos in stats_grupos.items():
-        df_g = pd.DataFrame.from_dict(equipos, orient='index').reset_index()
-        df_g.rename(columns={'index': 'Equipo_Puro'}, inplace=True)
-        df_g = df_g.sort_values(by=['Pts', 'DIF', 'GF'], ascending=[False, False, False]).reset_index(drop=True)
-        if len(df_g) >= 3:
-            row_3 = df_g.iloc[2].to_dict()
-            row_3["GrupoOriginal"] = g_nome
-            lista_terceros.append(row_3)
+        lista_eqs = [{"Equipo_Puro": eq, **data} for eq, data in equipos.items()]
+        lista_eqs.sort(key=lambda x: (x['Pts'], x['DIF'], x['GF']), reverse=True)
+        if len(lista_eqs) >= 3:
+            tercero = lista_eqs[2]
+            tercero["GrupoOriginal"] = g_nome
+            lista_terceros.append(tercero)
     if lista_terceros:
-        df_t = pd.DataFrame(lista_terceros).sort_values(by=['Pts', 'DIF', 'GF'], ascending=[False, False, False]).reset_index(drop=True)
-        return list(df_t.head(8)['Equipo_Puro'])
+        lista_terceros.sort(key=lambda x: (x['Pts'], x['DIF'], x['GF']), reverse=True)
+        return [x['Equipo_Puro'] for x in lista_terceros[:8]]
     return []
 
-# RESOLVER ARBOL DE LLAVES FINAL DINÁMICAMENTE BASADO EN TABLAS PROVISIONALES
+# RESOLVER ARBOL DE LLAVES FINAL DINÁMICAMENTE (VERSIÓN LIVIANA)
 def resolver_fixture_dinamico(fixture_base, resultados_reales):
     fixture_copia = [dict(m) for m in fixture_base]
     stats_g = obtener_tablas_grupos()
@@ -345,19 +344,18 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
     
     for g_nome, eqs in stats_g.items():
         g_letra = g_nome.replace("Grupo ", "")
-        df_g = pd.DataFrame.from_dict(eqs, orient='index').reset_index()
-        df_g.rename(columns={'index': 'Equipo_Puro'}, inplace=True)
-        df_g = df_g.sort_values(by=['Pts', 'DIF', 'GF'], ascending=[False, False, False]).reset_index(drop=True)
+        lista_eqs = [{"Equipo_Puro": eq, **data} for eq, data in eqs.items()]
+        lista_eqs.sort(key=lambda x: (x['Pts'], x['DIF'], x['GF']), reverse=True)
         
-        if len(df_g) >= 1: map_dinamico[f"1{g_letra}"] = {"name": df_g.iloc[0]['Equipo_Puro'], "flag": df_g.iloc[0]['Bandera']}
-        if len(df_g) >= 2: map_dinamico[f"2{g_letra}"] = {"name": df_g.iloc[1]['Equipo_Puro'], "flag": df_g.iloc[1]['Bandera']}
-        if len(df_g) >= 3:
+        if len(lista_eqs) >= 1: map_dinamico[f"1{g_letra}"] = {"name": lista_eqs[0]['Equipo_Puro'], "flag": lista_eqs[0]['Bandera']}
+        if len(lista_eqs) >= 2: map_dinamico[f"2{g_letra}"] = {"name": lista_eqs[1]['Equipo_Puro'], "flag": lista_eqs[1]['Bandera']}
+        if len(lista_eqs) >= 3:
             lista_terceros_para_arbol.append({
-                "name": df_g.iloc[2]['Equipo_Puro'], "flag": df_g.iloc[2]['Bandera'], "letra": g_letra,
-                "Pts": df_g.iloc[2]['Pts'], "DIF": df_g.iloc[2]['DIF'], "GF": df_g.iloc[2]['GF']
+                "name": lista_eqs[2]['Equipo_Puro'], "flag": lista_eqs[2]['Bandera'], "letra": g_letra,
+                "Pts": lista_eqs[2]['Pts'], "DIF": lista_eqs[2]['DIF'], "GF": lista_eqs[2]['GF']
             })
             
-    lista_terceros_para_arbol = sorted(lista_terceros_para_arbol, key=lambda x: (x['Pts'], x['DIF'], x['GF']), reverse=True)
+    lista_terceros_para_arbol.sort(key=lambda x: (x['Pts'], x['DIF'], x['GF']), reverse=True)
     top_8_thirds_arbol = lista_terceros_para_arbol[:8]
     
     usados_thirds = set()
@@ -369,16 +367,13 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
         elif loc_key.startswith("3") and "/" in loc_key:
             letras_ok = [c for c in loc_key if c.isalpha()]
             found = None
-            # 1. Intentar respetar la regla
             for t in top_8_thirds_arbol:
                 if t["letra"] in letras_ok and t["name"] not in usados_thirds:
                     found = t; break
-            # 2. PARCHE: Si no hay de esas letras, tomar al siguiente disponible
             if not found:
                 for t in top_8_thirds_arbol:
                     if t["name"] not in usados_thirds:
                         found = t; break
-            
             if found:
                 m["local"] = found["name"].upper(); m["flag_l"] = found["flag"]; usados_thirds.add(found["name"])
         elif "GANADOR P" in loc_key:
@@ -401,16 +396,13 @@ def resolver_fixture_dinamico(fixture_base, resultados_reales):
         elif vis_key.startswith("3") and "/" in vis_key:
             letras_ok = [c for c in vis_key if c.isalpha()]
             found = None
-            # 1. Intentar respetar la regla
             for t in top_8_thirds_arbol:
                 if t["letra"] in letras_ok and t["name"] not in usados_thirds:
                     found = t; break
-            # 2. PARCHE: Si no hay de esas letras, tomar al siguiente disponible
             if not found:
                 for t in top_8_thirds_arbol:
                     if t["name"] not in usados_thirds:
                         found = t; break
-
             if found:
                 m["visita"] = found["name"].upper(); m["flag_v"] = found["flag"]; usados_thirds.add(found["name"])
         elif "GANADOR P" in vis_key:
