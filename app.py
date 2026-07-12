@@ -137,7 +137,7 @@ def obtener_fixture_completo():
         {"id": 100, "fase_bloque": "Fases Finales", "grupo": "Cuartos", "fecha_ref": "2026-07-11 22:00", "fecha": "11 de Julio", "hora": "22:00", "local": "GANADOR P95", "flag_l": "🥇", "visita": "GANADOR P96", "flag_v": "🥇", "estadio": "Kansas City"},
 
         # --- SEMIFINALES (HORARIOS CORREGIDOS A HORA DE CHILE) ---
-        {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-14 15:00", "fecha": "14 de Julio", "hora": "16:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
+        {"id": 101, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-14 15:00", "fecha": "14 de Julio", "hora": "15:00", "local": "GANADOR P97", "flag_l": "🥇", "visita": "GANADOR P98", "flag_v": "🥇", "estadio": "Dallas"},
         {"id": 102, "fase_bloque": "Fases Finales", "grupo": "Semifinales", "fecha_ref": "2026-07-15 15:00", "fecha": "15 de Julio", "hora": "15:00", "local": "GANADOR P99", "flag_l": "🥇", "visita": "GANADOR P100", "flag_v": "🥇", "estadio": "Atlanta"},
 
         # --- TERCER PUESTO ---
