@@ -459,9 +459,9 @@
         "99": {
             "l": 1,
             "v": 1,
-            "tipo_resolucion": "Penales",
-            "l_pen": 0,
-            "v_pen": 0,
+            "tipo_resolucion": "Prórroga",
+            "l_display": 1,
+            "v_display": 2,
             "avanza": "INGLATERRA"
         }
     },
