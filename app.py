@@ -834,7 +834,9 @@ with tabs[5]:
         
         # ADMINISTRACIÓN DE RESULTADOS
         st.markdown("### 🛠️ ADMINISTRACIÓN DE RESULTADOS Y APUESTAS")
-        fase_admin = st.selectbox("Selecciona el Bloque de Partidos a editar:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
+        
+        # ¡TU EXCELENTE IDEA APLICADA! Seleccionamos por fases pequeñas en vez de bloques gigantes
+        fase_admin = st.selectbox("Selecciona la Fase a editar:", ["Octavos", "Cuartos", "Semifinales", "Tercer Puesto", "Gran Final"])
         st.write("---")
         
         # 1. ACORDEÓN DE MARCADORES OFICIALES
@@ -843,7 +845,8 @@ with tabs[5]:
                 st.info(f"Administrando resultados oficiales para: **{fase_admin}**")
                 nuevos_cierres = dict(datos["resultados_reales"])
                 
-                for part in [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]:
+                # AHORA FILTRAMOS POR "grupo" (Ej: "Cuartos") Y NO POR "fase_bloque" (que traía 32 partidos de golpe)
+                for part in [m for m in FIXTURE_DINAMICO if m["grupo"] == fase_admin]:
                     pid = str(part["id"])
                     real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
                     st.markdown(f"**Partido #{pid} ({part['grupo']}): {part['local']} vs {part['visita']}**")
@@ -907,7 +910,8 @@ with tabs[5]:
                 st.info(f"📝 Ingresando cartilla manual para: **{jugador}**")
                 resp_admin = {}
                 
-                for part in [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]:
+                # AHORA FILTRAMOS POR "grupo" AQUI TAMBIEN
+                for part in [m for m in FIXTURE_DINAMICO if m["grupo"] == fase_admin]:
                     pid = str(part["id"])
                     pred = datos["pronosticos"].get(jugador, {}).get(pid, {})
                     st.markdown(f"**Partido #{pid}: {part['local']} vs {part['visita']}**")
