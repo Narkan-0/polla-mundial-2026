@@ -458,8 +458,10 @@
         },
         "99": {
             "l": 1,
-            "v": 2,
-            "tipo_resolucion": "90 min",
+            "v": 1,
+            "tipo_resolucion": "Penales",
+            "l_pen": 0,
+            "v_pen": 0,
             "avanza": "INGLATERRA"
         }
     },
