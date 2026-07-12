@@ -463,6 +463,14 @@
             "l_display": 1,
             "v_display": 2,
             "avanza": "INGLATERRA"
+        },
+        "100": {
+            "l": 1,
+            "v": 1,
+            "tipo_resolucion": "Prórroga",
+            "l_display": 3,
+            "v_display": 1,
+            "avanza": "ARGENTINA"
         }
     },
     "pronosticos": {
