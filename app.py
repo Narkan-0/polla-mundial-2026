@@ -845,7 +845,6 @@ with tabs[5]:
                 st.info(f"Administrando resultados oficiales para: **{fase_admin}**")
                 nuevos_cierres = dict(datos["resultados_reales"])
                 
-                # AHORA FILTRAMOS POR "grupo" (Ej: "Cuartos") Y NO POR "fase_bloque" (que traía 32 partidos de golpe)
                 for part in [m for m in FIXTURE_DINAMICO if m["grupo"] == fase_admin]:
                     pid = str(part["id"])
                     real_actual = datos["resultados_reales"].get(pid, {"l": 0, "v": 0})
@@ -863,19 +862,23 @@ with tabs[5]:
                     gl_pen, gv_pen = 0, 0
                     
                     if es_empate_final:
-                        st.warning(f"⚖️ Empate. Define el resultado final antes de marcar 'Cerrar Oficial':")
+                        st.warning(f"⚖️ Empate. Define cómo se resolvió antes de marcar 'Cerrar Oficial':")
                         tipo_guardado = real_actual.get("tipo_resolucion", "Penales")
                         idx_tipo = 1 if tipo_guardado == "Prórroga" else 0
-                        tipo_res = st.radio("Resolución:", ["Penales", "Prórroga"], key=f"tipo_{pid}", index=idx_tipo, horizontal=True, label_visibility="collapsed")
                         
-                        if tipo_res == "Prórroga":
-                            cp1, cp2 = st.columns(2)
-                            with cp1: gl_pro = st.number_input("L (120m)", 0, 15, int(real_actual.get("l_display", g_l)), key=f"pro_l_{pid}")
-                            with cp2: gv_pro = st.number_input("V (120m)", 0, 15, int(real_actual.get("v_display", g_v)), key=f"pro_v_{pid}")
-                        elif tipo_res == "Penales":
-                            cp1, cp2 = st.columns(2)
-                            with cp1: gl_pen = st.number_input("L (Pen)", 0, 15, int(real_actual.get("l_pen", 0)), key=f"pen_l_{pid}")
-                            with cp2: gv_pen = st.number_input("V (Pen)", 0, 15, int(real_actual.get("v_pen", 0)), key=f"pen_v_{pid}")
+                        # El selector define qué datos se guardarán finalmente
+                        tipo_res = st.radio("Método de resolución (Marca el correcto):", ["Penales", "Prórroga"], key=f"tipo_{pid}", index=idx_tipo, horizontal=True)
+                        
+                        # Mostramos siempre ambas opciones para evitar recargas bloqueadas por el formulario
+                        st.caption("⚽ Si hubo Prórroga (Marcador 120 min):")
+                        cp1, cp2 = st.columns(2)
+                        with cp1: gl_pro = st.number_input("L (120m)", 0, 15, int(real_actual.get("l_display", g_l)), key=f"pro_l_{pid}")
+                        with cp2: gv_pro = st.number_input("V (120m)", 0, 15, int(real_actual.get("v_display", g_v)), key=f"pro_v_{pid}")
+                        
+                        st.caption("🥅 Si hubo Penales:")
+                        cp3, cp4 = st.columns(2)
+                        with cp3: gl_pen = st.number_input("L (Pen)", 0, 15, int(real_actual.get("l_pen", 0)), key=f"pen_l_{pid}")
+                        with cp4: gv_pen = st.number_input("V (Pen)", 0, 15, int(real_actual.get("v_pen", 0)), key=f"pen_v_{pid}")
 
                     with c_chk: fin = st.checkbox("Cerrar Oficial", value=(pid in datos["resultados_reales"]), key=f"chk_{pid}")
                     
@@ -901,6 +904,7 @@ with tabs[5]:
                     guardar_datos(datos)
                     st.session_state["mensaje_exito"] = "¡Marcadores actualizados con éxito!"
                     st.rerun()
+
 
         # 2. ACORDEÓN DE APUESTAS FAMILIARES
         with st.expander("👥 FORZAR APUESTAS FAMILIARES (MANUAL)"):
