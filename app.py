@@ -833,13 +833,14 @@ with tabs[5]:
         st.write("---")
         
         # ADMINISTRACIÓN DE RESULTADOS
-        accion_admin = st.radio("Acción de Control:", ["Marcadores Oficiales Reales", "Forzar Apuestas Familiares"], horizontal=True)
-        fase_admin = st.selectbox("Bloque de Partidos:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
+        st.markdown("### 🛠️ ADMINISTRACIÓN DE RESULTADOS Y APUESTAS")
+        fase_admin = st.selectbox("Selecciona el Bloque de Partidos a editar:", ["Fecha 1", "Fecha 2", "Fecha 3", "Fases Finales"])
         st.write("---")
         
-        if accion_admin == "Marcadores Oficiales Reales":
-            with st.form(key=f"form_resultados_{fase_admin}"):
-                st.info(f"🏆 Administrando resultados oficiales para: **{fase_admin}**")
+        # 1. ACORDEÓN DE MARCADORES OFICIALES
+        with st.expander("🏆 ADMINISTRAR MARCADORES OFICIALES REALES"):
+            with st.form(key=f"form_res_{fase_admin.replace(' ', '')}"):
+                st.info(f"Administrando resultados oficiales para: **{fase_admin}**")
                 nuevos_cierres = dict(datos["resultados_reales"])
                 
                 for part in [m for m in FIXTURE_DINAMICO if m["fase_bloque"] == fase_admin]:
@@ -859,21 +860,19 @@ with tabs[5]:
                     gl_pen, gv_pen = 0, 0
                     
                     if es_empate_final:
-                        st.warning(f"⚖️ Empate {g_l}-{g_v}. Define el resultado final antes de marcar 'Cerrar Oficial':")
+                        st.warning(f"⚖️ Empate. Define el resultado final antes de marcar 'Cerrar Oficial':")
                         tipo_guardado = real_actual.get("tipo_resolucion", "Penales")
                         idx_tipo = 1 if tipo_guardado == "Prórroga" else 0
-                        tipo_res = st.radio("Método de resolución:", ["Penales", "Prórroga"], key=f"tipo_{pid}", index=idx_tipo, horizontal=True, label_visibility="collapsed")
+                        tipo_res = st.radio("Resolución:", ["Penales", "Prórroga"], key=f"tipo_{pid}", index=idx_tipo, horizontal=True, label_visibility="collapsed")
                         
                         if tipo_res == "Prórroga":
-                            st.caption("⚽ Marcador final tras 120 min:")
                             cp1, cp2 = st.columns(2)
-                            with cp1: gl_pro = st.number_input("L", 0, 15, int(real_actual.get("l_display", g_l)), key=f"pro_l_{pid}")
-                            with cp2: gv_pro = st.number_input("V", 0, 15, int(real_actual.get("v_display", g_v)), key=f"pro_v_{pid}")
+                            with cp1: gl_pro = st.number_input("L (120m)", 0, 15, int(real_actual.get("l_display", g_l)), key=f"pro_l_{pid}")
+                            with cp2: gv_pro = st.number_input("V (120m)", 0, 15, int(real_actual.get("v_display", g_v)), key=f"pro_v_{pid}")
                         elif tipo_res == "Penales":
-                            st.caption("🥅 Goles en tanda de Penales:")
                             cp1, cp2 = st.columns(2)
-                            with cp1: gl_pen = st.number_input("L", 0, 15, int(real_actual.get("l_pen", 0)), key=f"pen_l_{pid}")
-                            with cp2: gv_pen = st.number_input("V", 0, 15, int(real_actual.get("v_pen", 0)), key=f"pen_v_{pid}")
+                            with cp1: gl_pen = st.number_input("L (Pen)", 0, 15, int(real_actual.get("l_pen", 0)), key=f"pen_l_{pid}")
+                            with cp2: gv_pen = st.number_input("V (Pen)", 0, 15, int(real_actual.get("v_pen", 0)), key=f"pen_v_{pid}")
 
                     with c_chk: fin = st.checkbox("Cerrar Oficial", value=(pid in datos["resultados_reales"]), key=f"chk_{pid}")
                     
@@ -882,12 +881,10 @@ with tabs[5]:
                         if es_empate_final:
                             nuevos_cierres[pid]["tipo_resolucion"] = tipo_res
                             if tipo_res == "Prórroga":
-                                nuevos_cierres[pid]["l_display"] = gl_pro
-                                nuevos_cierres[pid]["v_display"] = gv_pro
+                                nuevos_cierres[pid]["l_display"] = gl_pro; nuevos_cierres[pid]["v_display"] = gv_pro
                                 nuevos_cierres[pid]["avanza"] = part['local'] if gl_pro > gv_pro else part['visita']
                             elif tipo_res == "Penales":
-                                nuevos_cierres[pid]["l_pen"] = gl_pen
-                                nuevos_cierres[pid]["v_pen"] = gv_pen
+                                nuevos_cierres[pid]["l_pen"] = gl_pen; nuevos_cierres[pid]["v_pen"] = gv_pen
                                 nuevos_cierres[pid]["avanza"] = part['local'] if gl_pen > gv_pen else part['visita']
                         else: 
                             nuevos_cierres[pid]["tipo_resolucion"] = "90 min"
@@ -899,13 +896,14 @@ with tabs[5]:
                 if st.form_submit_button("🔄 ACTUALIZAR MARCADORES MUNDIALES", use_container_width=True):
                     datos["resultados_reales"] = nuevos_cierres
                     guardar_datos(datos)
-                    st.session_state["mensaje_exito"] = "¡Marcadores actualizados con éxito y sincronizados en GitHub!"
+                    st.session_state["mensaje_exito"] = "¡Marcadores actualizados con éxito!"
                     st.rerun()
 
-        elif accion_admin == "Forzar Apuestas Familiares":
+        # 2. ACORDEÓN DE APUESTAS FAMILIARES
+        with st.expander("👥 FORZAR APUESTAS FAMILIARES (MANUAL)"):
             jugador = st.selectbox("Seleccionar Jugador:", PARTICIPANTES)
             
-            with st.form(key=f"form_admin_{jugador}_{fase_admin}"):
+            with st.form(key=f"form_ap_{jugador.replace(' ', '')}_{fase_admin.replace(' ', '')}"):
                 st.info(f"📝 Ingresando cartilla manual para: **{jugador}**")
                 resp_admin = {}
                 
@@ -916,8 +914,7 @@ with tabs[5]:
                     
                     c_l, c_v = st.columns(2)
                     
-                    val_l = pred.get("l")
-                    val_v = pred.get("v")
+                    val_l = pred.get("l"); val_v = pred.get("v")
                     val_l = int(val_l) if val_l is not None else 0
                     val_v = int(val_v) if val_v is not None else 0
                     
@@ -926,7 +923,6 @@ with tabs[5]:
                     resp_admin[pid] = {"l": gl, "v": gv}
                     
                 st.write("---")
-                
                 if st.form_submit_button(f"💾 SALVAR CARTILLA DE {jugador.upper()}", use_container_width=True):
                     if jugador not in datos["pronosticos"]: datos["pronosticos"][jugador] = {}
                     for pid, sc in resp_admin.items():
@@ -935,5 +931,5 @@ with tabs[5]:
                         else: 
                             datos["pronosticos"][jugador].pop(pid, None)
                     guardar_datos(datos)
-                    st.session_state["mensaje_exito"] = f"¡Las apuestas forzadas de {jugador} se subieron con éxito!"
+                    st.session_state["mensaje_exito"] = f"¡Las apuestas de {jugador} se subieron con éxito!"
                     st.rerun()
