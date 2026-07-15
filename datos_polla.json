@@ -471,6 +471,12 @@
             "l_display": 3,
             "v_display": 1,
             "avanza": "ARGENTINA"
+        },
+        "101": {
+            "l": 0,
+            "v": 2,
+            "tipo_resolucion": "90 min",
+            "avanza": "ESPAÑA"
         }
     },
     "pronosticos": {
