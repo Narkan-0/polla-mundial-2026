@@ -483,6 +483,12 @@
             "v": 2,
             "tipo_resolucion": "90 min",
             "avanza": "ARGENTINA"
+        },
+        "103": {
+            "l": 4,
+            "v": 6,
+            "tipo_resolucion": "90 min",
+            "avanza": "INGLATERRA"
         }
     },
     "pronosticos": {
